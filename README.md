@@ -1,6 +1,7 @@
-# MEMS Assignment 2 — Phase 7 documentation review
 
-Team: **Abdullah Rehan and Alex Fisher**. The complete implementation through Phase 6 is preserved. Phase 7 documentation, fresh verification and publishing/package plans are prepared for review; no repository has been initialized or published and no final submission ZIP has been created.
+# MEMS Assignment 2 — Final project and documentation
+
+Team: **Abdullah Rehan and Alex Fisher**. The implementation through Phase 6 and the Phase 7 documentation and verification are complete. The project source and documentation are published at [MEMS Assignment 2 on GitHub](https://github.com/kakepe/MEMS-Assignment-2). A source submission ZIP has been generated for final review; D2L submission is pending.
 
 Start with the [final documentation pack](docs/final/README.md), [review report PDF](docs/final/MEMS-Assignment-2-Final-Report.pdf), [read-only audit](docs/phase7-audit.md), [verification matrix](docs/final/verification.md), [100-mark readiness checklist](docs/final/rubric-and-readiness.md) and [publishing/package plan](docs/final/publishing-and-package-plan.md). Actual Codex use is documented in concise phase summaries; Copilot activity and written instructor feedback remain unverified. Original Phase 1–6 prompt files are unchanged.
 
@@ -153,8 +154,8 @@ EF CLI 10.0.13 is installed workspace-locally at `.tools/dotnet-ef`. To reproduc
 
 The design-time factory deliberately uses a non-routable design-only host when no explicit connection is supplied; it never falls back to LocalDB/SQLite. Do not run database-update tooling against an arbitrary connection. Existing migration `Down` methods were not executed. Migrations and seed initialization are restricted to Development and the MEMSAssignment2 database.
 
-## Scope remaining
+## Final status
 
-Guides and printing are implemented and verified. The rubric's page 6 Local Storage wording conflicts with its explicit Session Storage privacy requirements on pages 7–8; the implementation follows the latter and the marking guide. No voting choices or vote counts are accepted or stored by the API or SQL. Browser session restore and opener/duplicated tabs may restore/copy Session Storage under normal browser behavior; Clear guide removes the active tenant's choices explicitly. No selection count cap is imposed because neither assignment PDF explicitly requires one. Phase 7 documentation is prepared for review; commits, GitHub publishing, the final ZIP and submission remain subject to explicit approval. No Azure deployment is required. The instructor's iOS integration question remains unresolved; no JWT or COMP4977 changes were assumed.
+Guides and printing are implemented and verified. The rubric's page 6 Local Storage wording conflicts with its explicit Session Storage privacy requirements on pages 7–8; the implementation follows the latter and the marking guide. No voting choices or vote counts are accepted or stored by the API or SQL. Browser session restore and opener/duplicated tabs may restore/copy Session Storage under normal browser behavior; Clear guide removes the active tenant's choices explicitly. No selection count cap is imposed because neither assignment PDF explicitly requires one. Phase 7 documentation is complete; the project is committed and published to GitHub, and the submission ZIP has been created for final review. D2L submission remains pending. No Azure deployment is required. The instructor's iOS integration question remains unresolved; no JWT or COMP4977 changes were assumed.
 
-The Assignment 1 mark was 97/100; the reported deduction was a missing ERD in the report. Include the updated Phase 2 ERD in the later final report. AI assistance for these phases was OpenAI Codex. Copilot instruction/prompt files are included, but no GitHub Copilot usage is claimed. No Git commands, Azure actions, repository creation, final report, or source ZIP were performed.
+The Assignment 1 mark was 97/100; the reported deduction was a missing ERD in the report. The final report includes the updated Phase 2 ERD. AI assistance for these phases was OpenAI Codex. Copilot instruction/prompt files are included, but no GitHub Copilot usage is claimed. The GitHub repository, finalized report and source ZIP were prepared after the implementation phases. No Azure deployment was performed or required.
