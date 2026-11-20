@@ -1,0 +1,11 @@
+@inject NavigationManager Navigation
+@inject AuthenticationStateProvider Authentication
+<p role="status">Your session does not permit this page. <a href="/admin/account/login" data-enhance-nav="false">Log in</a></p>
+@code {
+    protected override async Task OnInitializedAsync()
+    {
+        var state = await Authentication.GetAuthenticationStateAsync();
+        Navigation.NavigateTo(state.User.Identity?.IsAuthenticated == true ? "/admin/access-denied" :
+            "/admin/account/login?returnUrl=" + Uri.EscapeDataString(new Uri(Navigation.Uri).PathAndQuery), forceLoad: true);
+    }
+}

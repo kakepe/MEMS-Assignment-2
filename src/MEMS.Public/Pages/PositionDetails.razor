@@ -1,0 +1,36 @@
+@page "/{Slug}/positions/{PositionId:int}"
+@inherits PublicPageBase
+<PageTitle>@(position is null ? "Position details · MEMS" : position.Name + " · MEMS")</PageTitle>
+<div class="public-container section-space"><PublicStatus Loading="Loading" Error="@Error" Status="Status" Retry="Reload" />
+@if (!Loading && Error is null && municipality is not null && position is not null && results is not null)
+{
+    <TenantFrame Municipality="municipality"><p class="public-breadcrumb"><a href="/@municipality.Slug/positions">Election positions</a><span aria-hidden="true"> / </span>@position.Name</p>
+        <section class="position-intro"><div><p class="eyebrow">@municipality.Name · Election position</p><h1>@position.Name</h1><p>Browse the candidates contesting this position in @municipality.Name.</p></div><div class="seat-summary"><strong>@position.SeatsAvailable</strong><span>@(position.SeatsAvailable == 1 ? "available seat" : "available seats")</span></div></section>
+        <section class="content-section"><div class="section-heading"><h2>Candidates for @position.Name</h2><span>@results.TotalCount candidate profiles</span></div>
+        @if (results.Items.Count == 0) { <p class="public-message">No candidate profiles have been published for this position yet.</p> }
+        <div class="candidate-grid">@foreach (var c in results.Items) { <CandidateCard Candidate="c" Slug="@municipality.Slug" Position="@position.Name" /> }</div>
+        <nav class="public-pagination" aria-label="Position candidate pages"><span>Page @results.Page of @Math.Max(1, results.TotalPages)</span><div>
+            @if (results.Page > 1) { <a class="btn btn-outline-primary" rel="prev" href="/@municipality.Slug/positions/@position.PositionId?page=@(results.Page - 1)">Previous page</a> }
+            @if (results.Page < results.TotalPages) { <a class="btn btn-outline-primary" rel="next" href="/@municipality.Slug/positions/@position.PositionId?page=@(results.Page + 1)">Next page</a> }
+        </div></nav><a href="/@municipality.Slug/candidates?positionId=@position.PositionId">Search and filter candidates for this position →</a></section>
+    </TenantFrame>
+}
+</div>
+@code {
+    [Parameter] public string Slug { get; set; } = "";
+    [Parameter] public int PositionId { get; set; }
+    [SupplyParameterFromQuery(Name = "page")] public string? PageNumber { get; set; }
+    private MunicipalityDto? municipality;
+    private PositionDto? position;
+    private PageResult<CandidateDto>? results;
+    protected override Task OnParametersSetAsync() => Reload();
+    private Task Reload() => LoadAsync(async token =>
+    {
+        municipality = null; position = null; results = null;
+        var slug = PublicApi.Slug(Slug); var m = await Api.MunicipalityAsync(slug, token);
+        var p = await Api.PositionAsync(slug, PositionId, token);
+        var people = await Api.CandidatesAsync(slug, new() { PositionId = p.PositionId, Page = QueryInteger(PageNumber) ?? 1 }, token);
+        token.ThrowIfCancellationRequested(); RequireTenant(m.MunicipalityId, people.Items.Select(x => x.MunicipalityId).Append(p.MunicipalityId).ToArray());
+        municipality = m; position = p; results = people;
+    });
+}

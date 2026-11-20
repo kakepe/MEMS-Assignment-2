@@ -1,0 +1,14 @@
+<div class="tenant-picker">
+    <label class="form-label" for="municipality-picker">Municipality</label>
+    <select id="municipality-picker" class="form-select" value="@Value" @onchange="Changed" disabled="@(Disabled || Items.Count == 1)">
+        @foreach (var item in Items) { <option value="@item.Slug">@item.Name</option> }
+    </select>
+    @if (Items.Count == 1) { <small class="text-secondary">Your assigned municipality</small> }
+</div>
+@code {
+    [Parameter] public IReadOnlyList<MunicipalityDirectoryItem> Items { get; set; } = [];
+    [Parameter] public string? Value { get; set; }
+    [Parameter] public bool Disabled { get; set; }
+    [Parameter] public EventCallback<string> ValueChanged { get; set; }
+    private Task Changed(ChangeEventArgs args) => ValueChanged.InvokeAsync(args.Value?.ToString() ?? "");
+}

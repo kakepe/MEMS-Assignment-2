@@ -1,0 +1,70 @@
+Phase 3 exact source/configuration changes
+
+CREATED (20)
+.github/prompts/phase-3-api.prompt.md
+docs/phase3-api.md
+docs/phase3-files.txt
+docs/phase3-verification.md
+scripts/verify-phase3-browser.cjs
+scripts/verify-phase3.cjs
+src/MEMS.Api/Controllers/AuthController.cs
+src/MEMS.Api/Controllers/CandidatesController.cs
+src/MEMS.Api/Controllers/MediaController.cs
+src/MEMS.Api/Controllers/MunicipalitiesController.cs
+src/MEMS.Api/Controllers/PositionsController.cs
+src/MEMS.Api/Infrastructure/ApiDocumentation.cs
+src/MEMS.Api/Infrastructure/ApiProblems.cs
+src/MEMS.Api/Infrastructure/ApiSecurity.cs
+src/MEMS.Data/Services/ApiFault.cs
+src/MEMS.Data/Services/ElectionAccess.cs
+src/MEMS.Data/Services/ElectionApiService.cs
+src/MEMS.Data/Storage/MediaStore.cs
+src/MEMS.Shared/Contracts/ElectionContracts.cs
+tests/Phase3FixtureChecks.cs
+
+MODIFIED (9)
+AGENTS.md
+README.md
+scripts/verify-phase2.ps1
+src/MEMS.Api/MEMS.Api.csproj
+src/MEMS.Api/Program.cs
+src/MEMS.AppHost/AppHost.cs
+src/MEMS.Data/DataServices.cs
+src/MEMS.Data/MEMS.Data.csproj
+tests/Phase2DatabaseChecks.cs
+
+REMOVED (0)
+None
+
+Inventory compared SHA-256 hashes with the Phase 3 starting baseline. No Git command was used.
+All seven projects remain. Existing migrations/snapshot, entity/configuration definitions, seeds and packaged portraits/logos are unchanged.
+MEMS.Admin, MEMS.Public and MEMS.ServiceDefaults source is unchanged. API media uses existing seed files without deleting or modifying them.
+
+Ignored local/build/runtime outputs created or refreshed:
+.local/phase3-source-baseline.json; .local/phase3-created-records.json; .local/phase3-fixtures-completed-*.json (private owned-account state); .local/finalize-phase3.py;
+.local/media/tenants/ (verification upload files removed by owned CRUD cleanup); .local/http-temp/ (bounded request buffering);
+.local/phase2-persistence-completed-*.json (private restart-test state); .local/apphost-direct.log; dashboard discovery text/links and runtime logs;
+.tools/packages/ (restored SkiaSharp/native dependencies); project bin/ and obj/ outputs; refreshed artifacts/phase1/ and artifacts/phase2/ verification results;
+artifacts/phase3/ (exact current evidence files below). Existing development SQL/seed secret files were not modified.
+
+artifacts/phase3/api-verification.json
+artifacts/phase3/assignment1-integrity.txt
+artifacts/phase3/browser-security.json
+artifacts/phase3/database-preservation.json
+artifacts/phase3/examples.json
+artifacts/phase3/final-checks.json
+artifacts/phase3/last-restart-readiness.json
+artifacts/phase3/regression/complete-phase2-restart.json
+artifacts/phase3/regression/phase1/admin.png
+artifacts/phase3/regression/phase1/dashboard.png
+artifacts/phase3/regression/phase1/public.png
+artifacts/phase3/regression/phase1/structuredlogs.png
+artifacts/phase3/regression/phase1/traces.png
+artifacts/phase3/regression/phase1/verification.json
+artifacts/phase3/regression/prepare-phase2-restart.json
+artifacts/phase3/regression/verify-phase2.json
+artifacts/phase3/sql-status.json
+
+The original SQL volume/data/accounts/passwords were retained, but Aspire replaced the prior container instance during the initial Phase 3 launch.
+See docs/phase3-verification.md and artifacts/phase3/sql-status.json for this explicit preservation exception.
+No Assignment 1 file was changed; its 2,732-file baseline was verified. No Git operations, Azure changes, deployment, final report or source ZIP.

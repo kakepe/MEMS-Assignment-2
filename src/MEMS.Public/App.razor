@@ -1,0 +1,8 @@
+﻿<Router AppAssembly="@typeof(App).Assembly" NotFoundPage="typeof(Pages.NotFound)">
+    <Found Context="routeData">
+        <RouteView @key="RouteKey" RouteData="@routeData" DefaultLayout="@typeof(MainLayout)"/>
+        <FocusOnNavigate RouteData="@routeData" Selector="h1" />
+    </Found>
+</Router>
+@inject NavigationManager Navigation
+@code { private string RouteKey => new Uri(Navigation.Uri).GetComponents(UriComponents.PathAndQuery, UriFormat.UriEscaped); }

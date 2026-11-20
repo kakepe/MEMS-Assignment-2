@@ -1,0 +1,10 @@
+﻿<Router AppAssembly="typeof(Program).Assembly" NotFoundPage="typeof(Pages.NotFound)">
+    <Found Context="routeData">
+        <AuthorizeRouteView @key="Navigation.Uri" RouteData="routeData" DefaultLayout="typeof(Layout.MainLayout)">
+            <NotAuthorized><RedirectToLogin /></NotAuthorized>
+            <Authorizing><p role="status">Checking your session…</p></Authorizing>
+        </AuthorizeRouteView>
+        <FocusOnNavigate RouteData="routeData" Selector="h1" />
+    </Found>
+</Router>
+@inject NavigationManager Navigation

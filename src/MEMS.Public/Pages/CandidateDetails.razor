@@ -1,0 +1,36 @@
+@page "/{Slug}/candidates/{CandidateId:int}"
+@inherits PublicPageBase
+<PageTitle>@(candidate is null ? "Candidate profile · MEMS" : candidate.Name + " · MEMS")</PageTitle>
+<div class="public-container section-space"><PublicStatus Loading="Loading" Error="@Error" Status="Status" Retry="Reload" />
+@if (!Loading && Error is null && municipality is not null && candidate is not null && position is not null)
+{
+    <TenantFrame Municipality="municipality"><p class="public-breadcrumb"><a href="/@municipality.Slug/candidates">Candidates</a><span aria-hidden="true"> / </span>@candidate.Name</p>
+        <article class="candidate-profile"><div class="profile-photo-column"><PublicImage Source="@candidate.PhotoUrl" Version="@candidate.Version" Alt="@($"Photograph of {candidate.Name}")" Class="profile-portrait" />
+            @if (candidate.IsFictionalSample) { <p class="demo-note">Fictional demonstration profile. Portraits and avatars are sample content.</p> }
+        </div><div class="profile-main"><p class="eyebrow">@municipality.Name · Candidate profile</p><h1>@candidate.Name</h1><p class="profile-position">Candidate for <a href="/@municipality.Slug/positions/@position.PositionId">@position.Name</a></p>
+            <section class="biography-section"><h2>About @candidate.Name</h2><p class="biography">@candidate.Profile</p></section>
+            <section class="contact-section"><h2>Contact information</h2><dl><dt>Email</dt><dd>@if (candidate.Email is null) { <span>Not provided</span> } else { <a href="@($"mailto:{candidate.Email}")">@candidate.Email</a> }</dd>
+            <dt>Website</dt><dd>@if (candidate.Website is null) { <span>Not provided</span> } else { <a href="@candidate.Website" target="_blank" rel="noopener noreferrer">@candidate.Website <span aria-label="opens in a new tab">↗</span></a> }</dd></dl></section>
+            <a class="btn btn-outline-primary" href="/@municipality.Slug/positions/@position.PositionId">More candidates for @position.Name</a>
+            <GuideSelection Candidate="candidate" />
+        </div></article>
+    </TenantFrame>
+}
+</div>
+@code {
+    [Parameter] public string Slug { get; set; } = "";
+    [Parameter] public int CandidateId { get; set; }
+    private MunicipalityDto? municipality;
+    private CandidateDto? candidate;
+    private PositionDto? position;
+    protected override Task OnParametersSetAsync() => Reload();
+    private Task Reload() => LoadAsync(async token =>
+    {
+        municipality = null; candidate = null; position = null;
+        var slug = PublicApi.Slug(Slug);
+        var m = await Api.MunicipalityAsync(slug, token); var c = await Api.CandidateAsync(slug, CandidateId, token);
+        var p = await Api.PositionAsync(slug, c.PositionId, token); token.ThrowIfCancellationRequested();
+        RequireTenant(m.MunicipalityId, c.MunicipalityId, p.MunicipalityId);
+        municipality = m; candidate = c; position = p;
+    });
+}

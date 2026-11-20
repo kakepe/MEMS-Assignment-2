@@ -1,0 +1,41 @@
+﻿@inherits LayoutComponentBase
+
+<a class="skip-link" href="#main-content">Skip to content</a>
+<div class="admin-shell">
+    <aside class="admin-sidebar">
+        <a class="admin-brand" href="/admin"><span class="brand-mark" aria-hidden="true">M</span><span>MEMS<small>Election administration</small></span></a>
+        <details class="admin-navigation" open>
+            <summary>Administration menu</summary>
+            <nav aria-label="Administration">
+                <AuthorizeView>
+                    <Authorized>
+                        <NavLink href="/admin" Match="NavLinkMatch.All">Dashboard</NavLink>
+                        <NavLink href="/admin/municipalities">Municipalities</NavLink>
+                        <NavLink href="/admin/positions">Positions</NavLink>
+                        <NavLink href="/admin/candidates">Candidates</NavLink>
+                        <NavLink href="/admin/connectivity">Service connectivity</NavLink>
+                        <div class="nav-divider"></div>
+                        <a href="/admin/account/change-password" data-enhance-nav="false">Change password</a>
+                        <a href="/admin/account/logout" data-enhance-nav="false">Log out</a>
+                    </Authorized>
+                    <NotAuthorized><a href="/admin/account/login" data-enhance-nav="false">Log in</a></NotAuthorized>
+                </AuthorizeView>
+            </nav>
+        </details>
+        <p class="sidebar-note">One shared administration application.<br />Access follows your municipality assignment.</p>
+    </aside>
+    <div class="admin-workspace">
+        <header class="admin-topbar">
+            <span>Municipal elections</span>
+            <AuthorizeView><Authorized Context="session"><span class="session-label">Signed in as <strong>@session.User.Identity?.Name</strong></span></Authorized></AuthorizeView>
+        </header>
+        <main id="main-content" class="admin-content" tabindex="-1">@Body</main>
+        <footer class="admin-footer">COMP4976 · MEMS Assignment 2 · Administration</footer>
+    </div>
+</div>
+
+<div id="blazor-error-ui" data-nosnippet>
+    An unhandled error has occurred.
+    <a href="." class="reload">Reload</a>
+    <span class="dismiss">🗙</span>
+</div>

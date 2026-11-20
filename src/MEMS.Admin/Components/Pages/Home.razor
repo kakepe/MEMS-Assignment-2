@@ -1,0 +1,28 @@
+﻿@page "/"
+@page "/admin"
+@attribute [Authorize(Policy = "Administrator")]
+@inherits AdminPageBase
+<PageTitle>Dashboard · MEMS Admin</PageTitle>
+<p class="eyebrow">Election administration</p><h1>Dashboard</h1>
+<PageFeedback Busy="Busy" Error="@Error" Status="ErrorStatus" />
+@if (totals is not null)
+{
+    <p class="text-secondary">@(Super ? "System-wide overview across all municipalities." : "Election records for your assigned municipality.")</p>
+    <div class="dashboard-grid">
+        <a class="stat-card" href="/admin/municipalities"><span>Municipalities</span><strong data-testid="municipality-count">@totals.Municipalities</strong><small>View municipality details →</small></a>
+        <a class="stat-card" href="/admin/positions"><span>Positions</span><strong data-testid="position-count">@totals.Positions</strong><small>Manage election positions →</small></a>
+        <a class="stat-card" href="/admin/candidates"><span>Candidates</span><strong data-testid="candidate-count">@totals.Candidates</strong><small>Manage candidate profiles →</small></a>
+    </div>
+    <section class="panel mt-4"><h2 class="h5">Your administration workspace</h2><p>Manage election information, available seats and candidate profiles. Changes are checked against your current permissions.</p>
+        <a href="/admin/municipalities" class="btn btn-primary">Browse municipalities</a><a href="/admin/candidates" class="btn btn-outline-primary ms-2">Browse candidates</a>
+    </section>
+}
+@code {
+    private DashboardDto? totals;
+    protected override Task OnInitializedAsync() => TryAsync(async () =>
+    {
+        Actor = await Operations.ActorAsync();
+        totals = await Operations.RunAsync((service, user) => service.DashboardAsync(user));
+    });
+}
+

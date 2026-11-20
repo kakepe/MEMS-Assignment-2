@@ -1,0 +1,123 @@
+@page "/admin/candidates"
+@page "/admin/{Slug}/candidates"
+@page "/admin/{Slug}/candidates/create"
+@page "/admin/{Slug}/candidates/{Id:int}"
+@page "/admin/{Slug}/candidates/{Id:int}/edit"
+@page "/admin/{Slug}/candidates/{Id:int}/delete"
+@attribute [Authorize(Policy = "Administrator")]
+@inherits AdminPageBase
+<PageTitle>Candidates · MEMS Admin</PageTitle>
+<div class="page-heading"><div><p class="eyebrow">Election candidates</p><h1>@Title</h1></div>@if (list && ready) { <a class="btn btn-primary" href="@Root/create">Create candidate</a> }</div>
+<PageFeedback Busy="Busy" Error="@Error" Status="ErrorStatus" Success="@Success" />
+@if (ready)
+{
+    <TenantPicker Items="tenants" Value="@currentSlug" Disabled="@(!list && !creating)" ValueChanged="ChangeTenant" />
+    @if (list && results is not null)
+    {
+        <EditForm Model="query" OnValidSubmit="ApplyFilters" FormName="candidate-filter" class="panel filter-panel">
+            <DataAnnotationsValidator /><ValidationSummary class="text-danger" role="alert" />
+            <div class="filter-grid">
+                <div><label for="candidate-search" class="form-label">Search by name</label><InputText id="candidate-search" class="form-control" @bind-Value="@query.Search" maxlength="100" /></div>
+                <div><label for="position-filter" class="form-label">Position</label><InputSelect id="position-filter" class="form-select" @bind-Value="@query.PositionId"><option value="">All positions</option>@foreach (var p in positions) { <option value="@p.PositionId">@p.Name</option> }</InputSelect></div>
+                <div><label for="candidate-sort" class="form-label">Sort by</label><InputSelect id="candidate-sort" class="form-select" @bind-Value="@query.Sort"><option value="name">Name (A–Z)</option><option value="created">Newest first</option></InputSelect></div>
+                <div><label for="page-size" class="form-label">Per page</label><InputSelect id="page-size" class="form-select" @bind-Value="@query.PageSize"><option value="5">5</option><option value="12">12</option><option value="24">24</option><option value="50">50</option></InputSelect></div>
+            </div>
+            <div class="mt-3"><button type="submit" class="btn btn-primary" disabled="@Busy">Apply filters</button><a href="@Root" class="btn btn-link">Clear filters</a></div>
+        </EditForm>
+        <div class="panel table-responsive"><table class="table align-middle"><caption>Candidates for @tenantName · @results.TotalCount matching records</caption><thead><tr><th>Candidate</th><th>Position</th><th>Actions</th></tr></thead><tbody>
+        @foreach (var item in results.Items)
+        {
+            <tr><th scope="row"><div class="candidate-cell">@if (item.PhotoUrl is not null) { <img class="portrait-thumbnail" src="@MediaUrl(item.PhotoUrl, item.Version)" alt="@($"Portrait of {item.Name}")" loading="lazy" /> }<a href="@Root/@item.CandidateId">@item.Name</a></div></th>
+            <td>@PositionName(item.PositionId)</td><td class="table-actions"><a href="@Root/@item.CandidateId">Details</a><a href="@Root/@item.CandidateId/edit">Edit</a><a class="text-danger" href="@Root/@item.CandidateId/delete">Delete</a></td></tr>
+        }
+        </tbody></table>@if (results.Items.Count == 0) { <p class="empty-state">No candidates match these filters.</p> }
+        <nav class="pagination-controls" aria-label="Candidate pages"><span>Page @results.Page of @Math.Max(1, results.TotalPages)</span><div>
+            @if (results.Page > 1) { <a class="btn btn-outline-primary" rel="prev" href="@QueryUrl(results.Page - 1)">Previous page</a> }
+            @if (results.Page < results.TotalPages) { <a class="btn btn-outline-primary" rel="next" href="@QueryUrl(results.Page + 1)">Next page</a> }
+        </div></nav></div>
+    }
+    else if (creating || editing)
+    {
+        @if (positions.Count == 0) { <p class="alert alert-warning">Create a position in this municipality before adding a candidate. <a href="/admin/@currentSlug/positions/create">Create position</a></p> }
+        <EditForm Model="model" OnValidSubmit="Save" FormName="candidate-details" class="panel record-form"><DataAnnotationsValidator /><ValidationSummary class="text-danger" role="alert" />
+        <fieldset disabled="@(Busy || positions.Count == 0)"><legend class="visually-hidden">Candidate details</legend>
+        <div class="mb-3"><label for="candidate-name" class="form-label">Candidate name</label><InputText id="candidate-name" class="form-control" @bind-Value="@model.Name" maxlength="100" /><ValidationMessage For="() => model.Name" /></div>
+        <div class="mb-3"><label for="candidate-position" class="form-label">Position</label><InputSelect id="candidate-position" class="form-select" @bind-Value="@model.PositionId"><option value="0">Choose a position</option>@foreach (var p in positions) { <option value="@p.PositionId">@p.Name (@p.SeatsAvailable seats)</option> }</InputSelect><ValidationMessage For="() => model.PositionId" /></div>
+        <div class="mb-3"><label for="biography" class="form-label">Biography</label><InputTextArea id="biography" class="form-control" rows="7" @bind-Value="@model.Profile" maxlength="4000" /><ValidationMessage For="() => model.Profile" /></div>
+        <div class="row"><div class="col-md-6 mb-3"><label for="email" class="form-label">Email (optional)</label><InputText id="email" class="form-control" @bind-Value="@model.Email" maxlength="254" /><ValidationMessage For="() => model.Email" /></div>
+        <div class="col-md-6 mb-3"><label for="website" class="form-label">Website (optional)</label><InputText id="website" class="form-control" @bind-Value="@model.Website" maxlength="300" placeholder="https://example.org" /><ValidationMessage For="() => model.Website" /></div></div>
+        <button type="submit" class="btn btn-primary">Save candidate</button><a href="@Root" class="btn btn-link">Cancel</a></fieldset></EditForm>
+        @if (record is not null) { <MediaEditor Slug="@currentSlug" Id="record.CandidateId" CurrentVersion="@record.Version" Url="@record.PhotoUrl" Updated="MediaUpdated" /> }
+    }
+    else if (record is not null && deleting)
+    {
+        <section class="panel"><h2 class="h4">Delete @record.Name?</h2><p>Municipality: @tenantName · Position: @PositionName(record.PositionId)</p><p class="alert alert-warning">This action cannot be undone. The candidate and any application-owned uploaded photograph will be removed.</p>
+        <button class="btn btn-danger" @onclick="Delete" disabled="@Busy">Confirm delete candidate</button><a class="btn btn-link" href="@Root/@record.CandidateId">Cancel</a></section>
+    }
+    else if (record is not null)
+    {
+        <section class="panel"><div class="record-heading">@if (record.PhotoUrl is not null) { <img class="candidate-portrait" src="@MediaUrl(record.PhotoUrl, record.Version)" alt="@($"Portrait of {record.Name}")" /> }<div><h2>@record.Name</h2><p>@PositionName(record.PositionId) · @tenantName</p>@if (record.IsFictionalSample) { <span class="badge text-bg-light">Fictional demonstration candidate</span> }</div></div>
+            <h3 class="h5 mt-4">Biography</h3><p class="biography">@record.Profile</p><dl class="record-details"><dt>Email</dt><dd>@if (record.Email is null) { <span>Not provided</span> } else { <a href="@($"mailto:{record.Email}")">@record.Email</a> }</dd><dt>Website</dt><dd>@if (record.Website is null) { <span>Not provided</span> } else { <a href="@record.Website" target="_blank" rel="noopener noreferrer">@record.Website</a> }</dd><dt>Created</dt><dd>@record.DateCreated.ToString("MMM d, yyyy HH:mm") UTC</dd></dl>
+            <div class="action-row"><a href="@Root/@record.CandidateId/edit" class="btn btn-primary">Edit candidate</a><a href="@Root/@record.CandidateId/delete" class="btn btn-outline-danger">Delete candidate</a><a href="@Root" class="btn btn-link">Back to candidates</a></div>
+        </section>
+        <MediaEditor Slug="@currentSlug" Id="record.CandidateId" CurrentVersion="@record.Version" Url="@record.PhotoUrl" Updated="MediaUpdated" />
+    }
+}
+@code {
+    [Parameter] public string? Slug { get; set; }
+    [Parameter] public int? Id { get; set; }
+    [SupplyParameterFromQuery(Name = "search")] public string? Search { get; set; }
+    [SupplyParameterFromQuery(Name = "positionId")] public int? FilterPosition { get; set; }
+    [SupplyParameterFromQuery(Name = "page")] public int? PageNumber { get; set; }
+    [SupplyParameterFromQuery(Name = "pageSize")] public int? PageSize { get; set; }
+    [SupplyParameterFromQuery] public string? Sort { get; set; }
+    [SupplyParameterFromQuery] public string? Notice { get; set; }
+    private List<MunicipalityDirectoryItem> tenants = [];
+    private List<PositionDto> positions = [];
+    private PageResult<CandidateDto>? results;
+    private CandidateDto? record;
+    private CandidateRequest model = new();
+    private CandidateQuery query = new();
+    private string currentSlug = "", tenantName = "";
+    private bool ready;
+    private bool list => RouteMode == "candidates";
+    private bool creating => RouteMode == "create";
+    private bool editing => RouteMode == "edit";
+    private bool deleting => RouteMode == "delete";
+    private string Root => $"/admin/{currentSlug}/candidates";
+    private string Title => creating ? "Create candidate" : editing ? "Edit candidate" : deleting ? "Delete candidate" : list ? "Candidates" : "Candidate details";
+    private string PositionName(int id) => positions.FirstOrDefault(x => x.PositionId == id)?.Name ?? "Position unavailable";
+    protected override Task OnParametersSetAsync() => TryAsync(async () =>
+    {
+        ready = false; record = null; results = null; positions = [];
+        Actor = await Operations.ActorAsync();
+        tenants = await Operations.RunAsync((service, user) => service.DirectoryAsync(user));
+        currentSlug = Slug ?? tenants.FirstOrDefault()?.Slug ?? throw new ApiFault(403, "No municipality is assigned to this account.");
+        positions = await Operations.RunAsync((service, user) => service.PositionsAsync(user, currentSlug));
+        tenantName = tenants.Single(x => x.Slug == currentSlug).Name;
+        Success = Notice == "saved" ? "Candidate saved successfully." : Notice == "deleted" ? "Candidate deleted." : null;
+        if (list)
+        {
+            query = new() { Search = Search, PositionId = FilterPosition, Page = PageNumber ?? 1, PageSize = PageSize ?? 12, Sort = Sort ?? "name" };
+            results = await Operations.RunAsync((service, user) => service.CandidatesAsync(user, currentSlug, query));
+        }
+        else if (creating) model = new();
+        else
+        {
+            record = await Operations.RunAsync((service, user) => service.CandidateAsync(user, currentSlug, Id!.Value));
+            model = new() { Name = record.Name, PositionId = record.PositionId, Profile = record.Profile, Email = record.Email, Website = record.Website };
+        }
+        ready = true;
+    });
+    private void ChangeTenant(string slug) => Navigation.NavigateTo($"/admin/{slug}/candidates" + (creating ? "/create" : ""));
+    private void ApplyFilters() => Navigation.NavigateTo(QueryUrl(1));
+    private string QueryUrl(int number) => Root + $"?page={number}&pageSize={query.PageSize}&sort={Uri.EscapeDataString(query.Sort)}"
+        + (string.IsNullOrWhiteSpace(query.Search) ? "" : "&search=" + Uri.EscapeDataString(query.Search)) + (query.PositionId.HasValue ? "&positionId=" + query.PositionId : "");
+    private Task Save() => TryAsync(async () =>
+    {
+        var saved = await Operations.RunAsync((service, user) => service.SaveCandidateAsync(user, currentSlug, creating ? null : record!.CandidateId, model, creating ? null : Version(record!.Version)));
+        Navigation.NavigateTo($"{Root}/{saved.CandidateId}?notice=saved");
+    });
+    private Task Delete() => TryAsync(async () => { await Operations.RunAsync((service, user) => service.DeleteCandidateAsync(user, currentSlug, record!.CandidateId, Version(record.Version))); Navigation.NavigateTo(Root + "?notice=deleted"); });
+    private void MediaUpdated(MediaEditor.MediaUpdate update) { record = record! with { Version = update.Version, PhotoUrl = update.Url }; }
+}

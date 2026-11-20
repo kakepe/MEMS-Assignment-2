@@ -1,0 +1,20 @@
+<div class="tenant-experience" style="--tenant-accent:@PublicApi.BrandColor(Municipality.BrandColor)">
+    <div class="tenant-banner">
+        <div class="tenant-identity"><PublicImage Source="@Municipality.LogoUrl" Version="@Municipality.Version" Logo="true" Class="tenant-logo" Alt="@($"{Municipality.Name} logo")" />
+            <div><a class="tenant-name" href="/@Municipality.Slug">@Municipality.Name</a><span>@Municipality.Province</span></div>
+        </div>
+        <div class="election-date"><span>Election date</span><strong>@Municipality.ElectionDate.ToString("MMMM d, yyyy")</strong></div>
+    </div>
+    <nav class="tenant-nav" aria-label="Municipality election">
+        <NavLink href="@($"/{Municipality.Slug}")" Match="NavLinkMatch.All">Election overview</NavLink>
+        <NavLink href="@($"/{Municipality.Slug}/candidates")">Candidates</NavLink>
+        <NavLink href="@($"/{Municipality.Slug}/positions")">Positions</NavLink>
+        <NavLink href="@($"/{Municipality.Slug}/guide")">My voting guide</NavLink>
+        <a class="change-municipality" href="/">Change municipality</a>
+    </nav>
+    @ChildContent
+</div>
+@code {
+    [Parameter, EditorRequired] public MunicipalityDto Municipality { get; set; } = default!;
+    [Parameter] public RenderFragment? ChildContent { get; set; }
+}

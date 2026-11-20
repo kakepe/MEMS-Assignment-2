@@ -1,0 +1,73 @@
+COMP4976 MEMS ASSIGNMENT 2 — CODEX STARTER PROMPT
+Municipal Elections Management System Modernization
+
+CURRENT WORKSPACE (ONLY WRITABLE PROJECT):
+C:\Users\Asma\Documents\MEMS-Assignment-2
+
+PREVIOUS COMPLETED PROJECT (STRICTLY READ-ONLY REFERENCE):
+C:\Users\Asma\Documents\MEMS-Assignment-1
+
+MISSION
+Modernize my existing COMP4976 Assignment 1 Municipal Elections Management System (MEMS) into the distributed .NET architecture required by the COMP4976 Assignment 2 rubric. Start from the existing software and preserve its actual business functionality. Use .NET 10, Blazor, ASP.NET Core Web API, SQL Server, EF Core Code First, ASP.NET Core Identity, .NET Aspire and Bootstrap. This is COMP4976 web development, NOT the COMP4977 SwiftUI/Firebase implementation.
+
+SOURCE OF TRUTH AND FIRST ACTIONS
+1. Locate and read the ENTIRE COMP4976 Assignment 2 PDF in this workspace. It may be in the workspace root or in requirements/. If it is missing or cannot be read, STOP and tell me precisely what is missing. Never claim you read a document you could not access.
+2. Pay special attention to page 16's 100-mark grading guide, the seven required projects (page 3), the data/tenant requirements, privacy requirements (pages 6–8), and deliverables (pages 15–16).
+3. Inspect the original Assignment 1 source at the read-only path above. Identify the existing models, migrations, services, validation, Identity roles, sample portraits, image handling, CRUD, search/filter logic, print CSS and tests. Do not modify, build, restore, migrate or run anything inside the Assignment 1 directory.
+4. Record any unavailable file, unclear instructor feedback, tool version issue, or rubric contradiction. The original PDF takes priority over assumptions or illustrative snippets.
+
+NON-NEGOTIABLE SAFETY BOUNDARIES
+- Assignment 1 is complete and deployed. Never modify its folder, .git, SQLite database, secrets, Azure configuration, GitHub repository or deployed application. Do not copy local/prod databases or real secrets into Assignment 2.
+- Do not push, commit, deploy, provision cloud resources, publish to Azure or incur charges without explicit approval.
+- Do not run destructive operations (deleting old data, dropping tables, force-pushing, deleting Docker volumes/containers, overwriting files) without explicit approval.
+- Keep development credentials out of source control. Use development user-secrets, environmental settings, or safe documented placeholders as appropriate. Do not put actual passwords or connection secrets in source files, example responses or logs.
+- Build in THIS Assignment 2 workspace, preserving reusable portions of Assignment 1 through safe, selective copies or adaptations. Do not blindly duplicate its bin/, obj/, .git/, databases, uploads or configuration secrets.
+- We have asked the instructor whether the new COMP4976 API must be consumed by COMP4977's iOS app. This is UNRESOLVED. Keep the API designed for future external clients, but do not invent deployment or JWT requirements until the instructor clarifies them.
+- COMP4976 Assignment 2 explicitly says no Azure deployment is required. Plan for local Aspire orchestration by default; don't modify existing Azure sites.
+
+REQUIRED SOLUTION: EXACTLY THESE SEVEN NAMED PROJECTS
+1. MEMS.AppHost — .NET Aspire AppHost; orchestrate all application projects and a SQL Server container; service references and connection-string wiring.
+2. MEMS.ServiceDefaults — shared service discovery, health checks, structured logging, tracing and observability.
+3. MEMS.Admin — shared Blazor Server administrative interface, ASP.NET Core Identity, login/roles and tenant-aware management.
+4. MEMS.Public — Blazor WebAssembly public election site, one tenant-specific experience resolved from URL slug (e.g., /burnaby, /surrey, /richmond).
+5. MEMS.Api — ASP.NET Core Web API; JSON endpoints with safe DTOs, documented errors and ENFORCED tenant-aware authorization/data isolation.
+6. MEMS.Data — SQL Server EF Core DbContext, Code First migrations, tenant-aware entities, database services/repositories and repeatable seed logic.
+7. MEMS.Shared — shared contracts, DTOs and validation models without coupling Blazor WASM directly to the database.
+
+CORE RUBRIC REQUIREMENTS TO PRESERVE OR INTRODUCE
+- Preserve all Assignment 1 municipality, position and candidate features: full admin CRUD, details, logos/photos and safe uploads, dashboard totals, public browsing, search/filtering, candidate details, accessible responsive Bootstrap UI and print-friendly voting guide.
+- Add multi-tenancy: one municipality = one tenant, unique URL slug, no need to create a new app for a new tenant. Public /burnaby shows Burnaby only; /surrey shows Surrey only; /richmond shows Richmond only.
+- Enforce isolation at the API, data/service/EF query and Blazor admin layers. Do not rely on hiding controls or accepting a caller-supplied municipality ID as authorization. Reject forbidden cross-tenant requests, including direct ID lookups, modifications and uploads.
+- Replace SQLite with SQL Server; use Code First migrations, seed data and a service/repository layer. Use Docker Desktop for local SQL Server through Aspire; preserve volume-backed data where practical, and do not delete existing Docker volumes.
+- Seed at least Burnaby, Surrey and Richmond, multiple positions per municipality and at least 20 fictional candidates. Seed Super Admin and municipality admins (Burnabyadmin, Surreyadmin, Richmondadmin) and preserve the Assignment 1-required super/pm accounts, honoring the original functional rules. Don't guess unknown production secrets.
+- Admin: Super Admin can manage all tenants and tenant slugs; municipality admins are assigned to exactly one tenant and cannot read/write another tenant's data.
+- Public: use Blazor WASM and retrieve election information through the Web API only; no browser-side database access.
+- Voting guide: implement anonymous add/remove/print features and position seat limits. IMPORTANT: page 6 mentions local storage, but pages 7–8 expressly require browser SESSION STORAGE, no backend transmission of selections, no SQL Server storage, and automatic removal on session end. Follow the explicit privacy requirement and flag the contradiction in the planning report. Don't implement saved-vote API endpoints.
+- API: at minimum GET, GET-by-ID, POST, PUT and DELETE for municipalities, positions and candidates, with appropriate authorization, tenant isolation, validation, HTTP status codes and API documentation (Swagger/OpenAPI preferred).
+- Validate at Blazor UI, Web API and database constraints; safe image uploads, names, text lengths, email and URLs. Provide structured logging, global exception handling, user-friendly errors, health checks, tracing and Aspire dashboard verification.
+- Document and fix all actual deficiencies reported by the Assignment 1 instructor; request the instructor feedback before claiming this requirement is complete. Prepare an issue/resolution table only from real feedback or identified and verified defects.
+- Follow the rubric's requirement for GitHub Copilot instructions and used prompt/skill Markdown files. OpenAI Codex may assist with implementation; accurately document AI use without falsely claiming a different tool was used. Create or maintain .github/copilot-instructions.md and any actual prompt/skill files when implementation starts.
+- Final deliverables (later phases): complete source solution, instructor-accessible GitHub repository, architecture diagram, updated ERD, deficiency resolution report and screenshots of Aspire Dashboard, admin, public site, API testing and SQL Server. Do not fabricate screenshots or claim deployment that did not occur.
+
+WORKFLOW — PHASE 0 IS PLAN ONLY
+For THIS FIRST RUN, do not create the application solution, generate code or install packages. Inspect the rubric and read-only Assignment 1 project. Deliver:
+A. A checklist mapping all 100 rubric points/requirements to planned evidence and tests.
+B. An inventory of Assignment 1 features and code that can be reused versus must be rewritten.
+C. An architecture diagram in text and exact proposed folder/project structure.
+D. SQL Server + Aspire approach, tenant model, authorization model and public Session Storage privacy design.
+E. A prioritized, staged implementation plan with a concrete test/verification checkpoint after each phase.
+F. Open questions/risks, including instructor feedback and the iOS API integration question.
+G. Exact commands/tools expected for the first implementation phase, without running them yet.
+
+STOP at the end of Phase 0. Do not make changes until I explicitly approve the next phase.
+
+FOR FUTURE IMPLEMENTATION PHASES (only after my approval)
+- Implement in small batches, not one giant uncontrolled change. After each batch: restore/build, run relevant tests, report failures and fixes, and show the files changed.
+- Run SQL Server through Docker/Aspire and demonstrate the AppHost dashboard early.
+- Verify tenant isolation with direct API calls and automated tests, not only the UI.
+- Test both admin and anonymous public functionality, image handling and browser printing.
+- Verify browser Session Storage never transmits candidate choices to backend APIs and is cleared after session end.
+- Maintain a concise trace of completed/untested rubric items and report honestly what remains.
+- Do not take GitHub or deployment actions without separate approval.
+
+END OF STARTER PROMPT

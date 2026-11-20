@@ -1,0 +1,42 @@
+@page "/{Slug}"
+@inherits PublicPageBase
+<PageTitle>@(municipality is null ? "Municipality election · MEMS" : municipality.Name + " election · MEMS")</PageTitle>
+<div class="public-container section-space">
+    <PublicStatus Loading="Loading" Error="@Error" Status="Status" Retry="Reload" />
+    @if (!Loading && Error is null && municipality is not null)
+    {
+        <TenantFrame Municipality="municipality">
+            <section class="election-intro"><p class="eyebrow">Your municipal election</p><h1>@municipality.PublicTitle</h1><p class="election-description">@municipality.Description</p>
+                <div class="overview-counts"><span><strong>@positions.Count</strong> election positions</span><span><strong>@candidateCount</strong> candidate profiles</span></div>
+            </section>
+            <section class="content-section"><div class="section-heading"><div><p class="eyebrow">Know the roles</p><h2>Positions in @municipality.Name</h2></div><a href="/@municipality.Slug/positions">View all positions →</a></div>
+                @if (positions.Count == 0) { <p class="public-message">No positions have been published for this municipality yet.</p> }
+                <div class="position-grid">@foreach (var p in positions) { <article class="position-card"><span class="seat-badge">@p.SeatsAvailable @(p.SeatsAvailable == 1 ? "seat" : "seats")</span><h3><a href="/@municipality.Slug/positions/@p.PositionId">@p.Name</a></h3><p>Explore the candidates contesting this position.</p><a class="profile-link" href="/@municipality.Slug/positions/@p.PositionId">Browse candidates ↗</a></article> }</div>
+            </section>
+            <section class="content-section"><div class="section-heading"><div><p class="eyebrow">People in your community</p><h2>Meet the candidates</h2></div><a href="/@municipality.Slug/candidates">View all candidates →</a></div>
+                @if (candidates.Count == 0) { <p class="public-message">Candidate profiles have not been published yet. Please check back later.</p> }
+                <div class="candidate-grid">@foreach (var c in candidates) { <CandidateCard Candidate="c" Slug="@municipality.Slug" Position="@PositionName(c.PositionId)" /> }</div>
+            </section>
+        </TenantFrame>
+    }
+</div>
+@code {
+    [Parameter] public string Slug { get; set; } = "";
+    private MunicipalityDto? municipality;
+    private List<PositionDto> positions = [];
+    private IReadOnlyList<CandidateDto> candidates = [];
+    private int candidateCount;
+    private string PositionName(int id) => positions.FirstOrDefault(x => x.PositionId == id)?.Name ?? "Election position";
+    protected override Task OnParametersSetAsync() => Reload();
+    private Task Reload() => LoadAsync(async token =>
+    {
+        municipality = null; positions = []; candidates = []; candidateCount = 0;
+        var slug = PublicApi.Slug(Slug);
+        var m = await Api.MunicipalityAsync(slug, token);
+        var offices = Api.PositionsAsync(slug, token);
+        var people = Api.CandidatesAsync(slug, new() { PageSize = 3 }, token);
+        await Task.WhenAll(offices, people); token.ThrowIfCancellationRequested();
+        RequireTenant(m.MunicipalityId, offices.Result.Select(x => x.MunicipalityId).Concat(people.Result.Items.Select(x => x.MunicipalityId)).ToArray());
+        municipality = m; positions = offices.Result; candidates = people.Result.Items; candidateCount = people.Result.TotalCount;
+    });
+}

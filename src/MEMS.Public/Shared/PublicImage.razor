@@ -1,0 +1,39 @@
+@implements IDisposable
+@inject PublicApi Api
+<div class="public-image @Class">
+    @if (image is not null)
+    {
+        <img src="@image" alt="@Alt" @onerror="Failed" />
+    }
+    else
+    {
+        <div class="image-fallback" role="img" aria-label="@Alt">
+            <span aria-hidden="true">@(Logo ? "M" : "○")</span><small>@(loading ? "Loading image…" : Logo ? "Municipality" : "Photograph unavailable")</small>
+        </div>
+    }
+</div>
+@code {
+    [Parameter] public string? Source { get; set; }
+    [Parameter] public string? Version { get; set; }
+    [Parameter] public string Alt { get; set; } = "Election image";
+    [Parameter] public string Class { get; set; } = "";
+    [Parameter] public bool Logo { get; set; }
+    private string? image;
+    private bool loading;
+    private string? previous;
+    private CancellationTokenSource? pending;
+    protected override async Task OnParametersSetAsync()
+    {
+        var key = Source + ":" + Version;
+        if (key == previous) return;
+        previous = key; image = null; pending?.Cancel(); pending?.Dispose();
+        var source = new CancellationTokenSource(); pending = source;
+        loading = Source is not null;
+        if (Source is null) return;
+        try { var loaded = await Api.ImageAsync(Source, Version, source.Token); source.Token.ThrowIfCancellationRequested(); image = loaded; }
+        catch (Exception) { /* A missing/damaged image uses the accessible placeholder. */ }
+        finally { if (ReferenceEquals(pending, source)) loading = false; }
+    }
+    private void Failed() => image = null;
+    public void Dispose() { pending?.Cancel(); pending?.Dispose(); }
+}

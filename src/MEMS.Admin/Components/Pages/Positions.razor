@@ -1,0 +1,80 @@
+@page "/admin/positions"
+@page "/admin/{Slug}/positions"
+@page "/admin/{Slug}/positions/create"
+@page "/admin/{Slug}/positions/{Id:int}"
+@page "/admin/{Slug}/positions/{Id:int}/edit"
+@page "/admin/{Slug}/positions/{Id:int}/delete"
+@attribute [Authorize(Policy = "Administrator")]
+@inherits AdminPageBase
+<PageTitle>Positions · MEMS Admin</PageTitle>
+<div class="page-heading"><div><p class="eyebrow">Election positions</p><h1>@Title</h1></div>@if (list && ready) { <a class="btn btn-primary" href="@Root/create">Create position</a> }</div>
+<PageFeedback Busy="Busy" Error="@Error" Status="ErrorStatus" Success="@Success" />
+@if (ready)
+{
+    <TenantPicker Items="tenants" Value="@currentSlug" Disabled="@(!list && !creating)" ValueChanged="ChangeTenant" />
+    @if (list)
+    {
+        <div class="panel table-responsive"><table class="table align-middle"><caption>Positions for @tenantName</caption><thead><tr><th>Name</th><th>Available seats</th><th>Actions</th></tr></thead><tbody>
+        @foreach (var item in items) { <tr><th scope="row"><a href="@Root/@item.PositionId">@item.Name</a></th><td>@item.SeatsAvailable</td><td class="table-actions"><a href="@Root/@item.PositionId">Details</a><a href="@Root/@item.PositionId/edit">Edit</a><a class="text-danger" href="@Root/@item.PositionId/delete">Delete</a></td></tr> }
+        </tbody></table>@if (items.Count == 0) { <p class="empty-state">No positions yet. Create the first election position for this municipality.</p> }</div>
+    }
+    else if (creating || editing)
+    {
+        <EditForm Model="model" OnValidSubmit="Save" FormName="position-details" class="panel record-form"><DataAnnotationsValidator /><ValidationSummary class="text-danger" role="alert" />
+        <fieldset disabled="@Busy"><legend class="visually-hidden">Position details</legend>
+        <div class="mb-3"><label for="position-name" class="form-label">Position name</label><InputText id="position-name" class="form-control" @bind-Value="@model.Name" maxlength="100" /><ValidationMessage For="() => model.Name" /></div>
+        <div class="mb-4"><label for="seats" class="form-label">Available seats</label><InputNumber id="seats" class="form-control" @bind-Value="@model.SeatsAvailable" min="1" max="100" /><ValidationMessage For="() => model.SeatsAvailable" /></div>
+        <button class="btn btn-primary" type="submit">Save position</button><a class="btn btn-link" href="@Root">Cancel</a></fieldset></EditForm>
+    }
+    else if (record is not null && deleting)
+    {
+        <section class="panel"><h2 class="h4">Delete @record.Name?</h2><p class="alert alert-warning">This cannot be undone. Remove or reassign candidates before deleting this position.</p>
+        <button class="btn btn-danger" @onclick="Delete" disabled="@Busy">Confirm delete position</button><a class="btn btn-link" href="@Root/@record.PositionId">Cancel</a></section>
+    }
+    else if (record is not null)
+    {
+        <section class="panel"><h2 class="h4">@record.Name</h2><dl class="record-details"><dt>Municipality</dt><dd>@tenantName</dd><dt>Available seats</dt><dd>@record.SeatsAvailable</dd></dl>
+        <div class="action-row"><a class="btn btn-primary" href="@Root/@record.PositionId/edit">Edit position</a><a class="btn btn-outline-danger" href="@Root/@record.PositionId/delete">Delete position</a><a class="btn btn-link" href="/admin/@currentSlug/candidates?positionId=@record.PositionId">View candidates</a></div></section>
+    }
+}
+@code {
+    [Parameter] public string? Slug { get; set; }
+    [Parameter] public int? Id { get; set; }
+    [SupplyParameterFromQuery] public string? Notice { get; set; }
+    private List<MunicipalityDirectoryItem> tenants = [];
+    private List<PositionDto> items = [];
+    private PositionDto? record;
+    private PositionRequest model = new();
+    private string currentSlug = "", tenantName = "";
+    private bool ready;
+    private bool list => RouteMode == "positions";
+    private bool creating => RouteMode == "create";
+    private bool editing => RouteMode == "edit";
+    private bool deleting => RouteMode == "delete";
+    private string Root => $"/admin/{currentSlug}/positions";
+    private string Title => creating ? "Create position" : editing ? "Edit position" : deleting ? "Delete position" : list ? "Positions" : "Position details";
+    protected override Task OnParametersSetAsync() => TryAsync(async () =>
+    {
+        ready = false; record = null; items = [];
+        Actor = await Operations.ActorAsync();
+        tenants = await Operations.RunAsync((service, user) => service.DirectoryAsync(user));
+        currentSlug = Slug ?? tenants.FirstOrDefault()?.Slug ?? throw new ApiFault(403, "No municipality is assigned to this account.");
+        items = await Operations.RunAsync((service, user) => service.PositionsAsync(user, currentSlug));
+        tenantName = tenants.Single(x => x.Slug == currentSlug).Name;
+        Success = Notice == "saved" ? "Position saved successfully." : Notice == "deleted" ? "Position deleted." : null;
+        if (creating) model = new();
+        else if (!list)
+        {
+            record = await Operations.RunAsync((service, user) => service.PositionAsync(user, currentSlug, Id!.Value));
+            model = new() { Name = record.Name, SeatsAvailable = record.SeatsAvailable };
+        }
+        ready = true;
+    });
+    private void ChangeTenant(string slug) => Navigation.NavigateTo($"/admin/{slug}/positions" + (creating ? "/create" : ""));
+    private Task Save() => TryAsync(async () =>
+    {
+        var saved = await Operations.RunAsync((service, user) => service.SavePositionAsync(user, currentSlug, creating ? null : record!.PositionId, model, creating ? null : Version(record!.Version)));
+        Navigation.NavigateTo($"{Root}/{saved.PositionId}?notice=saved");
+    });
+    private Task Delete() => TryAsync(async () => { await Operations.RunAsync((service, user) => service.DeletePositionAsync(user, currentSlug, record!.PositionId, Version(record.Version))); Navigation.NavigateTo(Root + "?notice=deleted"); });
+}

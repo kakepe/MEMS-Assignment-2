@@ -1,0 +1,13 @@
+<article class="candidate-card" data-candidate-id="@Candidate.CandidateId">
+    <a class="portrait-link" href="/@Slug/candidates/@Candidate.CandidateId" tabindex="-1" aria-hidden="true"><PublicImage Source="@Candidate.PhotoUrl" Version="@Candidate.Version" Alt="@($"Photograph of {Candidate.Name}")" Class="card-portrait" /></a>
+    <div class="candidate-card-body"><p class="candidate-position">@Position</p><h2><a href="/@Slug/candidates/@Candidate.CandidateId">@Candidate.Name</a></h2>
+        @if (Candidate.IsFictionalSample) { <span class="demo-label">Fictional demonstration profile</span> }
+        <a class="profile-link" href="/@Slug/candidates/@Candidate.CandidateId" aria-label="@($"Read {Candidate.Name}'s profile")">Read profile <span aria-hidden="true">↗</span></a>
+        <GuideSelection Candidate="Candidate" />
+    </div>
+</article>
+@code {
+    [Parameter, EditorRequired] public CandidateDto Candidate { get; set; } = default!;
+    [Parameter] public string Slug { get; set; } = "";
+    [Parameter] public string Position { get; set; } = "";
+}

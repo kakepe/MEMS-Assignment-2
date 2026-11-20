@@ -1,0 +1,1366 @@
+﻿{
+    "capturedAt":  "2026-11-17T21:31:33.4156976-08:00",
+    "database":  "MEMSAssignment2",
+    "containerId":  "e7fd02edfdaa499fb8c6ca179b91c3e680cd069787270457bdda608932ec7a26",
+    "tables":  [
+                   "__EFMigrationsHistory",
+                   "AspNetRoleClaims",
+                   "AspNetRoles",
+                   "AspNetUserClaims",
+                   "AspNetUserLogins",
+                   "AspNetUserRoles",
+                   "AspNetUsers",
+                   "AspNetUserTokens",
+                   "Candidates",
+                   "Municipalities",
+                   "Positions",
+                   "SeedHistory"
+               ],
+    "counts":  {
+                   "municipalities":  5,
+                   "positions":  15,
+                   "candidates":  30,
+                   "users":  5,
+                   "roles":  7
+               },
+    "migrations":  [
+                       {
+                           "MigrationId":  "20261116003601_InitialSqlServerIdentityTenancy",
+                           "ProductVersion":  "10.0.13"
+                       },
+                       {
+                           "MigrationId":  "20261116004505_FixHyphenatedSlugsAndAssetNames",
+                           "ProductVersion":  "10.0.13"
+                       }
+                   ],
+    "columns":  [
+                    {
+                        "tableName":  "__EFMigrationsHistory",
+                        "ordinal":  1,
+                        "columnName":  "MigrationId",
+                        "sqlType":  "nvarchar",
+                        "maxLength":  300,
+                        "precision":  0,
+                        "scale":  0,
+                        "nullable":  false,
+                        "identityColumn":  false
+                    },
+                    {
+                        "tableName":  "__EFMigrationsHistory",
+                        "ordinal":  2,
+                        "columnName":  "ProductVersion",
+                        "sqlType":  "nvarchar",
+                        "maxLength":  64,
+                        "precision":  0,
+                        "scale":  0,
+                        "nullable":  false,
+                        "identityColumn":  false
+                    },
+                    {
+                        "tableName":  "AspNetRoleClaims",
+                        "ordinal":  1,
+                        "columnName":  "Id",
+                        "sqlType":  "int",
+                        "maxLength":  4,
+                        "precision":  10,
+                        "scale":  0,
+                        "nullable":  false,
+                        "identityColumn":  true
+                    },
+                    {
+                        "tableName":  "AspNetRoleClaims",
+                        "ordinal":  2,
+                        "columnName":  "RoleId",
+                        "sqlType":  "nvarchar",
+                        "maxLength":  256,
+                        "precision":  0,
+                        "scale":  0,
+                        "nullable":  false,
+                        "identityColumn":  false
+                    },
+                    {
+                        "tableName":  "AspNetRoleClaims",
+                        "ordinal":  3,
+                        "columnName":  "ClaimType",
+                        "sqlType":  "nvarchar",
+                        "maxLength":  -1,
+                        "precision":  0,
+                        "scale":  0,
+                        "nullable":  true,
+                        "identityColumn":  false
+                    },
+                    {
+                        "tableName":  "AspNetRoleClaims",
+                        "ordinal":  4,
+                        "columnName":  "ClaimValue",
+                        "sqlType":  "nvarchar",
+                        "maxLength":  -1,
+                        "precision":  0,
+                        "scale":  0,
+                        "nullable":  true,
+                        "identityColumn":  false
+                    },
+                    {
+                        "tableName":  "AspNetRoles",
+                        "ordinal":  1,
+                        "columnName":  "Id",
+                        "sqlType":  "nvarchar",
+                        "maxLength":  256,
+                        "precision":  0,
+                        "scale":  0,
+                        "nullable":  false,
+                        "identityColumn":  false
+                    },
+                    {
+                        "tableName":  "AspNetRoles",
+                        "ordinal":  2,
+                        "columnName":  "Scope",
+                        "sqlType":  "int",
+                        "maxLength":  4,
+                        "precision":  10,
+                        "scale":  0,
+                        "nullable":  false,
+                        "identityColumn":  false
+                    },
+                    {
+                        "tableName":  "AspNetRoles",
+                        "ordinal":  3,
+                        "columnName":  "MunicipalityId",
+                        "sqlType":  "int",
+                        "maxLength":  4,
+                        "precision":  10,
+                        "scale":  0,
+                        "nullable":  true,
+                        "identityColumn":  false
+                    },
+                    {
+                        "tableName":  "AspNetRoles",
+                        "ordinal":  4,
+                        "columnName":  "Name",
+                        "sqlType":  "nvarchar",
+                        "maxLength":  512,
+                        "precision":  0,
+                        "scale":  0,
+                        "nullable":  true,
+                        "identityColumn":  false
+                    },
+                    {
+                        "tableName":  "AspNetRoles",
+                        "ordinal":  5,
+                        "columnName":  "NormalizedName",
+                        "sqlType":  "nvarchar",
+                        "maxLength":  512,
+                        "precision":  0,
+                        "scale":  0,
+                        "nullable":  true,
+                        "identityColumn":  false
+                    },
+                    {
+                        "tableName":  "AspNetRoles",
+                        "ordinal":  6,
+                        "columnName":  "ConcurrencyStamp",
+                        "sqlType":  "nvarchar",
+                        "maxLength":  -1,
+                        "precision":  0,
+                        "scale":  0,
+                        "nullable":  true,
+                        "identityColumn":  false
+                    },
+                    {
+                        "tableName":  "AspNetUserClaims",
+                        "ordinal":  1,
+                        "columnName":  "Id",
+                        "sqlType":  "int",
+                        "maxLength":  4,
+                        "precision":  10,
+                        "scale":  0,
+                        "nullable":  false,
+                        "identityColumn":  true
+                    },
+                    {
+                        "tableName":  "AspNetUserClaims",
+                        "ordinal":  2,
+                        "columnName":  "UserId",
+                        "sqlType":  "nvarchar",
+                        "maxLength":  256,
+                        "precision":  0,
+                        "scale":  0,
+                        "nullable":  false,
+                        "identityColumn":  false
+                    },
+                    {
+                        "tableName":  "AspNetUserClaims",
+                        "ordinal":  3,
+                        "columnName":  "ClaimType",
+                        "sqlType":  "nvarchar",
+                        "maxLength":  -1,
+                        "precision":  0,
+                        "scale":  0,
+                        "nullable":  true,
+                        "identityColumn":  false
+                    },
+                    {
+                        "tableName":  "AspNetUserClaims",
+                        "ordinal":  4,
+                        "columnName":  "ClaimValue",
+                        "sqlType":  "nvarchar",
+                        "maxLength":  -1,
+                        "precision":  0,
+                        "scale":  0,
+                        "nullable":  true,
+                        "identityColumn":  false
+                    },
+                    {
+                        "tableName":  "AspNetUserLogins",
+                        "ordinal":  1,
+                        "columnName":  "LoginProvider",
+                        "sqlType":  "nvarchar",
+                        "maxLength":  256,
+                        "precision":  0,
+                        "scale":  0,
+                        "nullable":  false,
+                        "identityColumn":  false
+                    },
+                    {
+                        "tableName":  "AspNetUserLogins",
+                        "ordinal":  2,
+                        "columnName":  "ProviderKey",
+                        "sqlType":  "nvarchar",
+                        "maxLength":  256,
+                        "precision":  0,
+                        "scale":  0,
+                        "nullable":  false,
+                        "identityColumn":  false
+                    },
+                    {
+                        "tableName":  "AspNetUserLogins",
+                        "ordinal":  3,
+                        "columnName":  "ProviderDisplayName",
+                        "sqlType":  "nvarchar",
+                        "maxLength":  -1,
+                        "precision":  0,
+                        "scale":  0,
+                        "nullable":  true,
+                        "identityColumn":  false
+                    },
+                    {
+                        "tableName":  "AspNetUserLogins",
+                        "ordinal":  4,
+                        "columnName":  "UserId",
+                        "sqlType":  "nvarchar",
+                        "maxLength":  256,
+                        "precision":  0,
+                        "scale":  0,
+                        "nullable":  false,
+                        "identityColumn":  false
+                    },
+                    {
+                        "tableName":  "AspNetUserRoles",
+                        "ordinal":  1,
+                        "columnName":  "UserId",
+                        "sqlType":  "nvarchar",
+                        "maxLength":  256,
+                        "precision":  0,
+                        "scale":  0,
+                        "nullable":  false,
+                        "identityColumn":  false
+                    },
+                    {
+                        "tableName":  "AspNetUserRoles",
+                        "ordinal":  2,
+                        "columnName":  "RoleId",
+                        "sqlType":  "nvarchar",
+                        "maxLength":  256,
+                        "precision":  0,
+                        "scale":  0,
+                        "nullable":  false,
+                        "identityColumn":  false
+                    },
+                    {
+                        "tableName":  "AspNetUserRoles",
+                        "ordinal":  3,
+                        "columnName":  "Scope",
+                        "sqlType":  "int",
+                        "maxLength":  4,
+                        "precision":  10,
+                        "scale":  0,
+                        "nullable":  false,
+                        "identityColumn":  false
+                    },
+                    {
+                        "tableName":  "AspNetUsers",
+                        "ordinal":  1,
+                        "columnName":  "Id",
+                        "sqlType":  "nvarchar",
+                        "maxLength":  256,
+                        "precision":  0,
+                        "scale":  0,
+                        "nullable":  false,
+                        "identityColumn":  false
+                    },
+                    {
+                        "tableName":  "AspNetUsers",
+                        "ordinal":  2,
+                        "columnName":  "Scope",
+                        "sqlType":  "int",
+                        "maxLength":  4,
+                        "precision":  10,
+                        "scale":  0,
+                        "nullable":  false,
+                        "identityColumn":  false
+                    },
+                    {
+                        "tableName":  "AspNetUsers",
+                        "ordinal":  3,
+                        "columnName":  "MunicipalityId",
+                        "sqlType":  "int",
+                        "maxLength":  4,
+                        "precision":  10,
+                        "scale":  0,
+                        "nullable":  true,
+                        "identityColumn":  false
+                    },
+                    {
+                        "tableName":  "AspNetUsers",
+                        "ordinal":  4,
+                        "columnName":  "UserName",
+                        "sqlType":  "nvarchar",
+                        "maxLength":  512,
+                        "precision":  0,
+                        "scale":  0,
+                        "nullable":  true,
+                        "identityColumn":  false
+                    },
+                    {
+                        "tableName":  "AspNetUsers",
+                        "ordinal":  5,
+                        "columnName":  "NormalizedUserName",
+                        "sqlType":  "nvarchar",
+                        "maxLength":  512,
+                        "precision":  0,
+                        "scale":  0,
+                        "nullable":  true,
+                        "identityColumn":  false
+                    },
+                    {
+                        "tableName":  "AspNetUsers",
+                        "ordinal":  6,
+                        "columnName":  "Email",
+                        "sqlType":  "nvarchar",
+                        "maxLength":  512,
+                        "precision":  0,
+                        "scale":  0,
+                        "nullable":  true,
+                        "identityColumn":  false
+                    },
+                    {
+                        "tableName":  "AspNetUsers",
+                        "ordinal":  7,
+                        "columnName":  "NormalizedEmail",
+                        "sqlType":  "nvarchar",
+                        "maxLength":  512,
+                        "precision":  0,
+                        "scale":  0,
+                        "nullable":  true,
+                        "identityColumn":  false
+                    },
+                    {
+                        "tableName":  "AspNetUsers",
+                        "ordinal":  8,
+                        "columnName":  "EmailConfirmed",
+                        "sqlType":  "bit",
+                        "maxLength":  1,
+                        "precision":  1,
+                        "scale":  0,
+                        "nullable":  false,
+                        "identityColumn":  false
+                    },
+                    {
+                        "tableName":  "AspNetUsers",
+                        "ordinal":  9,
+                        "columnName":  "PasswordHash",
+                        "sqlType":  "nvarchar",
+                        "maxLength":  -1,
+                        "precision":  0,
+                        "scale":  0,
+                        "nullable":  true,
+                        "identityColumn":  false
+                    },
+                    {
+                        "tableName":  "AspNetUsers",
+                        "ordinal":  10,
+                        "columnName":  "SecurityStamp",
+                        "sqlType":  "nvarchar",
+                        "maxLength":  -1,
+                        "precision":  0,
+                        "scale":  0,
+                        "nullable":  true,
+                        "identityColumn":  false
+                    },
+                    {
+                        "tableName":  "AspNetUsers",
+                        "ordinal":  11,
+                        "columnName":  "ConcurrencyStamp",
+                        "sqlType":  "nvarchar",
+                        "maxLength":  -1,
+                        "precision":  0,
+                        "scale":  0,
+                        "nullable":  true,
+                        "identityColumn":  false
+                    },
+                    {
+                        "tableName":  "AspNetUsers",
+                        "ordinal":  12,
+                        "columnName":  "PhoneNumber",
+                        "sqlType":  "nvarchar",
+                        "maxLength":  -1,
+                        "precision":  0,
+                        "scale":  0,
+                        "nullable":  true,
+                        "identityColumn":  false
+                    },
+                    {
+                        "tableName":  "AspNetUsers",
+                        "ordinal":  13,
+                        "columnName":  "PhoneNumberConfirmed",
+                        "sqlType":  "bit",
+                        "maxLength":  1,
+                        "precision":  1,
+                        "scale":  0,
+                        "nullable":  false,
+                        "identityColumn":  false
+                    },
+                    {
+                        "tableName":  "AspNetUsers",
+                        "ordinal":  14,
+                        "columnName":  "TwoFactorEnabled",
+                        "sqlType":  "bit",
+                        "maxLength":  1,
+                        "precision":  1,
+                        "scale":  0,
+                        "nullable":  false,
+                        "identityColumn":  false
+                    },
+                    {
+                        "tableName":  "AspNetUsers",
+                        "ordinal":  15,
+                        "columnName":  "LockoutEnd",
+                        "sqlType":  "datetimeoffset",
+                        "maxLength":  10,
+                        "precision":  34,
+                        "scale":  7,
+                        "nullable":  true,
+                        "identityColumn":  false
+                    },
+                    {
+                        "tableName":  "AspNetUsers",
+                        "ordinal":  16,
+                        "columnName":  "LockoutEnabled",
+                        "sqlType":  "bit",
+                        "maxLength":  1,
+                        "precision":  1,
+                        "scale":  0,
+                        "nullable":  false,
+                        "identityColumn":  false
+                    },
+                    {
+                        "tableName":  "AspNetUsers",
+                        "ordinal":  17,
+                        "columnName":  "AccessFailedCount",
+                        "sqlType":  "int",
+                        "maxLength":  4,
+                        "precision":  10,
+                        "scale":  0,
+                        "nullable":  false,
+                        "identityColumn":  false
+                    },
+                    {
+                        "tableName":  "AspNetUserTokens",
+                        "ordinal":  1,
+                        "columnName":  "UserId",
+                        "sqlType":  "nvarchar",
+                        "maxLength":  256,
+                        "precision":  0,
+                        "scale":  0,
+                        "nullable":  false,
+                        "identityColumn":  false
+                    },
+                    {
+                        "tableName":  "AspNetUserTokens",
+                        "ordinal":  2,
+                        "columnName":  "LoginProvider",
+                        "sqlType":  "nvarchar",
+                        "maxLength":  256,
+                        "precision":  0,
+                        "scale":  0,
+                        "nullable":  false,
+                        "identityColumn":  false
+                    },
+                    {
+                        "tableName":  "AspNetUserTokens",
+                        "ordinal":  3,
+                        "columnName":  "Name",
+                        "sqlType":  "nvarchar",
+                        "maxLength":  256,
+                        "precision":  0,
+                        "scale":  0,
+                        "nullable":  false,
+                        "identityColumn":  false
+                    },
+                    {
+                        "tableName":  "AspNetUserTokens",
+                        "ordinal":  4,
+                        "columnName":  "Value",
+                        "sqlType":  "nvarchar",
+                        "maxLength":  -1,
+                        "precision":  0,
+                        "scale":  0,
+                        "nullable":  true,
+                        "identityColumn":  false
+                    },
+                    {
+                        "tableName":  "Candidates",
+                        "ordinal":  1,
+                        "columnName":  "CandidateId",
+                        "sqlType":  "int",
+                        "maxLength":  4,
+                        "precision":  10,
+                        "scale":  0,
+                        "nullable":  false,
+                        "identityColumn":  true
+                    },
+                    {
+                        "tableName":  "Candidates",
+                        "ordinal":  2,
+                        "columnName":  "MunicipalityId",
+                        "sqlType":  "int",
+                        "maxLength":  4,
+                        "precision":  10,
+                        "scale":  0,
+                        "nullable":  false,
+                        "identityColumn":  false
+                    },
+                    {
+                        "tableName":  "Candidates",
+                        "ordinal":  3,
+                        "columnName":  "PositionId",
+                        "sqlType":  "int",
+                        "maxLength":  4,
+                        "precision":  10,
+                        "scale":  0,
+                        "nullable":  false,
+                        "identityColumn":  false
+                    },
+                    {
+                        "tableName":  "Candidates",
+                        "ordinal":  4,
+                        "columnName":  "DemoSeedKey",
+                        "sqlType":  "nvarchar",
+                        "maxLength":  160,
+                        "precision":  0,
+                        "scale":  0,
+                        "nullable":  true,
+                        "identityColumn":  false
+                    },
+                    {
+                        "tableName":  "Candidates",
+                        "ordinal":  5,
+                        "columnName":  "Name",
+                        "sqlType":  "nvarchar",
+                        "maxLength":  200,
+                        "precision":  0,
+                        "scale":  0,
+                        "nullable":  false,
+                        "identityColumn":  false
+                    },
+                    {
+                        "tableName":  "Candidates",
+                        "ordinal":  6,
+                        "columnName":  "Profile",
+                        "sqlType":  "nvarchar",
+                        "maxLength":  8000,
+                        "precision":  0,
+                        "scale":  0,
+                        "nullable":  false,
+                        "identityColumn":  false
+                    },
+                    {
+                        "tableName":  "Candidates",
+                        "ordinal":  7,
+                        "columnName":  "PhotoFileName",
+                        "sqlType":  "nvarchar",
+                        "maxLength":  320,
+                        "precision":  0,
+                        "scale":  0,
+                        "nullable":  true,
+                        "identityColumn":  false
+                    },
+                    {
+                        "tableName":  "Candidates",
+                        "ordinal":  8,
+                        "columnName":  "Website",
+                        "sqlType":  "nvarchar",
+                        "maxLength":  600,
+                        "precision":  0,
+                        "scale":  0,
+                        "nullable":  true,
+                        "identityColumn":  false
+                    },
+                    {
+                        "tableName":  "Candidates",
+                        "ordinal":  9,
+                        "columnName":  "Email",
+                        "sqlType":  "nvarchar",
+                        "maxLength":  508,
+                        "precision":  0,
+                        "scale":  0,
+                        "nullable":  true,
+                        "identityColumn":  false
+                    },
+                    {
+                        "tableName":  "Candidates",
+                        "ordinal":  10,
+                        "columnName":  "DateCreated",
+                        "sqlType":  "datetime2",
+                        "maxLength":  8,
+                        "precision":  27,
+                        "scale":  7,
+                        "nullable":  false,
+                        "identityColumn":  false
+                    },
+                    {
+                        "tableName":  "Candidates",
+                        "ordinal":  11,
+                        "columnName":  "RowVersion",
+                        "sqlType":  "timestamp",
+                        "maxLength":  8,
+                        "precision":  0,
+                        "scale":  0,
+                        "nullable":  false,
+                        "identityColumn":  false
+                    },
+                    {
+                        "tableName":  "Municipalities",
+                        "ordinal":  1,
+                        "columnName":  "MunicipalityId",
+                        "sqlType":  "int",
+                        "maxLength":  4,
+                        "precision":  10,
+                        "scale":  0,
+                        "nullable":  false,
+                        "identityColumn":  true
+                    },
+                    {
+                        "tableName":  "Municipalities",
+                        "ordinal":  2,
+                        "columnName":  "Slug",
+                        "sqlType":  "nvarchar",
+                        "maxLength":  160,
+                        "precision":  0,
+                        "scale":  0,
+                        "nullable":  false,
+                        "identityColumn":  false
+                    },
+                    {
+                        "tableName":  "Municipalities",
+                        "ordinal":  3,
+                        "columnName":  "Name",
+                        "sqlType":  "nvarchar",
+                        "maxLength":  200,
+                        "precision":  0,
+                        "scale":  0,
+                        "nullable":  false,
+                        "identityColumn":  false
+                    },
+                    {
+                        "tableName":  "Municipalities",
+                        "ordinal":  4,
+                        "columnName":  "Province",
+                        "sqlType":  "nvarchar",
+                        "maxLength":  100,
+                        "precision":  0,
+                        "scale":  0,
+                        "nullable":  false,
+                        "identityColumn":  false
+                    },
+                    {
+                        "tableName":  "Municipalities",
+                        "ordinal":  5,
+                        "columnName":  "ElectionDate",
+                        "sqlType":  "date",
+                        "maxLength":  3,
+                        "precision":  10,
+                        "scale":  0,
+                        "nullable":  false,
+                        "identityColumn":  false
+                    },
+                    {
+                        "tableName":  "Municipalities",
+                        "ordinal":  6,
+                        "columnName":  "Description",
+                        "sqlType":  "nvarchar",
+                        "maxLength":  4000,
+                        "precision":  0,
+                        "scale":  0,
+                        "nullable":  false,
+                        "identityColumn":  false
+                    },
+                    {
+                        "tableName":  "Municipalities",
+                        "ordinal":  7,
+                        "columnName":  "LogoFileName",
+                        "sqlType":  "nvarchar",
+                        "maxLength":  320,
+                        "precision":  0,
+                        "scale":  0,
+                        "nullable":  true,
+                        "identityColumn":  false
+                    },
+                    {
+                        "tableName":  "Municipalities",
+                        "ordinal":  8,
+                        "columnName":  "BrandColor",
+                        "sqlType":  "nvarchar",
+                        "maxLength":  14,
+                        "precision":  0,
+                        "scale":  0,
+                        "nullable":  false,
+                        "identityColumn":  false
+                    },
+                    {
+                        "tableName":  "Municipalities",
+                        "ordinal":  9,
+                        "columnName":  "PublicTitle",
+                        "sqlType":  "nvarchar",
+                        "maxLength":  240,
+                        "precision":  0,
+                        "scale":  0,
+                        "nullable":  false,
+                        "identityColumn":  false
+                    },
+                    {
+                        "tableName":  "Municipalities",
+                        "ordinal":  10,
+                        "columnName":  "RowVersion",
+                        "sqlType":  "timestamp",
+                        "maxLength":  8,
+                        "precision":  0,
+                        "scale":  0,
+                        "nullable":  false,
+                        "identityColumn":  false
+                    },
+                    {
+                        "tableName":  "Positions",
+                        "ordinal":  1,
+                        "columnName":  "PositionId",
+                        "sqlType":  "int",
+                        "maxLength":  4,
+                        "precision":  10,
+                        "scale":  0,
+                        "nullable":  false,
+                        "identityColumn":  true
+                    },
+                    {
+                        "tableName":  "Positions",
+                        "ordinal":  2,
+                        "columnName":  "MunicipalityId",
+                        "sqlType":  "int",
+                        "maxLength":  4,
+                        "precision":  10,
+                        "scale":  0,
+                        "nullable":  false,
+                        "identityColumn":  false
+                    },
+                    {
+                        "tableName":  "Positions",
+                        "ordinal":  3,
+                        "columnName":  "Name",
+                        "sqlType":  "nvarchar",
+                        "maxLength":  200,
+                        "precision":  0,
+                        "scale":  0,
+                        "nullable":  false,
+                        "identityColumn":  false
+                    },
+                    {
+                        "tableName":  "Positions",
+                        "ordinal":  4,
+                        "columnName":  "SeatsAvailable",
+                        "sqlType":  "int",
+                        "maxLength":  4,
+                        "precision":  10,
+                        "scale":  0,
+                        "nullable":  false,
+                        "identityColumn":  false
+                    },
+                    {
+                        "tableName":  "Positions",
+                        "ordinal":  5,
+                        "columnName":  "RowVersion",
+                        "sqlType":  "timestamp",
+                        "maxLength":  8,
+                        "precision":  0,
+                        "scale":  0,
+                        "nullable":  false,
+                        "identityColumn":  false
+                    },
+                    {
+                        "tableName":  "SeedHistory",
+                        "ordinal":  1,
+                        "columnName":  "SeedKey",
+                        "sqlType":  "nvarchar",
+                        "maxLength":  160,
+                        "precision":  0,
+                        "scale":  0,
+                        "nullable":  false,
+                        "identityColumn":  false
+                    },
+                    {
+                        "tableName":  "SeedHistory",
+                        "ordinal":  2,
+                        "columnName":  "CompletedAtUtc",
+                        "sqlType":  "datetime2",
+                        "maxLength":  8,
+                        "precision":  27,
+                        "scale":  7,
+                        "nullable":  false,
+                        "identityColumn":  false
+                    }
+                ],
+    "indexes":  [
+                    {
+                        "tableName":  "__EFMigrationsHistory",
+                        "indexName":  "PK___EFMigrationsHistory",
+                        "primaryKey":  true,
+                        "uniqueKey":  true,
+                        "columnName":  "MigrationId",
+                        "keyOrdinal":  1,
+                        "filterDefinition":  null
+                    },
+                    {
+                        "tableName":  "AspNetRoleClaims",
+                        "indexName":  "IX_AspNetRoleClaims_RoleId",
+                        "primaryKey":  false,
+                        "uniqueKey":  false,
+                        "columnName":  "RoleId",
+                        "keyOrdinal":  1,
+                        "filterDefinition":  null
+                    },
+                    {
+                        "tableName":  "AspNetRoleClaims",
+                        "indexName":  "PK_AspNetRoleClaims",
+                        "primaryKey":  true,
+                        "uniqueKey":  true,
+                        "columnName":  "Id",
+                        "keyOrdinal":  1,
+                        "filterDefinition":  null
+                    },
+                    {
+                        "tableName":  "AspNetRoles",
+                        "indexName":  "AK_AspNetRoles_Id_Scope",
+                        "primaryKey":  false,
+                        "uniqueKey":  true,
+                        "columnName":  "Id",
+                        "keyOrdinal":  1,
+                        "filterDefinition":  null
+                    },
+                    {
+                        "tableName":  "AspNetRoles",
+                        "indexName":  "AK_AspNetRoles_Id_Scope",
+                        "primaryKey":  false,
+                        "uniqueKey":  true,
+                        "columnName":  "Scope",
+                        "keyOrdinal":  2,
+                        "filterDefinition":  null
+                    },
+                    {
+                        "tableName":  "AspNetRoles",
+                        "indexName":  "IX_AspNetRoles_MunicipalityId",
+                        "primaryKey":  false,
+                        "uniqueKey":  false,
+                        "columnName":  "MunicipalityId",
+                        "keyOrdinal":  1,
+                        "filterDefinition":  null
+                    },
+                    {
+                        "tableName":  "AspNetRoles",
+                        "indexName":  "PK_AspNetRoles",
+                        "primaryKey":  true,
+                        "uniqueKey":  true,
+                        "columnName":  "Id",
+                        "keyOrdinal":  1,
+                        "filterDefinition":  null
+                    },
+                    {
+                        "tableName":  "AspNetRoles",
+                        "indexName":  "RoleNameIndex",
+                        "primaryKey":  false,
+                        "uniqueKey":  true,
+                        "columnName":  "NormalizedName",
+                        "keyOrdinal":  1,
+                        "filterDefinition":  "([NormalizedName] IS NOT NULL)"
+                    },
+                    {
+                        "tableName":  "AspNetUserClaims",
+                        "indexName":  "IX_AspNetUserClaims_UserId",
+                        "primaryKey":  false,
+                        "uniqueKey":  false,
+                        "columnName":  "UserId",
+                        "keyOrdinal":  1,
+                        "filterDefinition":  null
+                    },
+                    {
+                        "tableName":  "AspNetUserClaims",
+                        "indexName":  "PK_AspNetUserClaims",
+                        "primaryKey":  true,
+                        "uniqueKey":  true,
+                        "columnName":  "Id",
+                        "keyOrdinal":  1,
+                        "filterDefinition":  null
+                    },
+                    {
+                        "tableName":  "AspNetUserLogins",
+                        "indexName":  "IX_AspNetUserLogins_UserId",
+                        "primaryKey":  false,
+                        "uniqueKey":  false,
+                        "columnName":  "UserId",
+                        "keyOrdinal":  1,
+                        "filterDefinition":  null
+                    },
+                    {
+                        "tableName":  "AspNetUserLogins",
+                        "indexName":  "PK_AspNetUserLogins",
+                        "primaryKey":  true,
+                        "uniqueKey":  true,
+                        "columnName":  "LoginProvider",
+                        "keyOrdinal":  1,
+                        "filterDefinition":  null
+                    },
+                    {
+                        "tableName":  "AspNetUserLogins",
+                        "indexName":  "PK_AspNetUserLogins",
+                        "primaryKey":  true,
+                        "uniqueKey":  true,
+                        "columnName":  "ProviderKey",
+                        "keyOrdinal":  2,
+                        "filterDefinition":  null
+                    },
+                    {
+                        "tableName":  "AspNetUserRoles",
+                        "indexName":  "IX_AspNetUserRoles_RoleId_Scope",
+                        "primaryKey":  false,
+                        "uniqueKey":  false,
+                        "columnName":  "RoleId",
+                        "keyOrdinal":  1,
+                        "filterDefinition":  null
+                    },
+                    {
+                        "tableName":  "AspNetUserRoles",
+                        "indexName":  "IX_AspNetUserRoles_RoleId_Scope",
+                        "primaryKey":  false,
+                        "uniqueKey":  false,
+                        "columnName":  "Scope",
+                        "keyOrdinal":  2,
+                        "filterDefinition":  null
+                    },
+                    {
+                        "tableName":  "AspNetUserRoles",
+                        "indexName":  "IX_AspNetUserRoles_UserId_Scope",
+                        "primaryKey":  false,
+                        "uniqueKey":  false,
+                        "columnName":  "UserId",
+                        "keyOrdinal":  1,
+                        "filterDefinition":  null
+                    },
+                    {
+                        "tableName":  "AspNetUserRoles",
+                        "indexName":  "IX_AspNetUserRoles_UserId_Scope",
+                        "primaryKey":  false,
+                        "uniqueKey":  false,
+                        "columnName":  "Scope",
+                        "keyOrdinal":  2,
+                        "filterDefinition":  null
+                    },
+                    {
+                        "tableName":  "AspNetUserRoles",
+                        "indexName":  "PK_AspNetUserRoles",
+                        "primaryKey":  true,
+                        "uniqueKey":  true,
+                        "columnName":  "UserId",
+                        "keyOrdinal":  1,
+                        "filterDefinition":  null
+                    },
+                    {
+                        "tableName":  "AspNetUserRoles",
+                        "indexName":  "PK_AspNetUserRoles",
+                        "primaryKey":  true,
+                        "uniqueKey":  true,
+                        "columnName":  "RoleId",
+                        "keyOrdinal":  2,
+                        "filterDefinition":  null
+                    },
+                    {
+                        "tableName":  "AspNetUsers",
+                        "indexName":  "AK_AspNetUsers_Id_Scope",
+                        "primaryKey":  false,
+                        "uniqueKey":  true,
+                        "columnName":  "Id",
+                        "keyOrdinal":  1,
+                        "filterDefinition":  null
+                    },
+                    {
+                        "tableName":  "AspNetUsers",
+                        "indexName":  "AK_AspNetUsers_Id_Scope",
+                        "primaryKey":  false,
+                        "uniqueKey":  true,
+                        "columnName":  "Scope",
+                        "keyOrdinal":  2,
+                        "filterDefinition":  null
+                    },
+                    {
+                        "tableName":  "AspNetUsers",
+                        "indexName":  "EmailIndex",
+                        "primaryKey":  false,
+                        "uniqueKey":  false,
+                        "columnName":  "NormalizedEmail",
+                        "keyOrdinal":  1,
+                        "filterDefinition":  null
+                    },
+                    {
+                        "tableName":  "AspNetUsers",
+                        "indexName":  "IX_AspNetUsers_MunicipalityId",
+                        "primaryKey":  false,
+                        "uniqueKey":  false,
+                        "columnName":  "MunicipalityId",
+                        "keyOrdinal":  1,
+                        "filterDefinition":  null
+                    },
+                    {
+                        "tableName":  "AspNetUsers",
+                        "indexName":  "PK_AspNetUsers",
+                        "primaryKey":  true,
+                        "uniqueKey":  true,
+                        "columnName":  "Id",
+                        "keyOrdinal":  1,
+                        "filterDefinition":  null
+                    },
+                    {
+                        "tableName":  "AspNetUsers",
+                        "indexName":  "UserNameIndex",
+                        "primaryKey":  false,
+                        "uniqueKey":  true,
+                        "columnName":  "NormalizedUserName",
+                        "keyOrdinal":  1,
+                        "filterDefinition":  "([NormalizedUserName] IS NOT NULL)"
+                    },
+                    {
+                        "tableName":  "AspNetUserTokens",
+                        "indexName":  "PK_AspNetUserTokens",
+                        "primaryKey":  true,
+                        "uniqueKey":  true,
+                        "columnName":  "UserId",
+                        "keyOrdinal":  1,
+                        "filterDefinition":  null
+                    },
+                    {
+                        "tableName":  "AspNetUserTokens",
+                        "indexName":  "PK_AspNetUserTokens",
+                        "primaryKey":  true,
+                        "uniqueKey":  true,
+                        "columnName":  "LoginProvider",
+                        "keyOrdinal":  2,
+                        "filterDefinition":  null
+                    },
+                    {
+                        "tableName":  "AspNetUserTokens",
+                        "indexName":  "PK_AspNetUserTokens",
+                        "primaryKey":  true,
+                        "uniqueKey":  true,
+                        "columnName":  "Name",
+                        "keyOrdinal":  3,
+                        "filterDefinition":  null
+                    },
+                    {
+                        "tableName":  "Candidates",
+                        "indexName":  "IX_Candidates_DemoSeedKey",
+                        "primaryKey":  false,
+                        "uniqueKey":  true,
+                        "columnName":  "DemoSeedKey",
+                        "keyOrdinal":  1,
+                        "filterDefinition":  "([DemoSeedKey] IS NOT NULL)"
+                    },
+                    {
+                        "tableName":  "Candidates",
+                        "indexName":  "IX_Candidates_MunicipalityId_Name",
+                        "primaryKey":  false,
+                        "uniqueKey":  false,
+                        "columnName":  "MunicipalityId",
+                        "keyOrdinal":  1,
+                        "filterDefinition":  null
+                    },
+                    {
+                        "tableName":  "Candidates",
+                        "indexName":  "IX_Candidates_MunicipalityId_Name",
+                        "primaryKey":  false,
+                        "uniqueKey":  false,
+                        "columnName":  "Name",
+                        "keyOrdinal":  2,
+                        "filterDefinition":  null
+                    },
+                    {
+                        "tableName":  "Candidates",
+                        "indexName":  "IX_Candidates_MunicipalityId_PositionId",
+                        "primaryKey":  false,
+                        "uniqueKey":  false,
+                        "columnName":  "MunicipalityId",
+                        "keyOrdinal":  1,
+                        "filterDefinition":  null
+                    },
+                    {
+                        "tableName":  "Candidates",
+                        "indexName":  "IX_Candidates_MunicipalityId_PositionId",
+                        "primaryKey":  false,
+                        "uniqueKey":  false,
+                        "columnName":  "PositionId",
+                        "keyOrdinal":  2,
+                        "filterDefinition":  null
+                    },
+                    {
+                        "tableName":  "Candidates",
+                        "indexName":  "PK_Candidates",
+                        "primaryKey":  true,
+                        "uniqueKey":  true,
+                        "columnName":  "CandidateId",
+                        "keyOrdinal":  1,
+                        "filterDefinition":  null
+                    },
+                    {
+                        "tableName":  "Municipalities",
+                        "indexName":  "IX_Municipalities_Name",
+                        "primaryKey":  false,
+                        "uniqueKey":  true,
+                        "columnName":  "Name",
+                        "keyOrdinal":  1,
+                        "filterDefinition":  null
+                    },
+                    {
+                        "tableName":  "Municipalities",
+                        "indexName":  "IX_Municipalities_Slug",
+                        "primaryKey":  false,
+                        "uniqueKey":  true,
+                        "columnName":  "Slug",
+                        "keyOrdinal":  1,
+                        "filterDefinition":  null
+                    },
+                    {
+                        "tableName":  "Municipalities",
+                        "indexName":  "PK_Municipalities",
+                        "primaryKey":  true,
+                        "uniqueKey":  true,
+                        "columnName":  "MunicipalityId",
+                        "keyOrdinal":  1,
+                        "filterDefinition":  null
+                    },
+                    {
+                        "tableName":  "Positions",
+                        "indexName":  "AK_Positions_MunicipalityId_PositionId",
+                        "primaryKey":  false,
+                        "uniqueKey":  true,
+                        "columnName":  "MunicipalityId",
+                        "keyOrdinal":  1,
+                        "filterDefinition":  null
+                    },
+                    {
+                        "tableName":  "Positions",
+                        "indexName":  "AK_Positions_MunicipalityId_PositionId",
+                        "primaryKey":  false,
+                        "uniqueKey":  true,
+                        "columnName":  "PositionId",
+                        "keyOrdinal":  2,
+                        "filterDefinition":  null
+                    },
+                    {
+                        "tableName":  "Positions",
+                        "indexName":  "IX_Positions_MunicipalityId_Name",
+                        "primaryKey":  false,
+                        "uniqueKey":  true,
+                        "columnName":  "MunicipalityId",
+                        "keyOrdinal":  1,
+                        "filterDefinition":  null
+                    },
+                    {
+                        "tableName":  "Positions",
+                        "indexName":  "IX_Positions_MunicipalityId_Name",
+                        "primaryKey":  false,
+                        "uniqueKey":  true,
+                        "columnName":  "Name",
+                        "keyOrdinal":  2,
+                        "filterDefinition":  null
+                    },
+                    {
+                        "tableName":  "Positions",
+                        "indexName":  "PK_Positions",
+                        "primaryKey":  true,
+                        "uniqueKey":  true,
+                        "columnName":  "PositionId",
+                        "keyOrdinal":  1,
+                        "filterDefinition":  null
+                    },
+                    {
+                        "tableName":  "SeedHistory",
+                        "indexName":  "PK_SeedHistory",
+                        "primaryKey":  true,
+                        "uniqueKey":  true,
+                        "columnName":  "SeedKey",
+                        "keyOrdinal":  1,
+                        "filterDefinition":  null
+                    }
+                ],
+    "foreignKeys":  [
+                        {
+                            "constraintName":  "FK_AspNetRoleClaims_AspNetRoles_RoleId",
+                            "dependentTable":  "AspNetRoleClaims",
+                            "dependentColumn":  "RoleId",
+                            "principalTable":  "AspNetRoles",
+                            "principalColumn":  "Id",
+                            "ordinal":  1,
+                            "onDelete":  "CASCADE"
+                        },
+                        {
+                            "constraintName":  "FK_AspNetRoles_Municipalities_MunicipalityId",
+                            "dependentTable":  "AspNetRoles",
+                            "dependentColumn":  "MunicipalityId",
+                            "principalTable":  "Municipalities",
+                            "principalColumn":  "MunicipalityId",
+                            "ordinal":  1,
+                            "onDelete":  "NO_ACTION"
+                        },
+                        {
+                            "constraintName":  "FK_AspNetUserClaims_AspNetUsers_UserId",
+                            "dependentTable":  "AspNetUserClaims",
+                            "dependentColumn":  "UserId",
+                            "principalTable":  "AspNetUsers",
+                            "principalColumn":  "Id",
+                            "ordinal":  1,
+                            "onDelete":  "CASCADE"
+                        },
+                        {
+                            "constraintName":  "FK_AspNetUserLogins_AspNetUsers_UserId",
+                            "dependentTable":  "AspNetUserLogins",
+                            "dependentColumn":  "UserId",
+                            "principalTable":  "AspNetUsers",
+                            "principalColumn":  "Id",
+                            "ordinal":  1,
+                            "onDelete":  "CASCADE"
+                        },
+                        {
+                            "constraintName":  "FK_AspNetUserRoles_AspNetRoles_RoleId",
+                            "dependentTable":  "AspNetUserRoles",
+                            "dependentColumn":  "RoleId",
+                            "principalTable":  "AspNetRoles",
+                            "principalColumn":  "Id",
+                            "ordinal":  1,
+                            "onDelete":  "NO_ACTION"
+                        },
+                        {
+                            "constraintName":  "FK_AspNetUserRoles_AspNetRoles_RoleId_Scope",
+                            "dependentTable":  "AspNetUserRoles",
+                            "dependentColumn":  "RoleId",
+                            "principalTable":  "AspNetRoles",
+                            "principalColumn":  "Id",
+                            "ordinal":  1,
+                            "onDelete":  "NO_ACTION"
+                        },
+                        {
+                            "constraintName":  "FK_AspNetUserRoles_AspNetRoles_RoleId_Scope",
+                            "dependentTable":  "AspNetUserRoles",
+                            "dependentColumn":  "Scope",
+                            "principalTable":  "AspNetRoles",
+                            "principalColumn":  "Scope",
+                            "ordinal":  2,
+                            "onDelete":  "NO_ACTION"
+                        },
+                        {
+                            "constraintName":  "FK_AspNetUserRoles_AspNetUsers_UserId",
+                            "dependentTable":  "AspNetUserRoles",
+                            "dependentColumn":  "UserId",
+                            "principalTable":  "AspNetUsers",
+                            "principalColumn":  "Id",
+                            "ordinal":  1,
+                            "onDelete":  "NO_ACTION"
+                        },
+                        {
+                            "constraintName":  "FK_AspNetUserRoles_AspNetUsers_UserId_Scope",
+                            "dependentTable":  "AspNetUserRoles",
+                            "dependentColumn":  "UserId",
+                            "principalTable":  "AspNetUsers",
+                            "principalColumn":  "Id",
+                            "ordinal":  1,
+                            "onDelete":  "NO_ACTION"
+                        },
+                        {
+                            "constraintName":  "FK_AspNetUserRoles_AspNetUsers_UserId_Scope",
+                            "dependentTable":  "AspNetUserRoles",
+                            "dependentColumn":  "Scope",
+                            "principalTable":  "AspNetUsers",
+                            "principalColumn":  "Scope",
+                            "ordinal":  2,
+                            "onDelete":  "NO_ACTION"
+                        },
+                        {
+                            "constraintName":  "FK_AspNetUsers_Municipalities_MunicipalityId",
+                            "dependentTable":  "AspNetUsers",
+                            "dependentColumn":  "MunicipalityId",
+                            "principalTable":  "Municipalities",
+                            "principalColumn":  "MunicipalityId",
+                            "ordinal":  1,
+                            "onDelete":  "NO_ACTION"
+                        },
+                        {
+                            "constraintName":  "FK_AspNetUserTokens_AspNetUsers_UserId",
+                            "dependentTable":  "AspNetUserTokens",
+                            "dependentColumn":  "UserId",
+                            "principalTable":  "AspNetUsers",
+                            "principalColumn":  "Id",
+                            "ordinal":  1,
+                            "onDelete":  "CASCADE"
+                        },
+                        {
+                            "constraintName":  "FK_Candidates_Municipalities_MunicipalityId",
+                            "dependentTable":  "Candidates",
+                            "dependentColumn":  "MunicipalityId",
+                            "principalTable":  "Municipalities",
+                            "principalColumn":  "MunicipalityId",
+                            "ordinal":  1,
+                            "onDelete":  "NO_ACTION"
+                        },
+                        {
+                            "constraintName":  "FK_Candidates_Positions_MunicipalityId_PositionId",
+                            "dependentTable":  "Candidates",
+                            "dependentColumn":  "MunicipalityId",
+                            "principalTable":  "Positions",
+                            "principalColumn":  "MunicipalityId",
+                            "ordinal":  1,
+                            "onDelete":  "NO_ACTION"
+                        },
+                        {
+                            "constraintName":  "FK_Candidates_Positions_MunicipalityId_PositionId",
+                            "dependentTable":  "Candidates",
+                            "dependentColumn":  "PositionId",
+                            "principalTable":  "Positions",
+                            "principalColumn":  "PositionId",
+                            "ordinal":  2,
+                            "onDelete":  "NO_ACTION"
+                        },
+                        {
+                            "constraintName":  "FK_Positions_Municipalities_MunicipalityId",
+                            "dependentTable":  "Positions",
+                            "dependentColumn":  "MunicipalityId",
+                            "principalTable":  "Municipalities",
+                            "principalColumn":  "MunicipalityId",
+                            "ordinal":  1,
+                            "onDelete":  "NO_ACTION"
+                        }
+                    ],
+    "provenance":  "Read-only live SQL metadata/count queries; no user/password/hash/token row values exported."
+}

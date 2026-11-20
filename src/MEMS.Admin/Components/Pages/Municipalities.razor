@@ -1,0 +1,97 @@
+@page "/admin/municipalities"
+@page "/admin/municipalities/create"
+@page "/admin/municipalities/{Id:int}"
+@page "/admin/municipalities/{Id:int}/edit"
+@page "/admin/municipalities/{Id:int}/delete"
+@attribute [Authorize(Policy = "Administrator")]
+@inherits AdminPageBase
+<PageTitle>Municipalities · MEMS Admin</PageTitle>
+<div class="page-heading"><div><p class="eyebrow">Tenant management</p><h1>@Title</h1></div>
+@if (list && Super) { <a class="btn btn-primary" href="/admin/municipalities/create">Create municipality</a> }</div>
+<PageFeedback Busy="Busy" Error="@Error" Status="ErrorStatus" Success="@Success" />
+@if (list && Actor is not null)
+{
+    <div class="panel table-responsive"><table class="table align-middle"><caption>Municipalities available to your account</caption><thead><tr><th>Name</th><th>Tenant slug</th><th>Election date</th><th>Actions</th></tr></thead><tbody>
+        @foreach (var item in items)
+        {
+            <tr><th scope="row"><a href="/admin/municipalities/@item.MunicipalityId">@item.Name</a></th><td><code>/@item.Slug</code></td><td>@item.ElectionDate.ToString("MMM d, yyyy")</td>
+            <td class="table-actions"><a href="/admin/municipalities/@item.MunicipalityId">Details</a>@if (Super) { <a href="/admin/municipalities/@item.MunicipalityId/edit">Edit</a><a class="text-danger" href="/admin/municipalities/@item.MunicipalityId/delete">Delete</a> }</td></tr>
+        }
+    </tbody></table>@if (items.Count == 0) { <p class="empty-state">No municipalities are available.</p> }</div>
+}
+else if ((creating || editing) && Super && ready)
+{
+    <EditForm Model="model" OnValidSubmit="Save" FormName="municipality-details" class="panel record-form">
+        <DataAnnotationsValidator /><ValidationSummary class="text-danger" role="alert" />
+        <fieldset disabled="@Busy"><legend class="visually-hidden">Municipality details</legend>
+        <div class="row"><div class="col-md-7 mb-3"><label for="municipality-name" class="form-label">Municipality name</label><InputText id="municipality-name" class="form-control" @bind-Value="@model.Name" maxlength="100" /><ValidationMessage For="() => model.Name" /></div>
+        <div class="col-md-5 mb-3"><label for="municipality-slug" class="form-label">Tenant slug</label><InputText id="municipality-slug" class="form-control" @bind-Value="@model.Slug" maxlength="80" aria-describedby="slug-help" /><ValidationMessage For="() => model.Slug" /><small id="slug-help" class="form-text">Lowercase letters, numbers and hyphens. Changing this changes the tenant URL.</small></div></div>
+        <div class="row"><div class="col-md-6 mb-3"><label for="province" class="form-label">Province</label><InputText id="province" class="form-control" @bind-Value="@model.Province" maxlength="50" /><ValidationMessage For="() => model.Province" /></div>
+        <div class="col-md-6 mb-3"><label for="election-date" class="form-label">Election date</label><InputDate id="election-date" class="form-control" @bind-Value="@model.ElectionDate" /><ValidationMessage For="() => model.ElectionDate" /></div></div>
+        <div class="mb-3"><label for="public-title" class="form-label">Public title</label><InputText id="public-title" class="form-control" @bind-Value="@model.PublicTitle" maxlength="120" /><ValidationMessage For="() => model.PublicTitle" /></div>
+        <div class="mb-3"><label for="description" class="form-label">Election description</label><InputTextArea id="description" class="form-control" rows="5" @bind-Value="@model.Description" maxlength="2000" /><ValidationMessage For="() => model.Description" /></div>
+        <div class="mb-4"><label for="brand-color" class="form-label">Brand colour</label><InputText id="brand-color" type="color" class="form-control form-control-color" @bind-Value="@model.BrandColor" /><ValidationMessage For="() => model.BrandColor" /></div>
+        <button type="submit" class="btn btn-primary">Save municipality</button><a class="btn btn-link" href="/admin/municipalities">Cancel</a>
+        </fieldset>
+    </EditForm>
+    @if (record is not null) { <MediaEditor Slug="@record.Slug" Id="record.MunicipalityId" Logo="true" CurrentVersion="@record.Version" Url="@record.LogoUrl" Updated="MediaUpdated" /> }
+}
+else if (record is not null && deleting && Super)
+{
+    <section class="panel"><h2 class="h4">Delete @record.Name?</h2><p class="alert alert-warning">This action cannot be undone. A municipality with positions, candidates or administrator assignments cannot be deleted.</p>
+    <button class="btn btn-danger" @onclick="Delete" disabled="@Busy">Confirm delete municipality</button><a class="btn btn-link" href="/admin/municipalities/@record.MunicipalityId">Cancel</a></section>
+}
+else if (record is not null && !editing && !deleting)
+{
+    <section class="panel"><div class="record-heading">@if (record.LogoUrl is not null) { <img class="municipality-logo" src="@MediaUrl(record.LogoUrl, record.Version)" alt="@($"{record.Name} logo")" /> }<div><h2 class="h4">@record.Name</h2><span class="badge text-bg-light">/@record.Slug</span></div></div>
+        <dl class="record-details"><dt>Province</dt><dd>@record.Province</dd><dt>Election date</dt><dd>@record.ElectionDate.ToString("MMMM d, yyyy")</dd><dt>Public title</dt><dd>@record.PublicTitle</dd><dt>Brand colour</dt><dd>@record.BrandColor</dd><dt>Election details</dt><dd class="biography">@record.Description</dd></dl>
+        <div class="action-row"><a class="btn btn-outline-primary" href="/admin/@record.Slug/positions">Manage positions</a><a class="btn btn-outline-primary" href="/admin/@record.Slug/candidates">Manage candidates</a>
+        @if (Super) { <a class="btn btn-primary" href="/admin/municipalities/@record.MunicipalityId/edit">Edit municipality</a><a class="btn btn-outline-danger" href="/admin/municipalities/@record.MunicipalityId/delete">Delete municipality</a> }</div>
+    </section>
+    @if (Super) { <MediaEditor Slug="@record.Slug" Id="record.MunicipalityId" Logo="true" CurrentVersion="@record.Version" Url="@record.LogoUrl" Updated="MediaUpdated" /> }
+}
+@code {
+    [Parameter] public int? Id { get; set; }
+    [SupplyParameterFromQuery] public string? Notice { get; set; }
+    private List<MunicipalityDto> items = [];
+    private MunicipalityDto? record;
+    private MunicipalityRequest model = new();
+    private bool ready;
+    private bool list => RouteMode == "municipalities";
+    private bool creating => RouteMode == "create";
+    private bool editing => RouteMode == "edit";
+    private bool deleting => RouteMode == "delete";
+    private string Title => creating ? "Create municipality" : editing ? "Edit municipality" : deleting ? "Delete municipality" : list ? "Municipalities" : "Municipality details";
+    protected override Task OnParametersSetAsync() => TryAsync(async () =>
+    {
+        ready = false; record = null; items = [];
+        Actor = await Operations.ActorAsync();
+        Success = Notice == "saved" ? "Municipality saved successfully." : Notice == "deleted" ? "Municipality deleted." : null;
+        if ((creating || editing || deleting) && !Super) throw new ApiFault(403, "Only Super Admin can change municipality tenants.");
+        if (creating) { model = new() { ElectionDate = new DateOnly(2026, 10, 17) }; ready = true; return; }
+        if (Super) items = await Operations.RunAsync((service, user) => service.MunicipalitiesAsync(user, null));
+        else
+        {
+            var directory = await Operations.RunAsync((service, user) => service.DirectoryAsync(user));
+            foreach (var item in directory) items.Add(await Operations.RunAsync((service, user) => service.MunicipalityAsync(user, item.Slug, item.MunicipalityId)));
+        }
+        if (!list)
+        {
+            record = items.SingleOrDefault(x => x.MunicipalityId == Id) ?? throw new ApiFault(404, "Municipality not found in your permitted scope.");
+            model = new() { Name = record.Name, Slug = record.Slug, Province = record.Province, ElectionDate = record.ElectionDate, Description = record.Description, BrandColor = record.BrandColor, PublicTitle = record.PublicTitle };
+        }
+        ready = true;
+    });
+    private Task Save() => TryAsync(async () =>
+    {
+        var saved = creating ? await Operations.RunAsync((service, user) => service.CreateMunicipalityAsync(user, model), true)
+            : await Operations.RunAsync((service, user) => service.UpdateMunicipalityAsync(user, record!.MunicipalityId, model, Version(record.Version)), true);
+        Navigation.NavigateTo($"/admin/municipalities/{saved.MunicipalityId}?notice=saved");
+    });
+    private Task Delete() => TryAsync(async () =>
+    {
+        await Operations.RunAsync((service, user) => service.DeleteMunicipalityAsync(user, record!.MunicipalityId, Version(record.Version)), true);
+        Navigation.NavigateTo("/admin/municipalities?notice=deleted");
+    });
+    private void MediaUpdated(MediaEditor.MediaUpdate update) { record = record! with { Version = update.Version, LogoUrl = update.Url }; }
+}

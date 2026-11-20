@@ -1,0 +1,115 @@
+@page "/{Slug}/guide"
+@inherits PublicPageBase
+@inject VotingGuideStore Guide
+<PageTitle>My voting guide · MEMS</PageTitle>
+<div class="public-container section-space voting-guide">
+    <PublicStatus Loading="Loading" Error="@Error" Status="Status" Retry="Reload" />
+    @if (!Loading && Error is null && municipality is not null && saved is not null)
+    {
+        <TenantFrame Municipality="municipality">
+            <div class="guide-controls print-hide">
+                <a class="btn btn-outline-primary" href="/@municipality.Slug/candidates">Find candidates</a>
+                <button type="button" class="btn btn-primary" disabled="@(busy || saved.Error is not null || !printReady)" @onclick="Print">Print voting guide</button>
+                @if (selected.Count > 0) { <button type="button" class="btn btn-outline-danger" disabled="@busy" @onclick="AskClear">Clear guide</button> }
+            </div>
+            <p class="guide-help print-hide">Your choices stay in this tab's session storage. They are never sent to the election services. Closing the tab normally ends its session; use Clear guide when finished on a shared device. Browser session restore or tab duplication may restore or copy session data.</p>
+            @if (confirmClear)
+            {
+                <section class="public-message print-hide" aria-labelledby="clear-title"><h2 id="clear-title">Clear this municipality's guide?</h2><p>This removes every selection for @municipality.Name from this tab. Other municipalities' guides are unaffected.</p><button class="btn btn-danger" type="button" @onclick="Clear" disabled="@busy">Confirm clear guide</button> <button class="btn btn-outline-primary" type="button" @onclick="() => confirmClear = false">Keep selections</button></section>
+            }
+            <p class="guide-feedback print-hide" aria-live="polite">@(saved.Error ?? feedback ?? saved.Notice)</p>
+            @if (saved.Error is null)
+            {
+                <article class="guide-document" aria-labelledby="guide-title">
+                    <p class="eyebrow">Your personal election checklist</p><h1 id="guide-title">My voting guide</h1>
+                    <h2 class="guide-municipality">@municipality.Name</h2>
+                    <dl class="guide-dates"><dt>Election date</dt><dd><time datetime="@municipality.ElectionDate.ToString("yyyy-MM-dd")">@municipality.ElectionDate.ToString("MMMM d, yyyy")</time></dd><dt>Print date</dt><dd><time data-guide-print-date>Preparing date…</time></dd></dl>
+                    <p class="guide-disclaimer">A personal reminder. This is not an official ballot and does not cast a vote. Election profiles are fictional demonstration content.</p>
+                    @if (selected.Count == 0)
+                    {
+                        <section class="guide-empty"><h3>No candidates selected</h3><p>Browse @municipality.Name candidates and choose Add to guide to prepare your personal checklist.</p></section>
+                    }
+                    else
+                    {
+                        <table class="guide-table"><caption>@selected.Count selected candidate@(selected.Count == 1 ? "" : "s") for @municipality.Name</caption><thead><tr><th scope="col">Candidate</th><th scope="col">Position</th><th scope="col" class="print-hide">Manage</th></tr></thead><tbody>
+                            @foreach (var candidate in selected)
+                            {
+                                var position = positions.Single(p => p.PositionId == candidate.PositionId);
+                                <tr data-guide-candidate-id="@candidate.CandidateId"><td class="guide-candidate-name">@candidate.Name</td><td><span class="guide-position-name">@position.Name</span><small class="seat-information print-hide">@position.SeatsAvailable available seat@(position.SeatsAvailable == 1 ? "" : "s")</small></td><td class="print-hide"><button type="button" class="btn btn-outline-danger" aria-label="@($"Remove {candidate.Name} from guide")" disabled="@busy" @onclick="() => Remove(candidate.CandidateId)">Remove</button></td></tr>
+                            }
+                        </tbody></table>
+                    }
+                </article>
+                <p class="guide-help print-hide">For a clean copy, select Letter or A4 and turn off the browser's headers and footers in the print dialog. Printing or saving a PDF creates a copy outside this tab's session.</p>
+            }
+        </TenantFrame>
+    }
+</div>
+@code {
+    [Parameter] public string Slug { get; set; } = "";
+    private MunicipalityDto? municipality;
+    private List<PositionDto> positions = [];
+    private List<CandidateDto> catalog = [], selected = [];
+    private VotingGuideStore.State? saved;
+    private string? feedback;
+    private bool busy, confirmClear, stampPending, printReady;
+    protected override Task OnParametersSetAsync() => Reload();
+    private Task Reload() => LoadAsync(async token =>
+    {
+        municipality = null; selected = []; catalog = []; positions = []; saved = null; confirmClear = false; feedback = null; printReady = false;
+        var slug = PublicApi.Slug(Slug);
+        var tenant = await Api.MunicipalityAsync(slug, token);
+        var offices = await Api.PositionsAsync(slug, token);
+        // The same public catalog requests run regardless of saved choices. No selected IDs go to the API.
+        var people = new List<CandidateDto>();
+        for (var page = 1; ; page++)
+        {
+            var result = await Api.CandidatesAsync(slug, new() { Page = page, PageSize = 100, Sort = "name" }, token);
+            people.AddRange(result.Items);
+            if (page >= result.TotalPages) break;
+        }
+        token.ThrowIfCancellationRequested();
+        RequireTenant(tenant.MunicipalityId, offices.Select(p => p.MunicipalityId).Concat(people.Select(c => c.MunicipalityId)).ToArray());
+        if (string.IsNullOrWhiteSpace(tenant.Name) || tenant.ElectionDate == default
+            || offices.Any(p => string.IsNullOrWhiteSpace(p.Name)) || people.Any(c => string.IsNullOrWhiteSpace(c.Name)))
+            throw new PublicApiException(503);
+        var valid = people.Where(c => offices.Any(p => p.PositionId == c.PositionId)).DistinctBy(c => c.CandidateId).ToList();
+        var state = await Guide.ReadAsync(tenant.MunicipalityId);
+        token.ThrowIfCancellationRequested();
+        if (state.Error is null)
+        {
+            var retained = state.Ids.Where(id => valid.Any(c => c.CandidateId == id)).ToArray();
+            if (retained.Length != state.Ids.Length)
+            {
+                state = await Guide.SetAsync(tenant.MunicipalityId, retained);
+                feedback = "Saved candidates that are no longer available in this municipality were removed from your guide.";
+            }
+        }
+        token.ThrowIfCancellationRequested();
+        municipality = tenant; positions = offices; catalog = valid; saved = state; SelectLocally(); stampPending = true;
+    });
+    private void SelectLocally() => selected = catalog.Where(c => saved!.Ids.Contains(c.CandidateId)).OrderBy(c => positions.Single(p => p.PositionId == c.PositionId).Name, StringComparer.Ordinal).ThenBy(c => c.Name, StringComparer.Ordinal).ThenBy(c => c.CandidateId).ToList();
+    private async Task Save(IEnumerable<int> ids, string message)
+    {
+        busy = true;
+        try { saved = await Guide.SetAsync(municipality!.MunicipalityId, ids); if (saved.Error is null) { SelectLocally(); feedback = message; stampPending = true; } }
+        finally { busy = false; }
+    }
+    private Task Remove(int id) => Save(saved!.Ids.Where(candidate => candidate != id), "Candidate removed from this tab's guide.");
+    private void AskClear() => confirmClear = true;
+    private async Task Clear() { await Save([], "This municipality's guide was cleared."); confirmClear = false; }
+    private async Task Print()
+    {
+        try { await Guide.PrintAsync(); }
+        catch (JSException) { feedback = "The print dialog could not open. Try your browser's Print command."; }
+    }
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (stampPending && !Loading && saved?.Error is null)
+        {
+            stampPending = false;
+            try { await Guide.StampAsync(); printReady = true; StateHasChanged(); }
+            catch (JSException) { feedback = "The print date could not be prepared. Reload before printing."; StateHasChanged(); }
+        }
+    }
+}

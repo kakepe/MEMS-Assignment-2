@@ -1,0 +1,47 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><title>Actual API verification export</title><style>body{font:16px system-ui;margin:36px;color:#183447;background:#f6f8fa}h1{font-size:30px}h2{font-size:21px}table{border-collapse:collapse;width:100%;background:white}td,th{text-align:left;padding:10px;border:1px solid #ccd6df}pre{background:white;border:1px solid #ccd6df;padding:18px;white-space:pre-wrap;overflow-wrap:anywhere;font:14px Consolas,monospace}.note{color:#40576b}</style><h1>Web API  -  actual HTTPS verification</h1><p class="note">Captured 2026-11-18T05:32:47.561Z. Real local requests; no mock data. Authentication cookies/tokens omitted.</p><table><tr><th>Method</th><th>Request</th><th>Actual status</th></tr><tr><td>GET</td><td>https://localhost:7192/api/burnaby/candidates?page=1&amp;pageSize=3&amp;sort=name</td><td>200</td></tr><tr><td>GET</td><td>https://localhost:7192/api/burnaby/candidates?positionId=5</td><td>400</td></tr><tr><td>GET</td><td>https://localhost:7192/api/unknown-tenant/candidates</td><td>404</td></tr><tr><td>POST</td><td>https://localhost:7192/api/burnaby/candidates</td><td>401</td></tr><tr><td>GET</td><td>https://localhost:7192/api/surrey/candidates</td><td>403</td></tr></table><h2>Actual public response (first result)</h2><pre>{
+  &quot;items&quot;: [
+    {
+      &quot;candidateId&quot;: 14,
+      &quot;municipalityId&quot;: 2,
+      &quot;positionId&quot;: 1,
+      &quot;name&quot;: &quot;Adrian Solano&quot;,
+      &quot;profile&quot;: &quot;Adrian Solano is an invented community enterprise manager seeking the mayor&#39;s office in this fictional Burnaby election. His sample background combines organizational budgeting, staff supervision, and partnerships between local services. He proposes a practical review of municipal service delivery, with plain-language information about costs, waiting times, and planned improvements. Adrian also emphasizes balancing new development with reliable infrastructure and accessible recreation spaces. He would encourage public meetings that welcome different perspectives and explain which issues require cooperation with other levels of government. His fictional interests include supporting neighbourhood business areas and making community facilities easier to navigate. Away from work, he enjoys recreational cycling and volunteering at events that bring residents together across generations.&quot;,
+      &quot;email&quot;: &quot;candidate@example.org&quot;,
+      &quot;website&quot;: &quot;https://example.org&quot;,
+      &quot;dateCreated&quot;: &quot;2026-11-16T00:46:07.7416019&quot;,
+      &quot;photoUrl&quot;: &quot;/api/burnaby/candidates/14/photo&quot;,
+      &quot;isFictionalSample&quot;: true,
+      &quot;version&quot;: &quot;AAAAAAAANtQ=&quot;
+    },
+    {
+      &quot;candidateId&quot;: 15,
+      &quot;municipalityId&quot;: 2,
+      &quot;positionId&quot;: 2,
+      &quot;name&quot;: &quot;Mei Tanaka&quot;,
+      &quot;profile&quot;: &quot;Mei Tanaka is a fictional transportation planner and community arts volunteer running for a council position in the Burnaby sample election. Her imagined work focuses on how people reach everyday destinations, including those who walk, use mobility aids, cycle, or rely on transit. She proposes reviewing municipal street crossings, connections to public facilities, and the clarity of information about neighbourhood construction. Mei also supports accessible arts and recreation opportunities as part of healthy community life. She would ask council reports to explain how proposed projects affect different users and how their maintenance will be funded. Outside this fictional campaign, she enjoys drawing, visiting local parks, and helping volunteers organize small, inclusive neighbourhood exhibitions.&quot;,
+      &quot;email&quot;: &quot;candidate@example.org&quot;,
+      &quot;website&quot;: &quot;https://example.org&quot;,
+      &quot;dateCreated&quot;: &quot;2026-11-16T00:46:07.74262&quot;,
+      &quot;photoUrl&quot;: &quot;/api/burnaby/candidates/15/photo&quot;,
+      &quot;isFictionalSample&quot;: true,
+      &quot;version&quot;: &quot;AAAAAAAANtU=&quot;
+    },
+    {
+      &quot;candidateId&quot;: 18,
+      &quot;municipalityId&quot;: 2,
+      &quot;positionId&quot;: 3,
+      &quot;name&quot;: &quot;Patrick Rowden&quot;,
+      &quot;profile&quot;: &quot;Patrick Rowden is an invented retired technical college administrator and literacy volunteer seeking a school trustee position in this fictional Burnaby election. His sample background includes facilities planning, program evaluation, and explaining institutional budgets. He proposes school board discussions that connect long-term spending decisions with student learning needs and equitable access to resources. Patrick supports listening to students, educators, families, and support staff before deciding which improvements should take priority. He distinguishes board oversight from the work of principals and teachers and values clear public reporting on district goals. His fictional interests include practical learning opportunities, accessible libraries, and intergenerational volunteering. Outside this demonstration campaign, he enjoys restoring furniture and participating in neighbourhood reading circles.&quot;,
+      &quot;email&quot;: &quot;candidate@example.org&quot;,
+      &quot;website&quot;: &quot;https://example.org&quot;,
+      &quot;dateCreated&quot;: &quot;2026-11-16T00:46:07.7453411&quot;,
+      &quot;photoUrl&quot;: &quot;/api/burnaby/candidates/18/photo&quot;,
+      &quot;isFictionalSample&quot;: true,
+      &quot;version&quot;: &quot;AAAAAAAANtg=&quot;
+    }
+  ],
+  &quot;page&quot;: 1,
+  &quot;pageSize&quot;: 3,
+  &quot;totalCount&quot;: 6,
+  &quot;totalPages&quot;: 2
+}</pre></html>

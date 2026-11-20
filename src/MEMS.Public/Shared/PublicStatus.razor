@@ -1,0 +1,17 @@
+@if (Loading)
+{
+    <div class="public-status" role="status"><span class="spinner-border spinner-border-sm me-2" aria-hidden="true"></span>Loading election information…</div>
+}
+@if (Error is not null)
+{
+    <section class="public-message" role="alert" data-error-status="@Status"><h1>@(Status == 404 ? "Page not found" : "Unable to load election information")</h1><p>@Error</p>
+        @if (Status != 404) { <button class="btn btn-primary" type="button" @onclick="Retry">Try again</button> }
+        <a class="btn btn-link" href="/">Browse municipalities</a>
+    </section>
+}
+@code {
+    [Parameter] public bool Loading { get; set; }
+    [Parameter] public string? Error { get; set; }
+    [Parameter] public int Status { get; set; }
+    [Parameter] public EventCallback Retry { get; set; }
+}

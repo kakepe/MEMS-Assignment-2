@@ -1,0 +1,3 @@
+# Phase 3 security and API
+
+Implement the user's approved Phase 3 only: secure tenant-scoped REST CRUD with safe shared DTOs, real Identity cookie login/session/logout endpoints without finished UI, CSRF validation, canonical stored administrator assignments, safe media upload/serving, OpenAPI and focused tests. Preserve the seven projects, SQL database/volume/accounts/passwords, migrations and seed records. Assignment 1 is strictly read-only. Do not implement Phase 4 UI, final public pages, voting selections, printing, JWT for hypothetical iOS use, Azure, Git operations or deployment. Use only legitimate authentication in API tests and clean up verification-owned records. The full user request remains authoritative.

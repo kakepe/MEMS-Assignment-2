@@ -1,0 +1,35 @@
+Phase 6 exact source/configuration changes
+
+CREATED (15)
+.github/prompts/phase-6-guide.prompt.md
+docs/phase6-files.txt
+docs/phase6-guide.md
+docs/phase6-verification.md
+scripts/inspect-phase6-schema.ps1
+scripts/verify-phase6-preview.cjs
+scripts/verify-phase6-print.py
+scripts/verify-phase6-session-restart.cjs
+scripts/verify-phase6-sync.cjs
+scripts/verify-phase6.cjs
+src/MEMS.Public/Pages/VotingGuide.razor
+src/MEMS.Public/Services/VotingGuideStore.cs
+src/MEMS.Public/Shared/GuideSelection.razor
+src/MEMS.Public/wwwroot/css/voting-guide.css
+src/MEMS.Public/wwwroot/js/voting-guide.js
+
+MODIFIED (8)
+AGENTS.md
+README.md
+scripts/start.ps1
+src/MEMS.Public/Pages/CandidateDetails.razor
+src/MEMS.Public/Program.cs
+src/MEMS.Public/Shared/CandidateCard.razor
+src/MEMS.Public/Shared/TenantFrame.razor
+src/MEMS.Public/wwwroot/index.html
+
+REMOVED (0)
+None
+
+Existing migrations, seed catalogs, packaged images, Admin/API/Data/Shared/ServiceDefaults source and development secrets are unchanged.
+Ignored outputs: .local/phase6-* safety/fixture/ledger/session state; .local/identity-sessions/ revocations; runtime/build outputs; restored tools; artifacts/phase6/ evidence. Existing .local media files are preserved; owned test uploads are cleaned up.
+No Phase 7, Git, Azure, COMP4977, deployment, ZIP or final assignment report actions.

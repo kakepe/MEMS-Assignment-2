@@ -1,0 +1,21 @@
+@page "/admin/connectivity"
+@attribute [Authorize(Policy = "Administrator")]
+@inherits AdminPageBase
+@using MEMS.Shared
+@inject IHttpClientFactory Clients
+<PageTitle>Service connectivity · MEMS Admin</PageTitle>
+<h1>Service connectivity</h1><p>Check that the API and election database are available.</p>
+<PageFeedback Error="@Error" Status="ErrorStatus" />
+<button class="btn btn-primary" @onclick="CheckApi" disabled="@(Busy || !interactive)">Check API connection</button>
+<p class="mt-3" role="status">@message</p>
+@code {
+    private bool interactive;
+    private string message = "Ready to check the services.";
+    protected override void OnAfterRender(bool firstRender) { if (firstRender) { interactive = true; StateHasChanged(); } }
+    private Task CheckApi() => TryAsync(async () =>
+    {
+        await Operations.ActorAsync();
+        var status = await Clients.CreateClient("mems-api").GetFromJsonAsync<FoundationStatus>("/api/foundation");
+        message = status?.DatabaseConnected == true ? "API connected. SQL Server connected." : "API unavailable.";
+    });
+}

@@ -1,0 +1,16 @@
+@if (Busy) { <p role="status" class="text-secondary">Loading, please wait…</p> }
+@if (!string.IsNullOrEmpty(Error))
+{
+    <div class="alert alert-danger" role="alert" data-error-status="@Status">
+        @Error
+        @if (Status == 401) { <a class="alert-link" href="/admin/account/login" data-enhance-nav="false">Log in again</a> }
+        @if (Status == 403) { <span> Contact your administrator if you need another assignment.</span> }
+    </div>
+}
+@if (!string.IsNullOrEmpty(Success)) { <div class="alert alert-success" role="status">@Success</div> }
+@code {
+    [Parameter] public bool Busy { get; set; }
+    [Parameter] public string? Error { get; set; }
+    [Parameter] public int Status { get; set; }
+    [Parameter] public string? Success { get; set; }
+}

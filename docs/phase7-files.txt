@@ -1,0 +1,61 @@
+Phase 7 exact source/configuration changes
+
+CREATED (45)
+.github/prompts/phase-7-documentation.prompt.md
+docs/final/MEMS-Assignment-2-Final-Report.pdf
+docs/final/README.md
+docs/final/ai-usage.md
+docs/final/api-reference.md
+docs/final/architecture.md
+docs/final/data-dictionary.md
+docs/final/deficiency-resolution.md
+docs/final/diagrams/architecture.svg
+docs/final/diagrams/erd-domain.svg
+docs/final/diagrams/erd-identity.svg
+docs/final/evidence/admin-candidates.png
+docs/final/evidence/admin-dashboard.png
+docs/final/evidence/api-documentation.png
+docs/final/evidence/api-live-response.png
+docs/final/evidence/api-results.html
+docs/final/evidence/api-results.json
+docs/final/evidence/api-testing.png
+docs/final/evidence/aspire-dashboard.png
+docs/final/evidence/openapi.json
+docs/final/evidence/public-burnaby.png
+docs/final/evidence/public-guide-mobile.png
+docs/final/evidence/public-guide.png
+docs/final/evidence/public-richmond.png
+docs/final/evidence/public-surrey.png
+docs/final/evidence/sql-query-export.html
+docs/final/evidence/sql-server.png
+docs/final/evidence/sql-snapshot.json
+docs/final/publication-audit.json
+docs/final/publication-manifest.json
+docs/final/publishing-and-package-plan.md
+docs/final/report.html
+docs/final/rubric-and-readiness.md
+docs/final/technical-guide.md
+docs/final/verification.md
+docs/phase7-audit.md
+docs/phase7-files.txt
+docs/phase7-verification.md
+scripts/audit-phase7-publication.py
+scripts/build-phase7-report.py
+scripts/capture-phase7-evidence.cjs
+scripts/print-phase7-report.cjs
+scripts/read-phase7-sql.ps1
+scripts/render-phase7-diagrams.py
+scripts/verify-phase7-report.py
+
+MODIFIED (4)
+.github/copilot-instructions.md
+.gitignore
+AGENTS.md
+README.md
+
+REMOVED (0)
+None
+
+All 151 application source/configuration/assets files, migrations, seed catalogs, original Phase 1-6 prompts and development secrets are unchanged.
+Ignored outputs: .local/phase7-* safety/fixture/ledger/session state; .local/identity-sessions/ revocations; runtime/build outputs; restored tools; artifacts/phase7/ evidence. Existing .local media files are preserved; owned test uploads are cleaned up.
+Prepared final documentation PDF and review-only publishing/package plans; no Git initialization, staging, commits, pushes, publishing, Azure, COMP4977, deployment or final submission ZIP.

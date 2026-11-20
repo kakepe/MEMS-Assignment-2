@@ -1,0 +1,17 @@
+@page "/admin/account/logout"
+@attribute [Authorize(Policy = "Administrator")]
+@attribute [ExcludeFromInteractiveRouting]
+@using MEMS.Data.Identity
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<ApplicationUser> SignIn
+@inject NavigationManager Navigation
+<PageTitle>Log out · MEMS Admin</PageTitle>
+<div class="account-panel panel"><h1>Log out</h1><p>End this administrator session? Unsaved form changes will be lost.</p>
+    <EditForm Model="confirmation" OnValidSubmit="Submit" FormName="admin-logout" method="post">
+        <button class="btn btn-primary" type="submit">Confirm log out</button><a class="btn btn-link" href="/admin">Cancel</a>
+    </EditForm>
+</div>
+@code {
+    private readonly object confirmation = new();
+    private async Task Submit() { await SignIn.SignOutAsync(); Navigation.NavigateTo("/admin/account/login?loggedOut=true", forceLoad: true); }
+}

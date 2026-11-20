@@ -1,0 +1,24 @@
+@implements IDisposable
+@inject VotingGuideStore Guide
+<div class="guide-selection">
+    <button type="button" class="btn btn-outline-primary guide-selection-button" disabled="@(busy || state is null || state.Error is not null)" aria-pressed="@selected.ToString().ToLowerInvariant()" aria-label="@($"{(selected ? "Remove" : "Add")} {Candidate.Name} {(selected ? "from" : "to")} guide")" @onclick="Toggle">@(selected ? "Remove from guide" : "Add to guide")</button>
+    <p class="guide-feedback" aria-live="polite">@(state?.Error ?? feedback)</p>
+</div>
+@code {
+    [Parameter, EditorRequired] public CandidateDto Candidate { get; set; } = default!;
+    private VotingGuideStore.State? state;
+    private bool busy;
+    private bool selected => state?.Ids.Contains(Candidate.CandidateId) == true;
+    private string? feedback;
+    protected override void OnInitialized() => Guide.Changed += Updated;
+    protected override async Task OnParametersSetAsync() => state = await Guide.ReadAsync(Candidate.MunicipalityId);
+    private void Updated() { state = Guide.Current(Candidate.MunicipalityId); _ = InvokeAsync(StateHasChanged); }
+    private async Task Toggle()
+    {
+        busy = true;
+        var wasSelected = selected;
+        try { state = await Guide.ToggleAsync(Candidate.MunicipalityId, Candidate.CandidateId); feedback = state.Error is null ? wasSelected ? "Removed from this tab's guide." : "Added to this tab's guide." : null; }
+        finally { busy = false; }
+    }
+    public void Dispose() => Guide.Changed -= Updated;
+}

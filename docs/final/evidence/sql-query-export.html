@@ -1,0 +1,12 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><title>SQL Server live query export</title><style>body{font:16px system-ui;margin:36px;color:#183447;background:#f6f8fa}h1{font-size:30px}h2{font-size:21px}table{border-collapse:collapse;width:100%;background:white}td,th{text-align:left;padding:10px;border:1px solid #ccd6df}pre{background:white;border:1px solid #ccd6df;padding:18px;white-space:pre-wrap;overflow-wrap:anywhere;font:14px Consolas,monospace}.note{color:#40576b}</style><h1>SQL Server  -  read-only live query export</h1><p class="note">MEMSAssignment2  |  2026-11-17T21:31:33.4156976-08:00  |  actual query results rendered for legibility (not an SSMS screenshot). No Identity row values exported.</p><pre>SELECT name FROM sys.tables WHERE is_ms_shipped = 0;
+SELECT MigrationId, ProductVersion FROM __EFMigrationsHistory;
+SELECT (SELECT COUNT(*) FROM Municipalities) AS municipalities, (SELECT COUNT(*) FROM Positions) AS positions, (SELECT COUNT(*) FROM Candidates) AS candidates, (SELECT COUNT(*) FROM AspNetUsers) AS users, (SELECT COUNT(*) FROM AspNetRoles) AS roles;</pre><h2>Actual counts</h2><table><tr><th>municipalities</th><th>positions</th><th>candidates</th><th>users</th><th>roles</th></tr><tr><td>5</td><td>15</td><td>30</td><td>5</td><td>7</td></tr></table><h2>Actual SQL tables (12)</h2><table><tr><td>__EFMigrationsHistory</td><td>2 columns</td></tr><tr><td>AspNetRoleClaims</td><td>4 columns</td></tr><tr><td>AspNetRoles</td><td>6 columns</td></tr><tr><td>AspNetUserClaims</td><td>4 columns</td></tr><tr><td>AspNetUserLogins</td><td>4 columns</td></tr><tr><td>AspNetUserRoles</td><td>3 columns</td></tr><tr><td>AspNetUsers</td><td>17 columns</td></tr><tr><td>AspNetUserTokens</td><td>4 columns</td></tr><tr><td>Candidates</td><td>11 columns</td></tr><tr><td>Municipalities</td><td>10 columns</td></tr><tr><td>Positions</td><td>5 columns</td></tr><tr><td>SeedHistory</td><td>2 columns</td></tr></table><h2>Applied migrations</h2><pre>[
+  {
+    &quot;MigrationId&quot;: &quot;20261116003601_InitialSqlServerIdentityTenancy&quot;,
+    &quot;ProductVersion&quot;: &quot;10.0.13&quot;
+  },
+  {
+    &quot;MigrationId&quot;: &quot;20261116004505_FixHyphenatedSlugsAndAssetNames&quot;,
+    &quot;ProductVersion&quot;: &quot;10.0.13&quot;
+  }
+]</pre></html>

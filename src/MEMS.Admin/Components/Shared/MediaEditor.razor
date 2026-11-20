@@ -1,0 +1,48 @@
+@inherits AdminPageBase
+<section class="panel media-panel" aria-label="@(Logo ? "Municipality logo" : "Candidate photograph")">
+    <h2 class="h5">@(Logo ? "Municipality logo" : "Candidate photograph")</h2>
+    @if (Url is not null) { <img class="@(Logo ? "municipality-logo" : "candidate-portrait")" src="@MediaUrl(Url, CurrentVersion)" alt="@(Logo ? "Current municipality logo" : "Current candidate photograph")" /> }
+    else { <p class="text-secondary">No image has been uploaded.</p> }
+    <PageFeedback Busy="Busy" Error="@Error" Status="ErrorStatus" Success="@Success" />
+    <div class="mt-3"><label for="media-file" class="form-label">Choose a replacement image</label>
+        <InputFile id="media-file" class="form-control" OnChange="Selected" accept=".jpg,.jpeg,.png" disabled="@Busy" />
+        <p id="media-help" class="form-text">JPEG or PNG, maximum 2 MB. Save record details separately before replacing an image.</p>
+    </div>
+    <button type="button" class="btn btn-outline-primary" @onclick="Upload" disabled="@(Busy || file is null)">Upload image</button>
+    @if (Url is not null)
+    {
+        <div class="mt-3"><label class="form-check-label"><input class="form-check-input me-2" type="checkbox" @bind="confirmRemove" />Confirm removal of this image</label></div>
+        <button type="button" class="btn btn-outline-danger mt-2" @onclick="Remove" disabled="@(Busy || !confirmRemove)">Remove image</button>
+    }
+</section>
+@code {
+    [Parameter] public string Slug { get; set; } = "";
+    [Parameter] public int Id { get; set; }
+    [Parameter] public bool Logo { get; set; }
+    [Parameter] public string CurrentVersion { get; set; } = "";
+    [Parameter] public string? Url { get; set; }
+    [Parameter] public EventCallback<MediaUpdate> Updated { get; set; }
+    private IBrowserFile? file;
+    private bool confirmRemove;
+    private void Selected(InputFileChangeEventArgs args) { file = args.File; Error = null; Success = null; }
+    private Task Upload() => TryAsync(async () =>
+    {
+        if (file is null) return;
+        if (file.Size > MEMS.Data.Storage.MediaStore.MaxBytes) throw new ApiFault(413, "Images must not exceed 2 MB.");
+        await using var stream = file.OpenReadStream(MEMS.Data.Storage.MediaStore.MaxBytes);
+        using var buffer = new MemoryStream();
+        await stream.CopyToAsync(buffer); buffer.Position = 0;
+        var upload = new Microsoft.AspNetCore.Http.FormFile(buffer, 0, buffer.Length, "file", file.Name)
+            { Headers = new HeaderDictionary(), ContentType = file.ContentType };
+        await Save(upload);
+        file = null; Success = "Image uploaded successfully.";
+    });
+    private Task Remove() => TryAsync(async () => { if (!confirmRemove) return; await Save(null); confirmRemove = false; Success = "Image removed."; });
+    private async Task Save(IFormFile? upload)
+    {
+        var result = await Operations.RunAsync((service, user) => service.ChangeMediaAsync(user, Slug, Id, Logo, upload, Version(CurrentVersion), CancellationToken.None));
+        var update = result is MunicipalityDto m ? new MediaUpdate(m.Version, m.LogoUrl) : new MediaUpdate(((CandidateDto)result).Version, ((CandidateDto)result).PhotoUrl);
+        await Updated.InvokeAsync(update);
+    }
+    public sealed record MediaUpdate(string Version, string? Url);
+}

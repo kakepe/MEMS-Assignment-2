@@ -1,0 +1,44 @@
+@page "/admin/account/login"
+@attribute [AllowAnonymous]
+@attribute [ExcludeFromInteractiveRouting]
+@using MEMS.Data.Identity
+@using Microsoft.AspNetCore.Identity
+@inject UserManager<ApplicationUser> Users
+@inject SignInManager<ApplicationUser> SignIn
+@inject ElectionAccess Access
+@inject NavigationManager Navigation
+<PageTitle>Log in · MEMS Admin</PageTitle>
+<div class="account-panel panel">
+    <p class="eyebrow">MEMS administration</p><h1>Log in</h1>
+    <p class="text-secondary">Use your existing administrator account.</p>
+    <PageFeedback Error="@error" Success="@(LoggedOut == true ? "You have been logged out." : null)" />
+    <EditForm Model="Input" OnValidSubmit="Submit" OnInvalidSubmit="ClearPassword" FormName="admin-login" method="post">
+        <DataAnnotationsValidator /><ValidationSummary class="text-danger" role="alert" />
+        <div class="mb-3"><label for="username" class="form-label">Username</label><InputText id="username" @bind-Value="@Input.UserName" class="form-control" autocomplete="username" maxlength="256" /><ValidationMessage For="() => Input.UserName" /></div>
+        <div class="mb-4"><label for="password" class="form-label">Password</label><InputText id="password" type="password" @bind-Value="@Input.Password" class="form-control" autocomplete="current-password" maxlength="1024" /><ValidationMessage For="() => Input.Password" /></div>
+        <button class="btn btn-primary w-100" type="submit">Log in</button>
+    </EditForm>
+</div>
+@code {
+    [SupplyParameterFromForm] private LoginRequest Input { get; set; } = default!;
+    [SupplyParameterFromQuery] public string? ReturnUrl { get; set; }
+    [SupplyParameterFromQuery] public bool? LoggedOut { get; set; }
+    [CascadingParameter] private HttpContext HttpContext { get; set; } = default!;
+    private string? error;
+    protected override void OnInitialized() => Input ??= new();
+    private void ClearPassword() => Input.Password = "";
+    private async Task Submit()
+    {
+        try
+        {
+            var user = await Users.FindByNameAsync(Input.UserName);
+            var result = user is null ? SignInResult.Failed : await SignIn.CheckPasswordSignInAsync(user, Input.Password, lockoutOnFailure: true);
+            if (!result.Succeeded) { error = "Invalid credentials or sign-in is temporarily unavailable. Try again later if your account is locked."; return; }
+            await Access.RequireAdminAsync(await SignIn.CreateUserPrincipalAsync(user!));
+            await SignIn.SignInAsync(user!, isPersistent: false);
+            Navigation.NavigateTo(AccountNavigation.LocalReturnUrl(ReturnUrl), forceLoad: true);
+        }
+        catch (ApiFault) { error = "This account does not have an active administrator assignment."; }
+        finally { ClearPassword(); }
+    }
+}

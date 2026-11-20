@@ -1,0 +1,11 @@
+@page "/_status"
+@inherits PublicPageBase
+<PageTitle>Service status · MEMS</PageTitle>
+<div class="public-container section-space"><h1>Service status</h1><p>Check whether election information services are available.</p>
+<button class="btn btn-primary" @onclick="Check" disabled="@Loading">Check availability</button><p class="mt-3" role="status">@message</p>
+@if (Error is not null) { <p role="alert">@Error</p> }</div>
+@code {
+    private string message = "Ready to check the services.";
+    protected override void OnInitialized() => Loading = false;
+    private Task Check() => LoadAsync(async token => { var status = await Api.ConnectivityAsync(token); message = status.DatabaseConnected ? "Election information services are available." : "Election services are unavailable."; });
+}

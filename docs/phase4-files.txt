@@ -1,0 +1,53 @@
+Phase 4 exact source/configuration changes
+
+CREATED (25)
+.github/prompts/phase-4-admin.prompt.md
+docs/phase4-admin.md
+docs/phase4-files.txt
+docs/phase4-verification.md
+scripts/verify-phase4-observability.cjs
+scripts/verify-phase4-session-restart.cjs
+scripts/verify-phase4.cjs
+src/MEMS.Admin/Components/AdminPageBase.cs
+src/MEMS.Admin/Components/Pages/AccessDenied.razor
+src/MEMS.Admin/Components/Pages/Account/ChangePassword.razor
+src/MEMS.Admin/Components/Pages/Account/Login.razor
+src/MEMS.Admin/Components/Pages/Account/Logout.razor
+src/MEMS.Admin/Components/Pages/Candidates.razor
+src/MEMS.Admin/Components/Pages/Connectivity.razor
+src/MEMS.Admin/Components/Pages/Municipalities.razor
+src/MEMS.Admin/Components/Pages/Positions.razor
+src/MEMS.Admin/Components/Shared/MediaEditor.razor
+src/MEMS.Admin/Components/Shared/PageFeedback.razor
+src/MEMS.Admin/Components/Shared/RedirectToLogin.razor
+src/MEMS.Admin/Components/Shared/TenantPicker.razor
+src/MEMS.Admin/Controllers/AdminMediaController.cs
+src/MEMS.Admin/Security/AdminAuthentication.cs
+src/MEMS.Admin/Services/AdminOperations.cs
+src/MEMS.Admin/wwwroot/admin.css
+src/MEMS.Data/Identity/IdentitySessions.cs
+
+MODIFIED (16)
+AGENTS.md
+README.md
+scripts/verify-phase1.cjs
+src/MEMS.Admin/Components/App.razor
+src/MEMS.Admin/Components/Layout/MainLayout.razor
+src/MEMS.Admin/Components/Pages/Error.razor
+src/MEMS.Admin/Components/Pages/Home.razor
+src/MEMS.Admin/Components/Pages/NotFound.razor
+src/MEMS.Admin/Components/Routes.razor
+src/MEMS.Admin/Components/_Imports.razor
+src/MEMS.Admin/Program.cs
+src/MEMS.Data/DataServices.cs
+src/MEMS.Data/Services/ElectionAccess.cs
+src/MEMS.Data/Services/ElectionApiService.cs
+src/MEMS.Shared/Contracts/ElectionContracts.cs
+tests/Phase3FixtureChecks.cs
+
+REMOVED (0)
+None
+
+Existing migrations, seed catalogs, packaged images, Public WASM source and development secrets are unchanged.
+Ignored outputs: .local/phase4-* safety/fixture/ledger/session state; .local/identity-sessions/ revocations; runtime/build outputs; restored tools; artifacts/phase4/ evidence. Existing .local media files are preserved; owned test uploads are cleaned up.
+No Git, Azure, COMP4977, deployment, ZIP or final assignment report actions.

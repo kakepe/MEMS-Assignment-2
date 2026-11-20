@@ -1,0 +1,8 @@
+﻿@page "/Error"
+@page "/admin/error"
+@attribute [AllowAnonymous]
+@attribute [ExcludeFromInteractiveRouting]
+@using System.Diagnostics
+<PageTitle>Unable to complete request · MEMS Admin</PageTitle>
+<div class="panel"><h1>Unable to complete this request</h1><p role="alert">Please try again later. If the problem continues, share this request reference with your administrator.</p><p>Reference: <code>@(Activity.Current?.Id ?? HttpContext?.TraceIdentifier)</code></p><a href="/admin" class="btn btn-primary">Return to dashboard</a></div>
+@code { [CascadingParameter] private HttpContext? HttpContext { get; set; } }

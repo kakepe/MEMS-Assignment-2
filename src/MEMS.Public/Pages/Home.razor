@@ -1,0 +1,47 @@
+﻿@page "/"
+@inherits PublicPageBase
+<PageTitle>Municipal election information · MEMS</PageTitle>
+@if (Error is null)
+{
+    <section class="landing-hero"><div class="public-container hero-grid"><div><p class="eyebrow light">British Columbia · Municipal elections</p>
+        <h1>Your community.<br /><span>Your election.</span></h1><p class="hero-description">Get to know the people and positions in your municipality. Explore candidate profiles and find the election information that matters to your community.</p>
+        <a class="btn btn-light hero-button" href="#municipalities">Find your municipality <span aria-hidden="true">↓</span></a>
+    </div><svg class="community-art" viewBox="0 0 500 320" aria-hidden="true"><circle cx="390" cy="77" r="40" fill="#efc873"/><path d="M0 230L110 108l75 75 95-138 140 185z" fill="#345e70"/><path d="M130 246L250 117l110 129z" fill="#567e88"/><path d="M220 151l30-34 27 32-27-12z" fill="#f5f2e8"/><path d="M0 265q130-55 250 0t250-20v75H0z" fill="#829e96"/><path d="M0 286q140-38 285 0t215-5v39H0z" fill="#a8b9a7"/><g fill="#f2e8d4"><path d="M104 215h77v64h-77z"/><path d="M87 216l56-43 56 43z"/><path d="M278 193h62v91h-62z"/><path d="M269 193l40-32 39 32z"/></g><g fill="#254856"><path d="M132 238h22v41h-22z"/><path d="M294 216h13v16h-13z"/><path d="M316 216h13v16h-13z"/></g><g fill="#e9c271"><path d="M114 232h12v13h-12z"/><path d="M160 232h12v13h-12z"/><path d="M294 242h13v16h-13z"/><path d="M316 242h13v16h-13z"/></g><g fill="#173d49"><path d="M36 280v-53h6v53z"/><path d="M17 239l22-60 22 60z"/><path d="M379 281v-60h6v60z"/><path d="M359 236l23-66 24 66z"/><path d="M430 284v-47h5v47z"/><path d="M413 250l20-55 20 55z"/></g></svg>
+    </div></section>
+}
+<div class="public-container section-space">
+    <PublicStatus Loading="Loading" Error="@Error" Status="Status" Retry="Reload" />
+    @if (!Loading && Error is null)
+    {
+        <section id="municipalities" aria-labelledby="municipalities-heading"><div class="section-heading"><div><p class="eyebrow">Start exploring</p><h2 id="municipalities-heading">Choose your municipality</h2></div><p>@municipalities.Count communities, one place to get informed.</p></div>
+        @if (municipalities.Count == 0) { <div class="public-message"><p>No municipal election information has been published yet. Please check back later.</p><button class="btn btn-primary" @onclick="Reload">Refresh municipalities</button></div> }
+        <div class="municipality-grid">@foreach (var m in municipalities)
+        {
+            <article class="municipality-card" style="--tenant-accent:@PublicApi.BrandColor(m.BrandColor)">
+                <PublicImage Source="@m.LogoUrl" Version="@m.Version" Alt="@($"{m.Name} logo")" Logo="true" Class="directory-logo" />
+                <h3><a href="/@m.Slug">@m.Name</a></h3><p class="municipality-province">@m.Province</p>
+                <p class="card-election-date"><span>Election date</span><strong>@m.ElectionDate.ToString("MMMM d, yyyy")</strong></p>
+                <a class="profile-link" href="/@m.Slug" aria-label="@($"Explore {m.Name} election information")">Explore election <span aria-hidden="true">↗</span></a>
+            </article>
+        }</div></section>
+    }
+</div>
+@code {
+    private List<MunicipalityDto> municipalities = [];
+    protected override Task OnInitializedAsync() => Reload();
+    private Task Reload() => LoadAsync(async token =>
+    {
+        municipalities = [];
+        var directory = await Api.DirectoryAsync(token);
+        using var limit = new SemaphoreSlim(4);
+        var details = await Task.WhenAll(directory.Select(async item =>
+        {
+            await limit.WaitAsync(token);
+            try { return await Api.MunicipalityAsync(item.Slug, token); }
+            finally { limit.Release(); }
+        }));
+        token.ThrowIfCancellationRequested();
+        municipalities = details.ToList();
+    });
+}
+

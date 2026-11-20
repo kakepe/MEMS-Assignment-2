@@ -1,0 +1,14 @@
+﻿@inherits LayoutComponentBase
+
+<a class="skip-link" href="#public-content" @onclick="SkipToContent" @onclick:preventDefault>Skip to content</a>
+<header class="public-header"><div class="public-container header-inner">
+    <a class="public-brand" href="/"><span class="public-brand-mark" aria-hidden="true">M</span><span>MEMS<small>Municipal election information</small></span></a>
+    <a class="header-link" href="/">Explore municipalities <span aria-hidden="true">↗</span></a>
+</div></header>
+<main id="public-content" tabindex="-1" @ref="_mainContent">@Body</main>
+<footer class="public-footer"><div class="public-container footer-inner"><div><strong>Informed communities start here.</strong><p>Explore municipal election information in British Columbia.</p><small>Fictional demonstration content · BCIT COMP4976</small></div>
+    <nav aria-label="Footer"><a href="/">All municipalities</a><a href="/_status">Service status</a></nav></div></footer>
+@code {
+    private ElementReference _mainContent;
+    private async Task SkipToContent() => await _mainContent.FocusAsync();
+}

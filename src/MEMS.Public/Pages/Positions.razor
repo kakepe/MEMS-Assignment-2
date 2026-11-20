@@ -1,0 +1,25 @@
+@page "/{Slug}/positions"
+@inherits PublicPageBase
+<PageTitle>@(municipality is null ? "Election positions · MEMS" : municipality.Name + " positions · MEMS")</PageTitle>
+<div class="public-container section-space"><PublicStatus Loading="Loading" Error="@Error" Status="Status" Retry="Reload" />
+@if (!Loading && Error is null && municipality is not null)
+{
+    <TenantFrame Municipality="municipality"><section class="page-intro"><p class="eyebrow">Know the positions</p><h1>Election positions in @municipality.Name</h1><p>See the available seats and explore the candidates contesting each position.</p></section>
+        @if (positions.Count == 0) { <p class="public-message">No election positions have been published for this municipality yet.</p> }
+        <div class="position-grid">@foreach (var p in positions) { <article class="position-card"><span class="seat-badge">@p.SeatsAvailable @(p.SeatsAvailable == 1 ? "seat" : "seats")</span><h2><a href="/@municipality.Slug/positions/@p.PositionId">@p.Name</a></h2><p>View position details and the candidates running for @p.Name.</p><a class="profile-link" href="/@municipality.Slug/positions/@p.PositionId">Explore position ↗</a></article> }</div>
+    </TenantFrame>
+}
+</div>
+@code {
+    [Parameter] public string Slug { get; set; } = "";
+    private MunicipalityDto? municipality;
+    private List<PositionDto> positions = [];
+    protected override Task OnParametersSetAsync() => Reload();
+    private Task Reload() => LoadAsync(async token =>
+    {
+        municipality = null; positions = [];
+        var slug = PublicApi.Slug(Slug); var m = await Api.MunicipalityAsync(slug, token); var offices = await Api.PositionsAsync(slug, token);
+        token.ThrowIfCancellationRequested(); RequireTenant(m.MunicipalityId, offices.Select(x => x.MunicipalityId).ToArray());
+        municipality = m; positions = offices;
+    });
+}

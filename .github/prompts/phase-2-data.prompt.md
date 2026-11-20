@@ -1,0 +1,3 @@
+# Phase 2 data and persistence
+
+Implement the authorized Phase 2 only: adapt Assignment 1 entities and fictional seed content read-only into MEMS.Data; add SQL Server constraints, tenant-scoped services, Identity storage/assignments, reviewed Code First migrations and idempotent development seeds. Preserve the seven projects, Aspire setup, SQL container, volume and existing development secrets. Verify integrity, Identity, reseeding, restart persistence and prior browser connectivity without an eighth .NET project. Do not implement CRUD endpoints, finished login/UI, public election pages, voting selections, printing, cloud or Git actions. See the user's full Phase 2 request for authoritative details.

@@ -1,0 +1,44 @@
+Phase 5 exact source/configuration changes
+
+CREATED (20)
+.github/prompts/phase-5-public.prompt.md
+docs/phase5-files.txt
+docs/phase5-public.md
+docs/phase5-verification.md
+scripts/verify-phase5-navigation.cjs
+scripts/verify-phase5.cjs
+src/MEMS.AppHost/Gateway/PublicGateway.cs
+src/MEMS.Public/Pages/CandidateDetails.razor
+src/MEMS.Public/Pages/Candidates.razor
+src/MEMS.Public/Pages/Connectivity.razor
+src/MEMS.Public/Pages/Municipality.razor
+src/MEMS.Public/Pages/PositionDetails.razor
+src/MEMS.Public/Pages/Positions.razor
+src/MEMS.Public/Services/PublicApi.cs
+src/MEMS.Public/Shared/CandidateCard.razor
+src/MEMS.Public/Shared/PublicImage.razor
+src/MEMS.Public/Shared/PublicPageBase.cs
+src/MEMS.Public/Shared/PublicStatus.razor
+src/MEMS.Public/Shared/TenantFrame.razor
+src/MEMS.Public/wwwroot/css/public.css
+
+MODIFIED (12)
+AGENTS.md
+README.md
+scripts/verify-phase1.cjs
+src/MEMS.AppHost/AppHost.cs
+src/MEMS.AppHost/MEMS.AppHost.csproj
+src/MEMS.Public/App.razor
+src/MEMS.Public/Layout/MainLayout.razor
+src/MEMS.Public/Pages/Home.razor
+src/MEMS.Public/Pages/NotFound.razor
+src/MEMS.Public/Program.cs
+src/MEMS.Public/_Imports.razor
+src/MEMS.Public/wwwroot/index.html
+
+REMOVED (0)
+None
+
+Existing migrations, seed catalogs, packaged images, Admin/API/Data/Shared/ServiceDefaults source and development secrets are unchanged.
+Ignored outputs: .local/phase5-* safety/fixture/ledger/session state; .local/identity-sessions/ revocations; runtime/build outputs; restored tools; artifacts/phase5/ evidence. Existing .local media files are preserved; owned test uploads are cleaned up.
+No Phase 6, Git, Azure, COMP4977, deployment, ZIP or final assignment report actions.

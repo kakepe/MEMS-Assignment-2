@@ -1,0 +1,102 @@
+{
+  "capturedAt": "2026-11-18T05:32:34.121Z",
+  "provenance": "Actual HTTPS requests; 401 probe did not create a record. No auth tokens/cookies exported.",
+  "results": [
+    {
+      "method": "GET",
+      "url": "https://localhost:7192/api/burnaby/candidates?page=1&pageSize=3&sort=name",
+      "status": 200,
+      "body": {
+        "items": [
+          {
+            "candidateId": 14,
+            "municipalityId": 2,
+            "positionId": 1,
+            "name": "Adrian Solano",
+            "profile": "Adrian Solano is an invented community enterprise manager seeking the mayor's office in this fictional Burnaby election. His sample background combines organizational budgeting, staff supervision, and partnerships between local services. He proposes a practical review of municipal service delivery, with plain-language information about costs, waiting times, and planned improvements. Adrian also emphasizes balancing new development with reliable infrastructure and accessible recreation spaces. He would encourage public meetings that welcome different perspectives and explain which issues require cooperation with other levels of government. His fictional interests include supporting neighbourhood business areas and making community facilities easier to navigate. Away from work, he enjoys recreational cycling and volunteering at events that bring residents together across generations.",
+            "email": "candidate@example.org",
+            "website": "https://example.org",
+            "dateCreated": "2026-11-16T00:46:07.7416019",
+            "photoUrl": "/api/burnaby/candidates/14/photo",
+            "isFictionalSample": true,
+            "version": "AAAAAAAANtQ="
+          },
+          {
+            "candidateId": 15,
+            "municipalityId": 2,
+            "positionId": 2,
+            "name": "Mei Tanaka",
+            "profile": "Mei Tanaka is a fictional transportation planner and community arts volunteer running for a council position in the Burnaby sample election. Her imagined work focuses on how people reach everyday destinations, including those who walk, use mobility aids, cycle, or rely on transit. She proposes reviewing municipal street crossings, connections to public facilities, and the clarity of information about neighbourhood construction. Mei also supports accessible arts and recreation opportunities as part of healthy community life. She would ask council reports to explain how proposed projects affect different users and how their maintenance will be funded. Outside this fictional campaign, she enjoys drawing, visiting local parks, and helping volunteers organize small, inclusive neighbourhood exhibitions.",
+            "email": "candidate@example.org",
+            "website": "https://example.org",
+            "dateCreated": "2026-11-16T00:46:07.74262",
+            "photoUrl": "/api/burnaby/candidates/15/photo",
+            "isFictionalSample": true,
+            "version": "AAAAAAAANtU="
+          },
+          {
+            "candidateId": 18,
+            "municipalityId": 2,
+            "positionId": 3,
+            "name": "Patrick Rowden",
+            "profile": "Patrick Rowden is an invented retired technical college administrator and literacy volunteer seeking a school trustee position in this fictional Burnaby election. His sample background includes facilities planning, program evaluation, and explaining institutional budgets. He proposes school board discussions that connect long-term spending decisions with student learning needs and equitable access to resources. Patrick supports listening to students, educators, families, and support staff before deciding which improvements should take priority. He distinguishes board oversight from the work of principals and teachers and values clear public reporting on district goals. His fictional interests include practical learning opportunities, accessible libraries, and intergenerational volunteering. Outside this demonstration campaign, he enjoys restoring furniture and participating in neighbourhood reading circles.",
+            "email": "candidate@example.org",
+            "website": "https://example.org",
+            "dateCreated": "2026-11-16T00:46:07.7453411",
+            "photoUrl": "/api/burnaby/candidates/18/photo",
+            "isFictionalSample": true,
+            "version": "AAAAAAAANtg="
+          }
+        ],
+        "page": 1,
+        "pageSize": 3,
+        "totalCount": 6,
+        "totalPages": 2
+      }
+    },
+    {
+      "method": "GET",
+      "url": "https://localhost:7192/api/burnaby/candidates?positionId=5",
+      "status": 400,
+      "body": {
+        "title": "Bad Request",
+        "status": 400,
+        "detail": "Choose a position in this municipality.",
+        "traceId": "00-7f84e5560ab69ae56879ad7cd311a633-1107be0cfd629b6c-01"
+      }
+    },
+    {
+      "method": "GET",
+      "url": "https://localhost:7192/api/unknown-tenant/candidates",
+      "status": 404,
+      "body": {
+        "title": "Not Found",
+        "status": 404,
+        "detail": "Municipality not found.",
+        "traceId": "00-b5370cb1bc7c2f827bfc8e5a9fff27fa-bd7d202f5ef27106-01"
+      }
+    },
+    {
+      "method": "POST",
+      "url": "https://localhost:7192/api/burnaby/candidates",
+      "status": 401,
+      "body": {
+        "title": "Unauthorized",
+        "status": 401,
+        "detail": "Unauthorized",
+        "traceId": "00-dd287a27a508e55f7964ca70ee15eb3d-8c3b9d2a3efc9b07-01"
+      }
+    },
+    {
+      "method": "GET",
+      "url": "https://localhost:7192/api/surrey/candidates",
+      "status": 403,
+      "body": {
+        "title": "Forbidden",
+        "status": 403,
+        "detail": "This municipality is outside your assignment.",
+        "traceId": "00-219cc20f5efb62c8bcc593180cb369fa-4d932acaedc5be9b-01"
+      }
+    }
+  ]
+}

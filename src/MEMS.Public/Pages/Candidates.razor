@@ -1,0 +1,56 @@
+@page "/{Slug}/candidates"
+@inherits PublicPageBase
+<PageTitle>@(municipality is null ? "Candidates · MEMS" : municipality.Name + " candidates · MEMS")</PageTitle>
+<div class="public-container section-space">
+    <PublicStatus Loading="Loading" Error="@Error" Status="Status" Retry="Reload" />
+    @if (Status == 400 && canonical.Length > 0) { <a class="btn btn-outline-primary" href="/@canonical/candidates">Reset filters</a> }
+    @if (!Loading && Error is null && municipality is not null && results is not null)
+    {
+        <TenantFrame Municipality="municipality">
+            <section class="page-intro"><p class="eyebrow">Meet your community's candidates</p><h1>Candidates in @municipality.Name</h1><p>Explore profiles, read biographies and learn which position each candidate is contesting.</p></section>
+            <EditForm Model="query" FormName="public-candidate-filter" OnValidSubmit="Apply" class="public-filter"><DataAnnotationsValidator /><ValidationSummary class="text-danger" role="alert" />
+                <div class="filter-grid"><div><label class="form-label" for="name-search">Search by name</label><InputText id="name-search" class="form-control" @bind-Value="query.Search" maxlength="100" placeholder="Enter a candidate name" /></div>
+                <div><label class="form-label" for="position-filter">Position</label><InputSelect id="position-filter" class="form-select" @bind-Value="query.PositionId"><option value="">All positions</option>@foreach (var p in positions) { <option value="@p.PositionId">@p.Name</option> }</InputSelect></div>
+                <div><label class="form-label" for="sort-order">Sort by</label><InputSelect id="sort-order" class="form-select" @bind-Value="query.Sort"><option value="name">Name (A–Z)</option><option value="created">Newest first</option></InputSelect></div>
+                <div><label class="form-label" for="page-size">Per page</label><InputSelect id="page-size" class="form-select" @bind-Value="query.PageSize"><option value="5">5</option><option value="12">12</option><option value="24">24</option><option value="50">50</option></InputSelect></div></div>
+                <div class="filter-actions"><button class="btn btn-primary" type="submit">Apply filters</button><a class="btn btn-link" href="/@municipality.Slug/candidates">Clear filters</a></div>
+            </EditForm>
+            <p class="results-summary" role="status">Showing @results.Items.Count of @results.TotalCount matching candidate profiles</p>
+            @if (results.Items.Count == 0) { <div class="public-message"><h2>No candidates found</h2><p>Try a different name or position, or clear the filters to see the available profiles.</p><a href="/@municipality.Slug/candidates">Clear filters and return to the first page</a></div> }
+            <div class="candidate-grid">@foreach (var c in results.Items) { <CandidateCard Candidate="c" Slug="@municipality.Slug" Position="@PositionName(c.PositionId)" /> }</div>
+            <nav class="public-pagination" aria-label="Candidate pages"><span>Page @results.Page of @Math.Max(1, results.TotalPages)</span><div>
+                @if (results.Page > 1) { <a class="btn btn-outline-primary" rel="prev" href="@PageUrl(results.Page - 1)">Previous page</a> }
+                @if (results.Page < results.TotalPages) { <a class="btn btn-outline-primary" rel="next" href="@PageUrl(results.Page + 1)">Next page</a> }
+            </div></nav>
+        </TenantFrame>
+    }
+</div>
+@code {
+    [Parameter] public string Slug { get; set; } = "";
+    [SupplyParameterFromQuery] public string? Search { get; set; }
+    [SupplyParameterFromQuery(Name = "positionId")] public string? FilterPosition { get; set; }
+    [SupplyParameterFromQuery(Name = "page")] public string? PageNumber { get; set; }
+    [SupplyParameterFromQuery] public string? PageSize { get; set; }
+    [SupplyParameterFromQuery] public string? Sort { get; set; }
+    private string canonical = "";
+    private MunicipalityDto? municipality;
+    private List<PositionDto> positions = [];
+    private PageResult<CandidateDto>? results;
+    private CandidateQuery query = new();
+    private string PositionName(int id) => positions.FirstOrDefault(x => x.PositionId == id)?.Name ?? "Election position";
+    protected override Task OnParametersSetAsync() => Reload();
+    private Task Reload() => LoadAsync(async token =>
+    {
+        municipality = null; results = null; positions = [];
+        canonical = PublicApi.Slug(Slug);
+        var m = await Api.MunicipalityAsync(canonical, token);
+        query = new() { Search = Search, PositionId = QueryInteger(FilterPosition), Page = QueryInteger(PageNumber) ?? 1, PageSize = QueryInteger(PageSize) ?? 12, Sort = Sort ?? "name" };
+        var offices = Api.PositionsAsync(canonical, token); var people = Api.CandidatesAsync(canonical, query, token);
+        await Task.WhenAll(offices, people); token.ThrowIfCancellationRequested();
+        RequireTenant(m.MunicipalityId, offices.Result.Select(x => x.MunicipalityId).Concat(people.Result.Items.Select(x => x.MunicipalityId)).ToArray());
+        municipality = m; positions = offices.Result; results = people.Result;
+    });
+    private void Apply() => Navigation.NavigateTo(PageUrl(1));
+    private string PageUrl(int number) => $"/{canonical}/candidates?page={number}&pageSize={query.PageSize}&sort={Uri.EscapeDataString(query.Sort)}"
+        + (string.IsNullOrWhiteSpace(query.Search) ? "" : "&search=" + Uri.EscapeDataString(query.Search)) + (query.PositionId.HasValue ? "&positionId=" + query.PositionId : "");
+}

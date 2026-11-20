@@ -1,0 +1,1220 @@
+{
+  "purpose": "Review-only allowlist for later explicitly approved source archive/Git staging; no ZIP or Git operation performed.",
+  "files": [
+    {
+      "path": ".github/copilot-instructions.md",
+      "bytes": 1224,
+      "sha256": "6131d41cafe14a1a59089afb592758ef5d09b4d9bedbffedc8dde36952a41e19"
+    },
+    {
+      "path": ".github/prompts/phase-1-foundation.prompt.md",
+      "bytes": 566,
+      "sha256": "21de8d3b385aeb655d84a623be9c21502037ffd3b2a83408da2c89c3a26cb9c0"
+    },
+    {
+      "path": ".github/prompts/phase-2-data.prompt.md",
+      "bytes": 709,
+      "sha256": "ed6fdb5505a1282a342234002ca64e9adc92eeddcb93e8a06162039841467dae"
+    },
+    {
+      "path": ".github/prompts/phase-3-api.prompt.md",
+      "bytes": 727,
+      "sha256": "fc745b2ea18c2800c217398f2e2b6a679ce958aaa2de41d3e1625e4728093b5e"
+    },
+    {
+      "path": ".github/prompts/phase-4-admin.prompt.md",
+      "bytes": 786,
+      "sha256": "4e457c6016a50b79cf7760b1a4949c5efbad4a17ee5e37b948ea94d46624f974"
+    },
+    {
+      "path": ".github/prompts/phase-5-public.prompt.md",
+      "bytes": 848,
+      "sha256": "85f2354f342022df7d33ceb2d14dd6b0c21761b9f37ac13d5f171e584bd6af24"
+    },
+    {
+      "path": ".github/prompts/phase-6-guide.prompt.md",
+      "bytes": 951,
+      "sha256": "b9733111e6432c2f4320fd0dfd52410f980fba820306ad581276c9e2fa4cf87d"
+    },
+    {
+      "path": ".github/prompts/phase-7-documentation.prompt.md",
+      "bytes": 882,
+      "sha256": "bca631068a863133b39f18f1f5f37a4fc4fd480841d4142a583cf2c78f3c87b4"
+    },
+    {
+      "path": ".gitignore",
+      "bytes": 499,
+      "sha256": "c527309cd51bf7c42f4518848091b9fb481d54b5ea7be2dffa369b65348324f0"
+    },
+    {
+      "path": "AGENTS.md",
+      "bytes": 1770,
+      "sha256": "8d00a5cb5d34636dd082b0e1ff8f3400ba2be68ddec4db0c77e7640c40e3c1a7"
+    },
+    {
+      "path": "MEMS.sln",
+      "bytes": 9269,
+      "sha256": "54792801334d605a926f50c6f9b310fc9d25ce5ccf3fa2348ff72a1bfda31f3c"
+    },
+    {
+      "path": "NuGet.Config",
+      "bytes": 283,
+      "sha256": "7634c90b5d22b9912928c2ea8f262cc9dd9e424581aaa8dc3515d9478690de6f"
+    },
+    {
+      "path": "README.md",
+      "bytes": 14735,
+      "sha256": "f807ed85b1fa283754f8e1c20f92cfd39558a88584cfe4a3dbb8039299447013"
+    },
+    {
+      "path": "docs/final/MEMS-Assignment-2-Final-Report.pdf",
+      "bytes": 3322373,
+      "sha256": "b4134115f900b814d3607e2f903e37dd08e85da2dc18518e8717fd43bd64ac3c"
+    },
+    {
+      "path": "docs/final/README.md",
+      "bytes": 596,
+      "sha256": "53626ee6f34b8a61f23d0ae27d9c3481e59b4715f6e52edfb91957e106b5b7ce"
+    },
+    {
+      "path": "docs/final/ai-usage.md",
+      "bytes": 5565,
+      "sha256": "59d9589e6ec72da98972dacfaf9c8b0bfca839b2a8c90f8e8c06c99567f0eb0c"
+    },
+    {
+      "path": "docs/final/api-reference.md",
+      "bytes": 11011,
+      "sha256": "c0a0f044328d1d250714cd9bd56e64be43249c9205478807e371454787c08f3d"
+    },
+    {
+      "path": "docs/final/architecture.md",
+      "bytes": 2543,
+      "sha256": "6754bbdaeae74aa8d2f628738095be471975df1413295603c719ae80d41eccc9"
+    },
+    {
+      "path": "docs/final/data-dictionary.md",
+      "bytes": 5429,
+      "sha256": "bea950b38a617df590ea3843f01bd07348483facaea0f9ce32095f514659b2a7"
+    },
+    {
+      "path": "docs/final/deficiency-resolution.md",
+      "bytes": 1525,
+      "sha256": "c9c69e24f370bc7ee342e5e78ddca4b35fafaaed109fcc7aedf0126554353c9a"
+    },
+    {
+      "path": "docs/final/diagrams/architecture.svg",
+      "bytes": 5881,
+      "sha256": "db7ec907220cfd458b1770abc8e3f0cdeb4b57003a6532dc9ae6bd6459680cd0"
+    },
+    {
+      "path": "docs/final/diagrams/erd-domain.svg",
+      "bytes": 4430,
+      "sha256": "66912ce77e61863f2e554890054fadc82f1056a51ccfc054ea5c6f39d53a128d"
+    },
+    {
+      "path": "docs/final/diagrams/erd-identity.svg",
+      "bytes": 5776,
+      "sha256": "138d8195e9669f5a61f1f33ff8c9c6a4b08f3f17133b9c92180f93c8d9c29640"
+    },
+    {
+      "path": "docs/final/evidence/admin-candidates.png",
+      "bytes": 107056,
+      "sha256": "d32563421a70dd7033a32ed0a377a0bdb1de3274839d9b86e7b70d0021cd2f4d"
+    },
+    {
+      "path": "docs/final/evidence/admin-dashboard.png",
+      "bytes": 58341,
+      "sha256": "4e0d0f951059c5e5493c93ff42f6bfbd74ce1448dc7b102fa4af3b89112179b3"
+    },
+    {
+      "path": "docs/final/evidence/api-documentation.png",
+      "bytes": 93255,
+      "sha256": "17d5e4f09ddd60fd587f46d5efd3bafcf56af464918801e3fc8ec1dfa2331b91"
+    },
+    {
+      "path": "docs/final/evidence/api-live-response.png",
+      "bytes": 90261,
+      "sha256": "3e54a260b472942b8c950fc4ac63d8f5c0ee7e2028163e182257f34185f69308"
+    },
+    {
+      "path": "docs/final/evidence/api-results.html",
+      "bytes": 5814,
+      "sha256": "c995b540409cfffcb8231ecf230712a9d38e0ab86573efcfef4abf6f41dbd220"
+    },
+    {
+      "path": "docs/final/evidence/api-results.json",
+      "bytes": 5815,
+      "sha256": "23dad378f7e2b812bc4462e0af23380de18e628cf23380101481ed2fa9308d1c"
+    },
+    {
+      "path": "docs/final/evidence/api-testing.png",
+      "bytes": 167302,
+      "sha256": "ade06116fb5ed81ff0555cb1a3550e64305702e569668006c77843ed76f64c12"
+    },
+    {
+      "path": "docs/final/evidence/aspire-dashboard.png",
+      "bytes": 90368,
+      "sha256": "2526c2e2f50ef1ee152b4997f44b95446155e20df1bbaf8fddd26f8132a63b59"
+    },
+    {
+      "path": "docs/final/evidence/openapi.json",
+      "bytes": 104234,
+      "sha256": "39ab76753451c6eb56bdb03b0af5131e9e94c320548628d3125549865a30177a"
+    },
+    {
+      "path": "docs/final/evidence/public-burnaby.png",
+      "bytes": 755731,
+      "sha256": "0c5de530c7ebd08dc25063dd31a53b4f702342127f282edf6bfca2ad07bb92c3"
+    },
+    {
+      "path": "docs/final/evidence/public-guide-mobile.png",
+      "bytes": 67486,
+      "sha256": "7eb60a66099b504924d67738b4cdb1e49590f149383a9a9cbb716f37f0fab89e"
+    },
+    {
+      "path": "docs/final/evidence/public-guide.png",
+      "bytes": 79202,
+      "sha256": "93c4532c0f9fabc766238826b84380c69da18aa0449f597ad3d7b7da0b6541ff"
+    },
+    {
+      "path": "docs/final/evidence/public-richmond.png",
+      "bytes": 123075,
+      "sha256": "92978e4024d0891a50b430357738ee6eba5c0bfd359444d5ecf56dc3bbb7ac71"
+    },
+    {
+      "path": "docs/final/evidence/public-surrey.png",
+      "bytes": 766146,
+      "sha256": "d9915b32ff543bacfdaa7a9187903d825524ef6b7d0f2557bd7f175804ba9b18"
+    },
+    {
+      "path": "docs/final/evidence/sql-query-export.html",
+      "bytes": 2296,
+      "sha256": "de90a960837ae910bb893a71c7808e9edb419dcba7f3f1dedf20f635f91e572f"
+    },
+    {
+      "path": "docs/final/evidence/sql-server.png",
+      "bytes": 78611,
+      "sha256": "6b70df2d635c8ad9ae4bec256cad4ffdd52a0feb0ad0fc08dd77bdab441362c7"
+    },
+    {
+      "path": "docs/final/evidence/sql-snapshot.json",
+      "bytes": 60444,
+      "sha256": "effb4b194a325dde891cbc79c500422a166d40eeb3645a08f11d1c245bcc776a"
+    },
+    {
+      "path": "docs/final/publishing-and-package-plan.md",
+      "bytes": 4414,
+      "sha256": "437e9b26f7cd8f3d30adee61c27a54a0f552acfb49359f1c925b198f950b58be"
+    },
+    {
+      "path": "docs/final/report.html",
+      "bytes": 62263,
+      "sha256": "11d101f0719ace243ddddc3b6b8ab9da1fe5c5484b3296b269386dbf3d3a357b"
+    },
+    {
+      "path": "docs/final/rubric-and-readiness.md",
+      "bytes": 4484,
+      "sha256": "720c8e8f7e24562aed7182200c561bebfd2b2d058ba875df696753346c4ac3b6"
+    },
+    {
+      "path": "docs/final/technical-guide.md",
+      "bytes": 7272,
+      "sha256": "f743a21edd9622e21201ac7b4e6e6bbc2fd2026e43ca55a140532ccfea911df6"
+    },
+    {
+      "path": "docs/final/verification.md",
+      "bytes": 6239,
+      "sha256": "370c508f417c223a3bca0052492b31dd287ed3a0ec128b59da6dc21b3f5d5ddf"
+    },
+    {
+      "path": "docs/phase1-files.txt",
+      "bytes": 3463,
+      "sha256": "f965f4ef19de5b257081e10347752a277774fcd540cd509004818f65c05aec43"
+    },
+    {
+      "path": "docs/phase1-verification.md",
+      "bytes": 3623,
+      "sha256": "afd728806a0efef28635792f7776985c0070769bc33f3b0c4a9d519be8ba6a22"
+    },
+    {
+      "path": "docs/phase2-files.txt",
+      "bytes": 4469,
+      "sha256": "ced5ae10a765ca6bdb08cc9bf501d60ac33cfeeac5fadea5e1b7e4f9b09b2cab"
+    },
+    {
+      "path": "docs/phase2-schema.md",
+      "bytes": 5480,
+      "sha256": "309193150f9816eca272242cd1c00dff66f8a35146348edc45a7c3ba3281fa4a"
+    },
+    {
+      "path": "docs/phase2-seeds.md",
+      "bytes": 3908,
+      "sha256": "2318122eb9adee720febfed196490c798b2d39dadc509d80c9d312506d4c26a6"
+    },
+    {
+      "path": "docs/phase2-verification.md",
+      "bytes": 6493,
+      "sha256": "f286acd4f9fe76b58b39e043dbe38b3b9abe4c2bbaf67bb744018c0d56706e9a"
+    },
+    {
+      "path": "docs/phase3-api.md",
+      "bytes": 14212,
+      "sha256": "8241ea9afc69753368a9f6b32fcb2e84d3574f4e8e8495c6e2578c4378cc0022"
+    },
+    {
+      "path": "docs/phase3-files.txt",
+      "bytes": 3480,
+      "sha256": "889e3686f3f6d2a33ade5444ba9d4843d9b25172aaf096ef6f6849cf05d37c2a"
+    },
+    {
+      "path": "docs/phase3-verification.md",
+      "bytes": 13988,
+      "sha256": "c43da3c4f63cc5baf5b64484ce22b3bd57b044b82af547d3c2443bbeafc15c91"
+    },
+    {
+      "path": "docs/phase4-admin.md",
+      "bytes": 11934,
+      "sha256": "1cf3ccdfe650ee7e564077adaf0072c4180031ab1ae53ebe8ebcfa92fc97f6de"
+    },
+    {
+      "path": "docs/phase4-files.txt",
+      "bytes": 2257,
+      "sha256": "54ef0f90ee27f207aeb548837f79a16c282d2f884e1dab21a148b12001de2e7b"
+    },
+    {
+      "path": "docs/phase4-verification.md",
+      "bytes": 16184,
+      "sha256": "871b0e7401ccdc5827d1420dbe37dff3818cfa83fa5876dddd6ee406b1c54dd8"
+    },
+    {
+      "path": "docs/phase5-files.txt",
+      "bytes": 1703,
+      "sha256": "69c2b3c27cf3062d3e2a9f64d011cf3b80c1cb3b742d3568d3fd10b60b24e807"
+    },
+    {
+      "path": "docs/phase5-public.md",
+      "bytes": 10164,
+      "sha256": "3e0dff2fa29ce08bdab349f90be0410d9ebf395ebfd02250c6b802e4ad5408b1"
+    },
+    {
+      "path": "docs/phase5-verification.md",
+      "bytes": 17285,
+      "sha256": "5342863a770bbaddef4a6ac358ba5747c3bd069621d03d58a8932e1ea0dcc5fe"
+    },
+    {
+      "path": "docs/phase6-files.txt",
+      "bytes": 1357,
+      "sha256": "0cd547391a8521149b04e90a59f24736e758d33945375b2a897552d3f4effe73"
+    },
+    {
+      "path": "docs/phase6-guide.md",
+      "bytes": 7886,
+      "sha256": "e75ecd54831f38c991dc2945e935eaa5e9c303ab9fcd1aef87d9f2587aa07d95"
+    },
+    {
+      "path": "docs/phase6-verification.md",
+      "bytes": 17744,
+      "sha256": "dc4a9d41aeb7170c6813500a02232980f35b96636869243c65b775e576b846b8"
+    },
+    {
+      "path": "docs/phase7-audit.md",
+      "bytes": 4895,
+      "sha256": "c332a052844ace424a4d3e65197c8cc8eb47f45c3dde0ded812727ef47535d5c"
+    },
+    {
+      "path": "docs/phase7-files.txt",
+      "bytes": 2363,
+      "sha256": "c110daa0d5b9d5ffbecc4b457852a7a9c1f2d6c5652c193a4cbd390cdbb4bc76"
+    },
+    {
+      "path": "docs/phase7-verification.md",
+      "bytes": 1598,
+      "sha256": "5f3d867f5e68876137c7d69dc12fec4e5cebef29b01dab32219c8102de1ba467"
+    },
+    {
+      "path": "global.json",
+      "bytes": 109,
+      "sha256": "ea832b7db9570fb51750ec78ee59f5980f6c7a3b49d7e681fea6aa3533de794b"
+    },
+    {
+      "path": "scripts/audit-phase7-publication.py",
+      "bytes": 4008,
+      "sha256": "e5a0ffd564b88f5bb2bcaf6079a0cf6361ad16dc19a146a8562c1490bf9fca9e"
+    },
+    {
+      "path": "scripts/build-phase7-report.py",
+      "bytes": 13566,
+      "sha256": "567d0ea7a78271c623cb6fb42a768a52d1daae30e03a553bcc1060dae79bf7b6"
+    },
+    {
+      "path": "scripts/capture-phase7-evidence.cjs",
+      "bytes": 8949,
+      "sha256": "08e64dd5658932df1b348d648ce2838d5d500fcec5836f8e05b900e52e720bcd"
+    },
+    {
+      "path": "scripts/check-assignment1.py",
+      "bytes": 1624,
+      "sha256": "b339d84e64f74304b79d258fe8887617a5021fa72af5fe7fe16dcaa688ebec2a"
+    },
+    {
+      "path": "scripts/configure-development-seed.ps1",
+      "bytes": 1276,
+      "sha256": "ba73d73c5405d4c5379e3e8185a772c2a03b7ab6fdf0327d86ed6e80ff1a5b6c"
+    },
+    {
+      "path": "scripts/inspect-dashboard.cjs",
+      "bytes": 1711,
+      "sha256": "9907cd5fe19424865707b7955a3e528e365c1bf5b6c37c6ebb4ffbc9552f56e9"
+    },
+    {
+      "path": "scripts/inspect-phase6-schema.ps1",
+      "bytes": 3754,
+      "sha256": "f2acbb1294584f0a9b926bfee4c74ff68a90892bba3dbe59fe6e70930d152d0e"
+    },
+    {
+      "path": "scripts/print-phase7-report.cjs",
+      "bytes": 2156,
+      "sha256": "3af370dc923571bf062cfd2cfa5ef238a94707c0b5c70e7da18d4c18224e75ba"
+    },
+    {
+      "path": "scripts/read-phase7-sql.ps1",
+      "bytes": 4295,
+      "sha256": "b2086b6d50df452ef9b5b2dae3637a896fa5a15a54ca3f83f0f54873bb16d270"
+    },
+    {
+      "path": "scripts/render-phase7-diagrams.py",
+      "bytes": 8723,
+      "sha256": "182fcd0fb377f96288043afeb0a1bc1786252613cf1a417cd6654d5af21e15ef"
+    },
+    {
+      "path": "scripts/start.ps1",
+      "bytes": 531,
+      "sha256": "e86623625ffe1fb9b6e635f706172aa1600b7828bdd3275618781d631f8def99"
+    },
+    {
+      "path": "scripts/verify-phase1.cjs",
+      "bytes": 7484,
+      "sha256": "32365067aa0ab1e4d8d49140e6eb61328ac744eb2ab8ebba75781592863318ed"
+    },
+    {
+      "path": "scripts/verify-phase2.ps1",
+      "bytes": 2236,
+      "sha256": "da24bdaf0d9875fbbd0e04f0a8304a61c18040ec027f7512a03c7727556f52a6"
+    },
+    {
+      "path": "scripts/verify-phase3-browser.cjs",
+      "bytes": 3962,
+      "sha256": "a529b42b0fc8549a623596e23573013bcdf75cd02d490eb676528c0456a80c84"
+    },
+    {
+      "path": "scripts/verify-phase3.cjs",
+      "bytes": 20551,
+      "sha256": "91bb807a411e8c6e48161c5b7fb77975c3415362c98f7a9683a3b499293b0f07"
+    },
+    {
+      "path": "scripts/verify-phase4-observability.cjs",
+      "bytes": 3400,
+      "sha256": "06e5b54b8699b83f83f49a2a37be626cce8f4d27ad61a54050807e2ccdebb93a"
+    },
+    {
+      "path": "scripts/verify-phase4-session-restart.cjs",
+      "bytes": 1899,
+      "sha256": "2c4fd1e7afd455509cad6b8dd6eadabeeeaf18bc4470717c195eb8b4c8bfdcda"
+    },
+    {
+      "path": "scripts/verify-phase4.cjs",
+      "bytes": 27325,
+      "sha256": "80520d4402e8034a5b1ed41daceba7474f076307f9750a0d99b9272663678516"
+    },
+    {
+      "path": "scripts/verify-phase5-navigation.cjs",
+      "bytes": 4325,
+      "sha256": "713703cd980d7bfc4c281d147026a53041e048a0e0e084b9bf50812d1cdbd25f"
+    },
+    {
+      "path": "scripts/verify-phase5.cjs",
+      "bytes": 23987,
+      "sha256": "6ec1f6b6330a6dbaea37eab4767e0c44ee1bdefd531cc2a6c8b1b5dabe13ccd0"
+    },
+    {
+      "path": "scripts/verify-phase6-preview.cjs",
+      "bytes": 5090,
+      "sha256": "291ca138b5b13593a0daeb9be40163426cb9d98d0681bc36cdef677403c4e50a"
+    },
+    {
+      "path": "scripts/verify-phase6-print.py",
+      "bytes": 2193,
+      "sha256": "f61b5adfd4c3c9896c62a8c8f44f7cfddbd713037b24753745a248cf4b7c3087"
+    },
+    {
+      "path": "scripts/verify-phase6-session-restart.cjs",
+      "bytes": 2102,
+      "sha256": "bef74fd1ac7fa0a25b01df48d34db1f90700e02c57e8ac0554241e93280564c3"
+    },
+    {
+      "path": "scripts/verify-phase6-sync.cjs",
+      "bytes": 4964,
+      "sha256": "8f83e9ee8fdfdc06ca98abf89a5c7afd8951322ecc9eb8c063991e92d13a8975"
+    },
+    {
+      "path": "scripts/verify-phase6.cjs",
+      "bytes": 18167,
+      "sha256": "3f06b01ba565e8edf7337c460e5dce046da13108489ada8b0dd0ae8a4a196121"
+    },
+    {
+      "path": "scripts/verify-phase7-report.py",
+      "bytes": 1998,
+      "sha256": "3394eb7f85259bf6f8a50f3f64a1d12772c21431464a3e46f4ed1419e7aa8d85"
+    },
+    {
+      "path": "src/MEMS.Admin/Components/AdminPageBase.cs",
+      "bytes": 1552,
+      "sha256": "b9ffd9046a33750c923d10b1910fedd7b157e05f436fa899ef3588871cd97052"
+    },
+    {
+      "path": "src/MEMS.Admin/Components/App.razor",
+      "bytes": 958,
+      "sha256": "4d3cdce8286c6ac87335d8acc48271c12dd362547bf8c7630c4e469182435826"
+    },
+    {
+      "path": "src/MEMS.Admin/Components/Layout/MainLayout.razor",
+      "bytes": 2285,
+      "sha256": "71c9368eaa2c200e3c5a55d2e7af05ec50120024fd3a0a5fd1a043e6a3c887aa"
+    },
+    {
+      "path": "src/MEMS.Admin/Components/Layout/MainLayout.razor.css",
+      "bytes": 460,
+      "sha256": "3843531ea35440d59b5e688b5ac3feaaed91f760da8940b662531c49f4de66b5"
+    },
+    {
+      "path": "src/MEMS.Admin/Components/Layout/ReconnectModal.razor",
+      "bytes": 1362,
+      "sha256": "e1c8308c1ec6656c8f5cd50df3f1879b614e43109ad6b1e23ab26d6f1007c6db"
+    },
+    {
+      "path": "src/MEMS.Admin/Components/Layout/ReconnectModal.razor.css",
+      "bytes": 3873,
+      "sha256": "ba73539337ecff370e1ce8ebb9ebc0992d6ed100080a29f4bcac888f1ce1abd8"
+    },
+    {
+      "path": "src/MEMS.Admin/Components/Layout/ReconnectModal.razor.js",
+      "bytes": 2448,
+      "sha256": "e6efaff747ceb6d105cc4daa1cc18c3979b2f77224fc1686a8baeb9eeea67465"
+    },
+    {
+      "path": "src/MEMS.Admin/Components/Pages/AccessDenied.razor",
+      "bytes": 401,
+      "sha256": "34a2eb73759cebe729c2d0de0914f02d4503daf8daa9e50e3fcc45dd80816639"
+    },
+    {
+      "path": "src/MEMS.Admin/Components/Pages/Account/ChangePassword.razor",
+      "bytes": 3587,
+      "sha256": "9c2e80522a1c128c70c47b50410bad3501e03bbc831d64bac844901ba171fde9"
+    },
+    {
+      "path": "src/MEMS.Admin/Components/Pages/Account/Login.razor",
+      "bytes": 2792,
+      "sha256": "5553837f6f2970a3bd9194221d336fea3e94e05138ae616912452987c37ae268"
+    },
+    {
+      "path": "src/MEMS.Admin/Components/Pages/Account/Logout.razor",
+      "bytes": 887,
+      "sha256": "35a2ec8f6555f3ce38349d9a9e411a2249abe68c0ace5d29d6b1325f8a9c4e14"
+    },
+    {
+      "path": "src/MEMS.Admin/Components/Pages/Candidates.razor",
+      "bytes": 12220,
+      "sha256": "dc96dd6760eaf386e648031e5d9c7482fd12ab9c2e20b6cee74e19f4c2bf26a0"
+    },
+    {
+      "path": "src/MEMS.Admin/Components/Pages/Connectivity.razor",
+      "bytes": 1078,
+      "sha256": "0550a4a56cf05190dc4f70aa53c7f8a4d7624edb6eadf3b4a7e572ab7743fa8a"
+    },
+    {
+      "path": "src/MEMS.Admin/Components/Pages/Error.razor",
+      "bytes": 625,
+      "sha256": "62b1e559fd624f37548937aeb62e7b25fa9f71f6da1edc119d0c45e95dff6cbc"
+    },
+    {
+      "path": "src/MEMS.Admin/Components/Pages/Home.razor",
+      "bytes": 1758,
+      "sha256": "ac888c39366c3aa8382a443cbc53b6c37ee10bb5eaf45542acfb6b9cb34bd871"
+    },
+    {
+      "path": "src/MEMS.Admin/Components/Pages/Municipalities.razor",
+      "bytes": 9015,
+      "sha256": "4dd9413a6b81b2b190bf1db290ea88849bc69e3c197b186e6376b01bbf08193f"
+    },
+    {
+      "path": "src/MEMS.Admin/Components/Pages/NotFound.razor",
+      "bytes": 306,
+      "sha256": "f7468c932e7b5e13bc5d12c4d265b5576a34a0b4e2b72df5f1e1ebf3ab35e1df"
+    },
+    {
+      "path": "src/MEMS.Admin/Components/Pages/Positions.razor",
+      "bytes": 6041,
+      "sha256": "144149ab36ccc006869efc5845c99ffcc355ac9d82f27e7fe8b53eb251488bb9"
+    },
+    {
+      "path": "src/MEMS.Admin/Components/Routes.razor",
+      "bytes": 548,
+      "sha256": "4cc0f4aa163b0524967443e1a8db8e58fde0f5e20478282799dcd7774b06c955"
+    },
+    {
+      "path": "src/MEMS.Admin/Components/Shared/MediaEditor.razor",
+      "bytes": 3330,
+      "sha256": "be3871b627bc2838f4177f52ac6f570126452a64e97fb14e21628a7b3479e18c"
+    },
+    {
+      "path": "src/MEMS.Admin/Components/Shared/PageFeedback.razor",
+      "bytes": 767,
+      "sha256": "9e2bb96e4aeb9827ec4500b9550513203d0528626539277aab2dd6756f41bbb5"
+    },
+    {
+      "path": "src/MEMS.Admin/Components/Shared/RedirectToLogin.razor",
+      "bytes": 593,
+      "sha256": "c4ada43b623d6b12d252837da956eb5f356ae027119650d41b8d0712ecb4aad0"
+    },
+    {
+      "path": "src/MEMS.Admin/Components/Shared/TenantPicker.razor",
+      "bytes": 826,
+      "sha256": "c54d9ce65e5eccb50d185e026759901172c7cbed3159f7bf0ad4ccca6ae38490"
+    },
+    {
+      "path": "src/MEMS.Admin/Components/_Imports.razor",
+      "bytes": 676,
+      "sha256": "d598d33a26406bebe21c2e920a85e20e4c682bd3f9057a65c6d4f6bf41dfe7da"
+    },
+    {
+      "path": "src/MEMS.Admin/Controllers/AdminMediaController.cs",
+      "bytes": 1846,
+      "sha256": "71fb1bba0ac9cb8c4171cd348424778892878cd0fa6f3c8cc48d756738c7e87a"
+    },
+    {
+      "path": "src/MEMS.Admin/MEMS.Admin.csproj",
+      "bytes": 564,
+      "sha256": "adb2696281450ce58c336b90143fa11d2f2bc3f893dc3c754f0b4b3496e7c463"
+    },
+    {
+      "path": "src/MEMS.Admin/Program.cs",
+      "bytes": 3907,
+      "sha256": "af95033d208e03deeac047833c4e9d9efa7b00868ac5dbf4bc158246351a4a59"
+    },
+    {
+      "path": "src/MEMS.Admin/Properties/launchSettings.json",
+      "bytes": 681,
+      "sha256": "d07949e9e19d2ea22fe9d81643ee6bb87b32605d3f7b6ab1b666102b650b5fe7"
+    },
+    {
+      "path": "src/MEMS.Admin/Security/AdminAuthentication.cs",
+      "bytes": 1963,
+      "sha256": "3ec0b93cad2b168d32acf1f2f390abe6f8c21e747a376e58b7edbb1433abbd1c"
+    },
+    {
+      "path": "src/MEMS.Admin/Services/AdminOperations.cs",
+      "bytes": 2478,
+      "sha256": "1c629e39ea3f70ffdb994bb1c6106925846a365ea38084e56a56c9bbbde895da"
+    },
+    {
+      "path": "src/MEMS.Admin/appsettings.json",
+      "bytes": 151,
+      "sha256": "200332b434757a0054a3d356c91cde01f2c48712be8aa2bcb0f3e973619f06e3"
+    },
+    {
+      "path": "src/MEMS.Admin/wwwroot/admin.css",
+      "bytes": 6267,
+      "sha256": "1411d038dc180135ec237cc99fd16c01b47f46fd447776b6ecf9fc725c27f38e"
+    },
+    {
+      "path": "src/MEMS.Admin/wwwroot/app.css",
+      "bytes": 2463,
+      "sha256": "f434788ea7a9188a3d0a3ed50982ae66d66a5c02d7d635aaf14a67b85deecf7d"
+    },
+    {
+      "path": "src/MEMS.Admin/wwwroot/lib/bootstrap/LICENSE",
+      "bytes": 1153,
+      "sha256": "647ea903a052c7a7ee1d9bdd68aa61d43c1427e55262294888442ef22967bea9"
+    },
+    {
+      "path": "src/MEMS.Admin/wwwroot/lib/bootstrap/bootstrap.min.css",
+      "bytes": 232803,
+      "sha256": "3c8f27e6009ccfd710a905e6dcf12d0ee3c6f2ac7da05b0572d3e0d12e736fc8"
+    },
+    {
+      "path": "src/MEMS.Api/Controllers/AuthController.cs",
+      "bytes": 2837,
+      "sha256": "ed7ec8fad89f2c86cfa38747a3df0ddf47dbf88d3c54d5891c77a758df58e568"
+    },
+    {
+      "path": "src/MEMS.Api/Controllers/CandidatesController.cs",
+      "bytes": 2251,
+      "sha256": "2b864a9dbd8bf3361e3f2a3a50c7556319c6028d406f524b9abcf57ceda8493b"
+    },
+    {
+      "path": "src/MEMS.Api/Controllers/FoundationController.cs",
+      "bytes": 926,
+      "sha256": "943f607905f102fa93424060cb47f770bf305b4824f4c3811c4c94ab1d6e25ed"
+    },
+    {
+      "path": "src/MEMS.Api/Controllers/MediaController.cs",
+      "bytes": 3431,
+      "sha256": "1482412fedab903f045a2fffefdada4a5c8393afcb6f8d49c60fbcd6df978484"
+    },
+    {
+      "path": "src/MEMS.Api/Controllers/MunicipalitiesController.cs",
+      "bytes": 3350,
+      "sha256": "bc2c1ebfbf872c8c25bd8630242c32a119c33211a706be18a0d2fd007698522f"
+    },
+    {
+      "path": "src/MEMS.Api/Controllers/PositionsController.cs",
+      "bytes": 2097,
+      "sha256": "787ca9376055c777124e004c0db5871faca28c0f0abed3ca82098154db6f6778"
+    },
+    {
+      "path": "src/MEMS.Api/Infrastructure/ApiDocumentation.cs",
+      "bytes": 5610,
+      "sha256": "3e5563c567e0060d61d166dae18c68e0f07ae1c7fb145b7787c41a16e08ec109"
+    },
+    {
+      "path": "src/MEMS.Api/Infrastructure/ApiProblems.cs",
+      "bytes": 3817,
+      "sha256": "4280871b185f6ea882ac02f27e0f5780a864a5d18b7ecb49a641bbd15bdfa2a6"
+    },
+    {
+      "path": "src/MEMS.Api/Infrastructure/ApiSecurity.cs",
+      "bytes": 2031,
+      "sha256": "5958afe3bfb8b8528c6ad56e8bd69fbfa4342a4c08660f36068ef8a1d98712aa"
+    },
+    {
+      "path": "src/MEMS.Api/MEMS.Api.csproj",
+      "bytes": 803,
+      "sha256": "2c7964d25875c360176baac56551c97767f737104ae64dad99b3cbe0dfc280ca"
+    },
+    {
+      "path": "src/MEMS.Api/MEMS.Api.http",
+      "bytes": 127,
+      "sha256": "9e44734e569aee383f589d4bb8677a4185e28876f17e486b0b6495ebe9d7be89"
+    },
+    {
+      "path": "src/MEMS.Api/Program.cs",
+      "bytes": 3392,
+      "sha256": "7ef2dfa7f2b3b31c46d2a4e97a0159dfdc252471db7ace2982b883750c12daff"
+    },
+    {
+      "path": "src/MEMS.Api/Properties/launchSettings.json",
+      "bytes": 644,
+      "sha256": "ad942ef82a340b061a62044f7cbe4cf75c19dac51c0497bda428159616ff79bd"
+    },
+    {
+      "path": "src/MEMS.Api/appsettings.json",
+      "bytes": 151,
+      "sha256": "200332b434757a0054a3d356c91cde01f2c48712be8aa2bcb0f3e973619f06e3"
+    },
+    {
+      "path": "src/MEMS.Api/wwwroot/images/demo-candidates/demo-adrian-solano.jpg",
+      "bytes": 45032,
+      "sha256": "5ad685112d7d6dac2e69813bd04ebd17bfa12aaac8ce5bef657dd8b9e7a2e655"
+    },
+    {
+      "path": "src/MEMS.Api/wwwroot/images/demo-candidates/demo-aisha-moreno.jpg",
+      "bytes": 43942,
+      "sha256": "6a5a3fa415a3437d7acd1c85486f7fb6cc6cf8ffe696429e586415fce2c64eda"
+    },
+    {
+      "path": "src/MEMS.Api/wwwroot/images/demo-candidates/demo-amara-iqbal.jpg",
+      "bytes": 47795,
+      "sha256": "2cd75121bc7ccc30eb34d446a36dcda1cf9bb7c316be6021eccd144d7f2a83f7"
+    },
+    {
+      "path": "src/MEMS.Api/wwwroot/images/demo-candidates/demo-anika-sterling.svg",
+      "bytes": 532,
+      "sha256": "0280836f455e967c05b5b61b2979c45cdbd0cafa79adca148ae0d2ad8d733cb5"
+    },
+    {
+      "path": "src/MEMS.Api/wwwroot/images/demo-candidates/demo-caleb-winslow.jpg",
+      "bytes": 50879,
+      "sha256": "d596f2e20e1f5542cb4ea267c7ad866c2dba4fa5e0b0d73fc0a6a2cd0ff63808"
+    },
+    {
+      "path": "src/MEMS.Api/wwwroot/images/demo-candidates/demo-daniel-hwang.jpg",
+      "bytes": 42384,
+      "sha256": "2f42edcbe31b7aa7f0dfe19e18927bdc9ea74e66049164efa78e44e5913bdb87"
+    },
+    {
+      "path": "src/MEMS.Api/wwwroot/images/demo-candidates/demo-elena-varga.jpg",
+      "bytes": 40666,
+      "sha256": "a46ea64d38b6d7171c75820c49d3f581d10fb2b51f22f01cec637f47526d25be"
+    },
+    {
+      "path": "src/MEMS.Api/wwwroot/images/demo-candidates/demo-eli-mercer.jpg",
+      "bytes": 40556,
+      "sha256": "61f818c00431b1b46b7c3e781d73306c838a78f969439fe18609bb8665824e6b"
+    },
+    {
+      "path": "src/MEMS.Api/wwwroot/images/demo-candidates/demo-gregory-chao.jpg",
+      "bytes": 39415,
+      "sha256": "8ba10a05a4809f9de30195fc23663767198ca86573544d87769397d75f89c47c"
+    },
+    {
+      "path": "src/MEMS.Api/wwwroot/images/demo-candidates/demo-hassan-beaumont.jpg",
+      "bytes": 58777,
+      "sha256": "1e4d26ce68c4764a8eb7955d713f13f11fc3fc43e51e926b49a26676a9221f38"
+    },
+    {
+      "path": "src/MEMS.Api/wwwroot/images/demo-candidates/demo-julian-mensah.jpg",
+      "bytes": 48822,
+      "sha256": "524d73452d40ed471c187bf4bc2acb55e40e9db2c09961a5253d242060f8d416"
+    },
+    {
+      "path": "src/MEMS.Api/wwwroot/images/demo-candidates/demo-leena-desai.jpg",
+      "bytes": 45546,
+      "sha256": "50a7fe975d37ac6e7a163f71f085b57cd2180c1bd1c8672659e7c253d7592bce"
+    },
+    {
+      "path": "src/MEMS.Api/wwwroot/images/demo-candidates/demo-leo-faris.svg",
+      "bytes": 532,
+      "sha256": "47f1f6ebbafcaaddd1d7174e056a4c1f3d28cf537ccd2dc36f5fec0491a3363b"
+    },
+    {
+      "path": "src/MEMS.Api/wwwroot/images/demo-candidates/demo-mara-ellison.jpg",
+      "bytes": 41695,
+      "sha256": "af4f15232afeb6e5b12a275d39365fa0c0af923c873ef0d096cbcbccfb30b10e"
+    },
+    {
+      "path": "src/MEMS.Api/wwwroot/images/demo-candidates/demo-marcus-bellamy.jpg",
+      "bytes": 53702,
+      "sha256": "92976a0e35786b840ebc4263bfab988a2e451fe420319b6a38d47c9017cb388a"
+    },
+    {
+      "path": "src/MEMS.Api/wwwroot/images/demo-candidates/demo-mei-tanaka.jpg",
+      "bytes": 43074,
+      "sha256": "805717052d12e3ec8d374497f5cc7e586c94d7a66f9444dc10d61582e314f15c"
+    },
+    {
+      "path": "src/MEMS.Api/wwwroot/images/demo-candidates/demo-mina-ortega.svg",
+      "bytes": 532,
+      "sha256": "fb17706ea78ec80dfbacaee38fe0681ebe13f5cca9b904e1a26ccde5cba44568"
+    },
+    {
+      "path": "src/MEMS.Api/wwwroot/images/demo-candidates/demo-nadia-farooq.jpg",
+      "bytes": 43077,
+      "sha256": "351f383e13447ce0218056f58935b1c1c1e352a05dd59f7c4a76566440237e74"
+    },
+    {
+      "path": "src/MEMS.Api/wwwroot/images/demo-candidates/demo-noah-lin.svg",
+      "bytes": 532,
+      "sha256": "eb6c5468cab2dd7b099122e68e00e18117ed033bbcf75d251f24b8a614e065ab"
+    },
+    {
+      "path": "src/MEMS.Api/wwwroot/images/demo-candidates/demo-noor-whitmore.jpg",
+      "bytes": 40370,
+      "sha256": "d203a65ef9e48887e9905489a882404adea09bdb33e4a4d998257a457a54cbec"
+    },
+    {
+      "path": "src/MEMS.Api/wwwroot/images/demo-candidates/demo-owen-hartwell.jpg",
+      "bytes": 50374,
+      "sha256": "bc43464bff54e16e90823bb7d55829404db631d2fc39bb62ad73847c4a27c7ad"
+    },
+    {
+      "path": "src/MEMS.Api/wwwroot/images/demo-candidates/demo-patrick-rowden.jpg",
+      "bytes": 68424,
+      "sha256": "06cf024016e15fdcf5e293e69814753e91bcc9494b52d1fc1a5833b8d3870623"
+    },
+    {
+      "path": "src/MEMS.Api/wwwroot/images/demo-candidates/demo-priya-nand.jpg",
+      "bytes": 43843,
+      "sha256": "a3cc01f5fcb058ce6204c2177bf8b063fb4f303743db2443b362682aeb5c2f74"
+    },
+    {
+      "path": "src/MEMS.Api/wwwroot/images/demo-candidates/demo-rafael-baptiste.jpg",
+      "bytes": 43409,
+      "sha256": "a2dbe5b48c639651547fb0fdfbfd4ddaefc3bd88d951a2ef28aded8d4b6f93a6"
+    },
+    {
+      "path": "src/MEMS.Api/wwwroot/images/demo-candidates/demo-river-shah.svg",
+      "bytes": 532,
+      "sha256": "5a4f6a96b564e53c290a94899710cae30e0fb584d599325a9131a6918fe1f498"
+    },
+    {
+      "path": "src/MEMS.Api/wwwroot/images/demo-candidates/demo-sara-benali.jpg",
+      "bytes": 43592,
+      "sha256": "bece63aed7d13fb19fa22a39dde8bd36b00ead099a73dd7197ea639f1611748b"
+    },
+    {
+      "path": "src/MEMS.Api/wwwroot/images/demo-candidates/demo-simone-calder.jpg",
+      "bytes": 41650,
+      "sha256": "d5c5f68eb89c861bcb3e35450184976ef0aa9fbb085eb105988b335610a4631d"
+    },
+    {
+      "path": "src/MEMS.Api/wwwroot/images/demo-candidates/demo-tessa-laurent.svg",
+      "bytes": 532,
+      "sha256": "17e52461b166c5c65a6b385fc71ebbfc8e4de02b08677c813f8adcc6d11522a0"
+    },
+    {
+      "path": "src/MEMS.Api/wwwroot/images/demo-candidates/demo-thomas-okafor.jpg",
+      "bytes": 39978,
+      "sha256": "98eee6cb5af1e8efabe4ddc05df34d293aea05a2d2af29765ce648d8201e9d68"
+    },
+    {
+      "path": "src/MEMS.Api/wwwroot/images/demo-candidates/demo-vivian-kessler.jpg",
+      "bytes": 44926,
+      "sha256": "d6b33b3c7edef23e8b4a57266e788667697adea2a20d4003a1e0208fc8498b7c"
+    },
+    {
+      "path": "src/MEMS.Api/wwwroot/images/municipalities/demo-burnaby.svg",
+      "bytes": 277,
+      "sha256": "9b30fe474bd9deb58cd1cd14bc7cc95767d67047d2edd2b332dbe9f940c1373a"
+    },
+    {
+      "path": "src/MEMS.Api/wwwroot/images/municipalities/demo-maple-ridge.svg",
+      "bytes": 282,
+      "sha256": "a7828f80ca8247b84a1c2ad731650bfd6838bd7a628e0def71a016a076432b95"
+    },
+    {
+      "path": "src/MEMS.Api/wwwroot/images/municipalities/demo-pitt-meadows.svg",
+      "bytes": 283,
+      "sha256": "c1dbca9eee07eead052204ca1f02770d7d0aec4d29d0bd647415f19bd4cdf6c1"
+    },
+    {
+      "path": "src/MEMS.Api/wwwroot/images/municipalities/demo-richmond.svg",
+      "bytes": 278,
+      "sha256": "5870acd4e916dbf5aa36a5e6634d6dd4ce9980c72b7eb5bb99ffd76403ce4ff7"
+    },
+    {
+      "path": "src/MEMS.Api/wwwroot/images/municipalities/demo-surrey.svg",
+      "bytes": 276,
+      "sha256": "cf4f25ac49c68020ea5defcbd030fa1b5efaedda0d9d2c26a9c23c60d33d275b"
+    },
+    {
+      "path": "src/MEMS.AppHost/AppHost.cs",
+      "bytes": 2891,
+      "sha256": "74acfbce8d683c82afaaea9aa9ce0180d36188e14e8755e86723f5924a6234af"
+    },
+    {
+      "path": "src/MEMS.AppHost/Gateway/PublicGateway.cs",
+      "bytes": 8601,
+      "sha256": "73fa35d717f1e8db32cfd32e9f5cd5f3a7b9ee1e5d6ba3bc4441f33dd17eb9cf"
+    },
+    {
+      "path": "src/MEMS.AppHost/MEMS.AppHost.csproj",
+      "bytes": 1136,
+      "sha256": "f9d5e351b947bd90523f03ea9e8e3854bcd841c6f45c86c482069b6bb7d755da"
+    },
+    {
+      "path": "src/MEMS.AppHost/Properties/launchSettings.json",
+      "bytes": 1032,
+      "sha256": "6c79ba2117ac89353f94ffca03041ec9be0705aa993d7833f559ae24f849a74c"
+    },
+    {
+      "path": "src/MEMS.AppHost/appsettings.json",
+      "bytes": 167,
+      "sha256": "daacc1e4ef8338163fcd287a76d5c3b0e0ae20d011b6fffc3d4b0e9c5fde619d"
+    },
+    {
+      "path": "src/MEMS.AppHost/aspire.config.json",
+      "bytes": 62,
+      "sha256": "237261ff2fdc62b544a3c50443eb4bb0fe391647a55dd596cb36f0eb6d7fe0b6"
+    },
+    {
+      "path": "src/MEMS.Data/Configuration/ElectionConfiguration.cs",
+      "bytes": 3987,
+      "sha256": "a8e9d6bc55303e6f20bcce5d81ef9626937722c97752c7d45b9cb40fa8a72415"
+    },
+    {
+      "path": "src/MEMS.Data/Configuration/IdentityConfiguration.cs",
+      "bytes": 2104,
+      "sha256": "e11959681d61547da8c4e2f37a836d4d1ad4ea0ad15e575c7edd80d329be1b2b"
+    },
+    {
+      "path": "src/MEMS.Data/DataServices.cs",
+      "bytes": 4454,
+      "sha256": "72f350e79083a42e409aa974b2ca6facdbde5716d7b028e2cf276882a54a079e"
+    },
+    {
+      "path": "src/MEMS.Data/Entities/Election.cs",
+      "bytes": 2693,
+      "sha256": "1301d2e379f6cd21d8643e21e6bec7560d7134bcd0f497fa728a6673d225ba5c"
+    },
+    {
+      "path": "src/MEMS.Data/Identity/Administrator.cs",
+      "bytes": 1820,
+      "sha256": "602a574cd020d841eafda3593e43dd26504b1369477329e765ee4c17080e2bff"
+    },
+    {
+      "path": "src/MEMS.Data/Identity/IdentitySessions.cs",
+      "bytes": 3820,
+      "sha256": "7d0e4bbf454b6977a42d5d758881c71bf89dc7ada08754d521fe1d211f2230b9"
+    },
+    {
+      "path": "src/MEMS.Data/MEMS.Data.csproj",
+      "bytes": 925,
+      "sha256": "cbcd72e6fa288842b14bfff2412d7f983d1aab196c5ca8300ece2535173ffcbe"
+    },
+    {
+      "path": "src/MEMS.Data/MemsDbContext.cs",
+      "bytes": 5761,
+      "sha256": "b7bf0f4e2bcc370dbf47b47a96b34a73d0bd462404706d3d9be566b7b13443d5"
+    },
+    {
+      "path": "src/MEMS.Data/MemsDesignTimeFactory.cs",
+      "bytes": 764,
+      "sha256": "38573f7e4f8b844d5bb88431ffb31c7c6ca99c6ee1eb2fee06b610f14aac8332"
+    },
+    {
+      "path": "src/MEMS.Data/Migrations/20261116003601_InitialSqlServerIdentityTenancy.Designer.cs",
+      "bytes": 24261,
+      "sha256": "7bbae18f81741903943cdee72278b3ceca20c38318efcd65430dd54ba76baf1a"
+    },
+    {
+      "path": "src/MEMS.Data/Migrations/20261116003601_InitialSqlServerIdentityTenancy.cs",
+      "bytes": 22908,
+      "sha256": "3717d617b7ad56c469977a0c1b688cbb67434e8fa99bf2556d9ba8ed5ac4beff"
+    },
+    {
+      "path": "src/MEMS.Data/Migrations/20261116004505_FixHyphenatedSlugsAndAssetNames.Designer.cs",
+      "bytes": 24261,
+      "sha256": "3cbc13dcbf572a98a8396a21cc5c1ce29f825e004888075c8c5b29329817b9aa"
+    },
+    {
+      "path": "src/MEMS.Data/Migrations/20261116004505_FixHyphenatedSlugsAndAssetNames.cs",
+      "bytes": 3477,
+      "sha256": "cafaa55f1a491547b5d6a235bce313f898fbd9d5a15aa8911d8a20b9dbe13a60"
+    },
+    {
+      "path": "src/MEMS.Data/Migrations/MemsDbContextModelSnapshot.cs",
+      "bytes": 24122,
+      "sha256": "fef6e8521791ec629fc50c47bee8bd4e7a2b8c6ce815a75fbf92cf947b1e5006"
+    },
+    {
+      "path": "src/MEMS.Data/Seeding/DatabaseInitialization.cs",
+      "bytes": 8889,
+      "sha256": "6e1842a40390d80fc9775fc7dfb14dcb7a2c1aa099d8e02dee1ffa7ee35d6a41"
+    },
+    {
+      "path": "src/MEMS.Data/Seeding/DemoCandidates.cs",
+      "bytes": 24954,
+      "sha256": "7c93137cdce684090feea9e96ec94775e36b6e05daba37a48e431561e73ac21d"
+    },
+    {
+      "path": "src/MEMS.Data/Seeding/RichmondCandidates.cs",
+      "bytes": 6100,
+      "sha256": "fd8f14fc32f3403ee0ed6c28bccde1a65ffae24394ad76e1a608411dca8cf495"
+    },
+    {
+      "path": "src/MEMS.Data/Services/ApiFault.cs",
+      "bytes": 1515,
+      "sha256": "a9dd29f0297bd80f11cd1e23730b21fe4020b0419b491b03360629e833898ffe"
+    },
+    {
+      "path": "src/MEMS.Data/Services/ElectionAccess.cs",
+      "bytes": 3428,
+      "sha256": "a1d8b784fc4efe455205d95afb95c01f30f3e2df755743a09388aa795d19beff"
+    },
+    {
+      "path": "src/MEMS.Data/Services/ElectionApiService.cs",
+      "bytes": 14509,
+      "sha256": "8d4f66fbb9a03e730daf709e9913153734e9ecde716bc95658f14eaeea04b167"
+    },
+    {
+      "path": "src/MEMS.Data/Services/TenantElectionReader.cs",
+      "bytes": 1974,
+      "sha256": "5fc7ffa6e95ec341b55442848ee4cbaceec6ecbe0048cddea0731583cc2e683a"
+    },
+    {
+      "path": "src/MEMS.Data/Storage/MediaStore.cs",
+      "bytes": 5301,
+      "sha256": "8bd6c0341144f5e0ec50562af318b8cb194b4c73a86a5bd90e403e92d5e49c85"
+    },
+    {
+      "path": "src/MEMS.Public/App.razor",
+      "bytes": 473,
+      "sha256": "aba0754bb432a134b57f85a101bdbc87cf3cc2af1f8b901600295f38f631407e"
+    },
+    {
+      "path": "src/MEMS.Public/Layout/MainLayout.razor",
+      "bytes": 1099,
+      "sha256": "63272a8e7652a91bf86babf201a1ca0c7d950e5cdba324b8a56753eb11928ce8"
+    },
+    {
+      "path": "src/MEMS.Public/MEMS.Public.csproj",
+      "bytes": 667,
+      "sha256": "cfa9dc0ab339e3f8234c9895feeb4341c83f17ae7ab47ce9ec9f983ef1427548"
+    },
+    {
+      "path": "src/MEMS.Public/Pages/CandidateDetails.razor",
+      "bytes": 2919,
+      "sha256": "7a1424e0efef5bb54943cfe220d1a97387fa2e6002bb63b78a627759cbea9804"
+    },
+    {
+      "path": "src/MEMS.Public/Pages/Candidates.razor",
+      "bytes": 5564,
+      "sha256": "d67c8b90afbbbae9dae1d783972aadd739566906a94983ef9253a5023ac33944"
+    },
+    {
+      "path": "src/MEMS.Public/Pages/Connectivity.razor",
+      "bytes": 788,
+      "sha256": "ebd04c6f8be677186016f46f186b8f242cf3e48417b4bd638da37d88839c8a9c"
+    },
+    {
+      "path": "src/MEMS.Public/Pages/Home.razor",
+      "bytes": 3892,
+      "sha256": "5d9898f41124c90b5a41635030be94f7a375716698d32c517a72ef79487e35bd"
+    },
+    {
+      "path": "src/MEMS.Public/Pages/Municipality.razor",
+      "bytes": 3455,
+      "sha256": "ab36afd20678012937e331bb2eedc6497385a9a93ed08e6f6bca0360eee93fed"
+    },
+    {
+      "path": "src/MEMS.Public/Pages/NotFound.razor",
+      "bytes": 353,
+      "sha256": "d71ab0201e6aaae70bd0ad38c6459bf2db18eef800bcc13fa1dcb15dd6b38d9d"
+    },
+    {
+      "path": "src/MEMS.Public/Pages/PositionDetails.razor",
+      "bytes": 3192,
+      "sha256": "52720f7a0f55150b39a9645b12bf2cf2fab6cf6a3356d9ec60750f3170360d27"
+    },
+    {
+      "path": "src/MEMS.Public/Pages/Positions.razor",
+      "bytes": 1883,
+      "sha256": "d01404e011a046de08fddb5b60ba28b06738393480b1c5477f7818f4e0d0c87e"
+    },
+    {
+      "path": "src/MEMS.Public/Pages/VotingGuide.razor",
+      "bytes": 8474,
+      "sha256": "cfc551c7a411f7204942660828fde945ab23604617e7373d8a3cde402108166d"
+    },
+    {
+      "path": "src/MEMS.Public/Program.cs",
+      "bytes": 569,
+      "sha256": "be78c4823c33775fa56c0209de02d08128cef44d110e1504ea7b2bd7469b4ae5"
+    },
+    {
+      "path": "src/MEMS.Public/Properties/launchSettings.json",
+      "bytes": 877,
+      "sha256": "1f12212c850b24a6145df38ba5530af7d834d4be2a76597895412ad4a1396262"
+    },
+    {
+      "path": "src/MEMS.Public/Services/PublicApi.cs",
+      "bytes": 5249,
+      "sha256": "340b9634f565a73e929d102d1445c4394301c46826fd112fce4106f0cf76a149"
+    },
+    {
+      "path": "src/MEMS.Public/Services/VotingGuideStore.cs",
+      "bytes": 2739,
+      "sha256": "3cdbe94155d802c7888ac8100f2603317f265e149bbedf5daceaba3df5c1f3d0"
+    },
+    {
+      "path": "src/MEMS.Public/Shared/CandidateCard.razor",
+      "bytes": 1066,
+      "sha256": "dff2e3af93c563d682b9faf1ba720efa7ecb57649af8e0ac39237a1910311307"
+    },
+    {
+      "path": "src/MEMS.Public/Shared/GuideSelection.razor",
+      "bytes": 1539,
+      "sha256": "89ceaabf9c52b933a5e92038cb63f60558df8221608dfc2e2f8f72b4147ddc88"
+    },
+    {
+      "path": "src/MEMS.Public/Shared/PublicImage.razor",
+      "bytes": 1657,
+      "sha256": "12a3fe9e246b5d702afd65ea2dc8cf06413192d227ec0192de488be80f952b27"
+    },
+    {
+      "path": "src/MEMS.Public/Shared/PublicPageBase.cs",
+      "bytes": 1804,
+      "sha256": "781196ed7bdc6ac09c72ce7b131bcefb5c556459b1ad8b76c0475ffb3c5cd495"
+    },
+    {
+      "path": "src/MEMS.Public/Shared/PublicStatus.razor",
+      "bytes": 794,
+      "sha256": "db4eb56a987c472fcd64234d52d30678ed807f5c9d80a886d62338a510a8bc77"
+    },
+    {
+      "path": "src/MEMS.Public/Shared/TenantFrame.razor",
+      "bytes": 1306,
+      "sha256": "a2eff40265a34c4ac7fc39729cee47a1070a10dcca62fa109c65afb7237118dc"
+    },
+    {
+      "path": "src/MEMS.Public/_Imports.razor",
+      "bytes": 471,
+      "sha256": "7cb0c36b70e82108228de057d172903fba8da8b8c31bc8b8973ce3baa5109c08"
+    },
+    {
+      "path": "src/MEMS.Public/wwwroot/css/app.css",
+      "bytes": 3698,
+      "sha256": "076f699188231cf9d21b36ef3ade9efeb180d6934150491340998a0639966401"
+    },
+    {
+      "path": "src/MEMS.Public/wwwroot/css/public.css",
+      "bytes": 12889,
+      "sha256": "e3484afb7c80a93938a8e84cff465312551441c5ae1e50782f8e3eada33eb553"
+    },
+    {
+      "path": "src/MEMS.Public/wwwroot/css/voting-guide.css",
+      "bytes": 3252,
+      "sha256": "98609df2c3395d46b88d2f2ba82e9bace0fee2ebade3366237509bd092490e2f"
+    },
+    {
+      "path": "src/MEMS.Public/wwwroot/icon-192.png",
+      "bytes": 2626,
+      "sha256": "0dba506aaebc6526f92283e8b0112b33541605fb1b4f1a49aa15344448bac0fe"
+    },
+    {
+      "path": "src/MEMS.Public/wwwroot/index.html",
+      "bytes": 1270,
+      "sha256": "9cbfc602b46a8cb1e4be65d3d5bd2c417b2f96fe406ec9250e2b3bad49d0eb55"
+    },
+    {
+      "path": "src/MEMS.Public/wwwroot/js/voting-guide.js",
+      "bytes": 2238,
+      "sha256": "405e68f51e3269e5fc1b4b3482d861bcb161a68568f9f4e64b393647fa8936bf"
+    },
+    {
+      "path": "src/MEMS.Public/wwwroot/lib/bootstrap/LICENSE",
+      "bytes": 1153,
+      "sha256": "647ea903a052c7a7ee1d9bdd68aa61d43c1427e55262294888442ef22967bea9"
+    },
+    {
+      "path": "src/MEMS.Public/wwwroot/lib/bootstrap/bootstrap.min.css",
+      "bytes": 232803,
+      "sha256": "3c8f27e6009ccfd710a905e6dcf12d0ee3c6f2ac7da05b0572d3e0d12e736fc8"
+    },
+    {
+      "path": "src/MEMS.ServiceDefaults/Extensions.cs",
+      "bytes": 5116,
+      "sha256": "6ec423b150426b5c31e044887834a9f763f91f6b3e8389a7d381c71c921a90d5"
+    },
+    {
+      "path": "src/MEMS.ServiceDefaults/MEMS.ServiceDefaults.csproj",
+      "bytes": 1011,
+      "sha256": "979106e53e847595e3c9bfe087032434b79170b91c547923a8f5094b63768a47"
+    },
+    {
+      "path": "src/MEMS.Shared/Contracts/ElectionContracts.cs",
+      "bytes": 4006,
+      "sha256": "db771017bf850f7dfb9a8fe464eae9cc8073cfc9eb95b6e7df0206239b2125ae"
+    },
+    {
+      "path": "src/MEMS.Shared/FoundationStatus.cs",
+      "bytes": 230,
+      "sha256": "19b31dbdf815512709546cdeb0eacb003c53881dd899271c24ea014c13140e58"
+    },
+    {
+      "path": "src/MEMS.Shared/MEMS.Shared.csproj",
+      "bytes": 219,
+      "sha256": "61e3f2d043e37f0db4be1d8083dd31bebbfbb8fde2cf027327db2556c16bc385"
+    },
+    {
+      "path": "tests/Phase2DatabaseChecks.cs",
+      "bytes": 21158,
+      "sha256": "d36bfb0508755b04ddabae8c6ccdeee5886563925e51fea209bbfd33cc526242"
+    },
+    {
+      "path": "tests/Phase3FixtureChecks.cs",
+      "bytes": 5406,
+      "sha256": "b868388417f4079683ad9a7dbecac112768db98a0bb6299537b834c1186f16f6"
+    }
+  ]
+}

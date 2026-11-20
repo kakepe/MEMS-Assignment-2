@@ -1,0 +1,85 @@
+Phase 1 exact source/configuration inventory (66 files)
+
+All paths below were created in Assignment 2 during Phase 1. Files generated from templates were edited as needed. The original starter text and assignment PDF were not modified.
+
+.github/copilot-instructions.md
+.github/prompts/phase-1-foundation.prompt.md
+.gitignore
+AGENTS.md
+MEMS.sln
+NuGet.Config
+README.md
+docs/phase1-files.txt
+docs/phase1-verification.md
+global.json
+scripts/check-assignment1.py
+scripts/inspect-dashboard.cjs
+scripts/start.ps1
+scripts/verify-phase1.cjs
+src/MEMS.Admin/Components/App.razor
+src/MEMS.Admin/Components/Layout/MainLayout.razor
+src/MEMS.Admin/Components/Layout/MainLayout.razor.css
+src/MEMS.Admin/Components/Layout/ReconnectModal.razor
+src/MEMS.Admin/Components/Layout/ReconnectModal.razor.css
+src/MEMS.Admin/Components/Layout/ReconnectModal.razor.js
+src/MEMS.Admin/Components/Pages/Error.razor
+src/MEMS.Admin/Components/Pages/Home.razor
+src/MEMS.Admin/Components/Pages/NotFound.razor
+src/MEMS.Admin/Components/Routes.razor
+src/MEMS.Admin/Components/_Imports.razor
+src/MEMS.Admin/MEMS.Admin.csproj
+src/MEMS.Admin/Program.cs
+src/MEMS.Admin/Properties/launchSettings.json
+src/MEMS.Admin/appsettings.Development.json
+src/MEMS.Admin/appsettings.json
+src/MEMS.Admin/wwwroot/app.css
+src/MEMS.Admin/wwwroot/lib/bootstrap/LICENSE
+src/MEMS.Admin/wwwroot/lib/bootstrap/bootstrap.min.css
+src/MEMS.Api/Controllers/FoundationController.cs
+src/MEMS.Api/MEMS.Api.csproj
+src/MEMS.Api/MEMS.Api.http
+src/MEMS.Api/Program.cs
+src/MEMS.Api/Properties/launchSettings.json
+src/MEMS.Api/appsettings.Development.json
+src/MEMS.Api/appsettings.json
+src/MEMS.AppHost/AppHost.cs
+src/MEMS.AppHost/MEMS.AppHost.csproj
+src/MEMS.AppHost/Properties/launchSettings.json
+src/MEMS.AppHost/appsettings.Development.json
+src/MEMS.AppHost/appsettings.json
+src/MEMS.AppHost/aspire.config.json
+src/MEMS.Data/DataServices.cs
+src/MEMS.Data/MEMS.Data.csproj
+src/MEMS.Data/MemsDbContext.cs
+src/MEMS.Public/App.razor
+src/MEMS.Public/Layout/MainLayout.razor
+src/MEMS.Public/MEMS.Public.csproj
+src/MEMS.Public/Pages/Home.razor
+src/MEMS.Public/Pages/NotFound.razor
+src/MEMS.Public/Program.cs
+src/MEMS.Public/Properties/launchSettings.json
+src/MEMS.Public/_Imports.razor
+src/MEMS.Public/wwwroot/css/app.css
+src/MEMS.Public/wwwroot/icon-192.png
+src/MEMS.Public/wwwroot/index.html
+src/MEMS.Public/wwwroot/lib/bootstrap/LICENSE
+src/MEMS.Public/wwwroot/lib/bootstrap/bootstrap.min.css
+src/MEMS.ServiceDefaults/Extensions.cs
+src/MEMS.ServiceDefaults/MEMS.ServiceDefaults.csproj
+src/MEMS.Shared/FoundationStatus.cs
+src/MEMS.Shared/MEMS.Shared.csproj
+
+Removed generated boilerplate (no original user files deleted):
+src/MEMS.Data/Class1.cs
+src/MEMS.Shared/Class1.cs
+src/MEMS.Api/WeatherForecast.cs
+src/MEMS.Api/Controllers/WeatherForecastController.cs
+
+Additional ignored generated outputs (not source deliverables):
+- .tools/: NuGet packages; local Aspire template stores; npm cache and Playwright 1.65.1 dependencies
+- .local/: reference baseline; random development SQL password; AppHost logs; dashboard discovery/debug data
+- artifacts/phase1/: verification.json and five verified browser screenshots
+- src/*/bin and src/*/obj: restore/build/runtime outputs
+- src/{MEMS.Admin,MEMS.Api,MEMS.AppHost}/appsettings.Development.json: template logging settings, ignored
+
+Persistent Docker resource created: mems-assignment2-sql, volume mems-assignment2-sql-data, database MEMSAssignment2. No existing container or volume was deleted.
