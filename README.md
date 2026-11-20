@@ -17,30 +17,68 @@ Current API endpoints, JSON examples and security/client-routing contract: [docs
 
 Current Admin routes, usage, authentication/circuit design and tests: [docs/phase4-admin.md](docs/phase4-admin.md). Phase 4 verification: [docs/phase4-verification.md](docs/phase4-verification.md). Exact Phase 4 file inventory: [docs/phase4-files.txt](docs/phase4-files.txt).
 
+
 ## Run
 
-Prerequisites: .NET SDK 10.0.402, Docker Desktop using Linux containers, installed Aspire CLI 13.6.4 and its runtime bundle, and an already trusted ASP.NET development certificate.
+### Prerequisites
 
-From this workspace:
+- .NET 10 SDK
+- .NET Aspire CLI
+- Docker Desktop with Linux containers enabled
+- A trusted ASP.NET Core development HTTPS certificate
 
-```powershell
-dotnet restore MEMS.sln
-dotnet build MEMS.sln --no-restore
-docker start mems-assignment2-sql
-.\scripts\start.ps1 -NoBuild
-```
+### Starting MEMS Assignment 2
 
-If PowerShell blocks script execution, use the equivalent command directly:
+The application uses .NET Aspire to orchestrate SQL Server, the ASP.NET Core Web API, the Blazor Server Admin application, and the Blazor WebAssembly Public website.
 
-```powershell
-dotnet run --project src/MEMS.AppHost --no-build --launch-profile https -p:_AspireCliRunHookSuppressed=true
-```
+**To start the complete application:**
 
-The direct .NET command remains a fallback. The normal startup script now uses the professor-required Aspire CLI command, verified with the existing trusted development certificate:
+1. Open Docker Desktop and make sure the Docker Engine is running.
+2. Open a terminal in the `MEMS-Assignment-2` project folder (the folder containing `MEMS.sln`).
+3. Enter the following command:
 
 ```powershell
-aspire run --apphost src/MEMS.AppHost/MEMS.AppHost.csproj --no-build --launch-profile https --non-interactive --nologo
+aspire run
 ```
+
+Aspire will launch the AppHost, start the configured SQL Server container, and orchestrate the Admin, API, and Public services.
+
+Once Aspire starts, the terminal will display a link to the Aspire Dashboard. Open that link to view the running services and their URLs.
+
+### First-time setup on a new computer
+
+For a fresh clone of the repository, install the prerequisites above and configure the local development administrator password once:
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File scripts/configure-development-seed.ps1
+```
+
+Enter a development/demo password when prompted. The password is stored locally in the ignored `.local/` directory and is not committed to GitHub.
+
+Then start the application with:
+
+```powershell
+aspire run
+```
+
+The AppHost generates its local SQL Server password on first use. The application initializes its development database using the existing EF Core migrations and seed configuration.
+
+A fresh-machine installation has not been independently verified. The application has been successfully tested using `aspire run` in the existing development environment.
+
+### Stopping the application
+
+Press **Ctrl+C** in the terminal running Aspire.
+
+The SQL Server container may remain running because its lifetime is configured as persistent. It can be stopped separately in Docker Desktop without deleting the container or its data volume.
+
+To restart the application later, open Docker Desktop and run:
+
+```powershell
+aspire run
+```
+
+Do not delete the existing SQL Server container, persistent volume, or local credential files.
+
 
 No certificate installation/trust change was needed. If the existing trusted certificate is unavailable, obtain approval before changing certificate settings. Keep the current SQL container and resource configuration; do not use Aspire isolated mode for this retained database.
 
